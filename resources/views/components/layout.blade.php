@@ -7,6 +7,7 @@
     @vite('resources/css/app.css')
     <title>{{ $title ?? 'Eco Peduli' }}</title>
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <x-navbar></x-navbar>
@@ -14,9 +15,13 @@
         {{ $slot }}
     </div>
     <script>
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            var menu = document.getElementById('navbar-sticky');
-            menu.classList.toggle('hidden');
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleButton = document.getElementById('menu-toggle');
+            const navbar = document.getElementById('navbar-sticky');
+
+            toggleButton.addEventListener('click', function () {
+                navbar.classList.toggle('hidden');
+            });
         });
     </script>
 </body>

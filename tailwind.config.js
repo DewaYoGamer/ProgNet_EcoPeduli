@@ -9,6 +9,7 @@ export default {
   theme: {
     extend: {
         fontFamily: {
+            sans: ['Montserrat', 'sans-serif'],
             ComicLemon: ['ComicLemon', 'sans-serif'],
         },
         colors: {
