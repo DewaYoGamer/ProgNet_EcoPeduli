@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
 export default {
   content: [
     "./resources/**/*.blade.php",
@@ -7,9 +8,15 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        ComicLemon: ['ComicLemon', 'sans-serif'],
-      },
+        fontFamily: {
+            ComicLemon: ['ComicLemon', 'sans-serif'],
+        },
+        colors: {
+            primary: '#50623A',
+            secondary: colors.lime[300],
+            third: '#789461',
+            fourth: '#DBE7C9',
+        },
     },
   },
   plugins: [],
