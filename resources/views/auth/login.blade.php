@@ -24,7 +24,7 @@
                     <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
                     <input type="password" name="password" id="password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
                 </div>
-                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Masuk</button>
+                <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">Masuk</button>
             </form>
             <p class="mt-4 text-center text-sm text-gray-600">
                 Belum memiliki akun?

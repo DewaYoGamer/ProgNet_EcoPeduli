@@ -32,7 +32,7 @@
                     <label for="email" class="block text-sm font-medium text-gray-700">Re-Enter Password</label>
                     <input type="email" name="email" id="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
                 </div>
-                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Daftar</button>
+                <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">Daftar</button>
             </form>
             <p class="mt-4 text-center text-sm text-gray-600">
                 Sudah memiliki akun?
