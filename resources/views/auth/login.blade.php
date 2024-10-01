@@ -27,7 +27,7 @@
                   <input type="submit" value="LOGIN"
                     class="w-full px-5 py-3 text-base text-white border-primary bg-primary" />
                 </div>
-              </form>
+            </form>
             <p class="mt-4 text-center text-sm text-gray-600">
                 Belum memiliki akun?
             <a href="/register" class="text-blue-500 hover:underline">Daftar di sini</a>
