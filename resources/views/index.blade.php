@@ -23,17 +23,17 @@
             </div>
             <div class="flex justify-between items-center w-full h-[650px] left-0 top-[750px] absolute bg-primary px-8">
                 <div class="w-[284.58px] h-[434.48px] px-[40.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex ml-48">
-                    <img class="w-[202.60px] h-[193.23px] rounded-[14px]" src="https://via.placeholder.com/203x193" />
+                    <img src="{{asset('images/sorting.png')}}" class="h-48" alt="Flowbite Logo">
                     <div class="self-stretch text-black text-2xl font-semibold">Memilah</div>
                     <div class="self-stretch text-black text-base font-medium">Memilah Sampah yang Memiliki <b class="text-primary">Nilai Tukar</b>. Seperti Botol dan Kaleng. </div>
                 </div>
                 <div class="w-[284.58px] h-[434.48px] px-[40.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex">
-                    <img class="w-[202.60px] h-[193.23px] rounded-[14px]" src="https://via.placeholder.com/203x193" />
+                    <img src="{{asset('images/collecting.png')}}" class="h-48" alt="Flowbite Logo">
                     <div class="self-stretch text-black text-2xl font-semibold">Mengumpulkan</div>
                     <div class="self-stretch text-black text-base font-medium">Mengumpulkan Sampah yang <b class="text-primary">Telah Dipilah</b> untuk Dikumpulkan pada Pengepul dan <b class="text-primary">Mendapatkan Poin</b>.</div>
                 </div>
                 <div class="w-[284.58px] h-[434.48px] px-[40.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex mr-48">
-                    <img class="w-[202.60px] h-[193.23px] rounded-[14px]" src="https://via.placeholder.com/203x193" />
+                    <img src="{{asset('images/exchanging.png')}}" class="h-48" alt="Flowbite Logo">
                     <div class="self-stretch text-black text-2xl font-semibold">Menukarkan</div>
                     <div class="self-stretch text-black text-base font-medium">Menukarkan Poin yang Telah Didapatkan Sebelumnya dengan <b class="text-primary">Sembako</b>. Seperti Beras, Gula, dan sebagainya. </div>
                 </div>
