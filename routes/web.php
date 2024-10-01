@@ -35,5 +35,5 @@ Route::get('/register', function () {
 });
 
 Route::get('/pengguna', function () {
-    return view('dashboard_pengguna');
+    return view('dashboard.dashboard_pengguna');
 });

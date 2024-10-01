@@ -8,11 +8,11 @@
             <h2 class="text-2xl font-bold mb-6 text-center text-primary">LOGIN </h2>
             <form>
                 <div class="mb-[12px]">
-                  <input type="email" placeholder="Email"
+                <input type="email" placeholder="Email"
                     class="w-full px-5 py-3 text-base border focus:border-primary" />
                 </div>
                 <div class="mb-[20px]">
-                  <input type="password" placeholder="Password"
+                <input type="password" placeholder="Password"
                     class="w-full px-5 py-3 text-base border focus:border-primary" />
                 </div>
                 <div class="mb-8 font-bold">
