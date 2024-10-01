@@ -11,7 +11,7 @@
 </head>
 <body>
     <x-navbar></x-navbar>
-    <div class="mt-16 p-4">
+    <div class="mt-20">
         {{ $slot }}
     </div>
     <script>
