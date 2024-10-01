@@ -8,8 +8,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>
-        halo dunia
-    </h1>
+    {{-- SIDEBAR --}}
+    <div class="flex">
+        <div class="bg-[#50623A] h-screen p-5 pt-5 w-60">
+            <div>
+                <img src="{{ asset('images/kiri.png') }}" alt="">
+            </div>
+        </div>
+    </div>
 </body>
 </html>
