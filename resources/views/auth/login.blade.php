@@ -15,17 +15,16 @@
             </div>
             <h2 class="text-2xl font-bold mb-6 text-center text-primary">LOGIN </h2>
             <form>
-                <div class="mb-[22px]">
+                <div class="mb-[12px]">
                   <input type="email" placeholder="Email"
                     class="w-full px-5 py-3 text-base border focus:border-primary" />
                 </div>
-                <div class="mb-[22px]">
+                <div class="mb-[20px]">
                   <input type="password" placeholder="Password"
                     class="w-full px-5 py-3 text-base border focus:border-primary" />
                 </div>
                 <div class="mb-8 font-bold">
-                  <input type="submit" value="LOGIN"
-                    class="w-full px-5 py-3 text-base text-white border-primary bg-primary" />
+                    <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded"> LOGIN </Button>
                 </div>
             </form>
             <p class="mt-4 text-center text-sm text-gray-600">
