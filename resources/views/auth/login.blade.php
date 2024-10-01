@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite('resources/css/app.css')
-    <title>Login</title>
-</head>
-<body class="bg-gray-100 flex justify-center items-center h-screen">
-    <x-navbar></x-navbar>
-        <div class="bg-white p-6 rounded shadow-md w-full max-w-sm">
+<x-layout>
+    <x-slot name="title">Masuk | Eco Peduli</x-slot>
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+        <div class="bg-white p-6 rounded shadow-md w-full max-w-sm mb-64">
             <div class="flex justify-center mb-4">
                 <img src="{{ asset('images/logo.png') }}" class="h-24" alt="Flowbite Logo">
             </div>
@@ -32,12 +24,5 @@
             <a href="/register" class="text-blue-500 hover:underline">Daftar di sini</a>
             </p>
         </div>
-
-    <script>
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            var menu = document.getElementById('navbar-sticky');
-            menu.classList.toggle('hidden');
-        });
-    </script>
-</body>
-</html>
+    </div>
+</x-layout>
