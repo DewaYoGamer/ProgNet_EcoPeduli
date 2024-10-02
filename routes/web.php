@@ -33,3 +33,7 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('auth.register');
 });
+
+Route::get('/pengguna', function () {
+    return view('dashboard_pengguna');
+});
