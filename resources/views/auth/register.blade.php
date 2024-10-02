@@ -3,7 +3,7 @@
     <div class = "flex items-center justify-center min-h-screen bg-gray-100">
         <div class="bg-white p-6 rounded shadow-md w-full max-w-sm mb-64">
             <div class="flex justify-center mb-4">
-                <img src="{{ asset('images/logo.png') }}" class="h-24" alt="">
+                <img src="{{ asset('images/logo.png') }}" class="h-24">
             </div>
             <h2 class="text-2xl font-bold mb-6 text-center text-primary">DAFTAR</h2>
                 <div class="mb-[12px]">

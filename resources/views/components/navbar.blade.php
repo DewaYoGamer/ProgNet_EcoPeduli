@@ -1,7 +1,7 @@
 <nav class="bg-primary fixed w-full h-20 z-20 top-0 start-0">
     <div class="flex flex-wrap items-center justify-between mx-auto p-4 lg:ml-12 lg:mr-12 mt-1">
         <a href="/" class="flex items-center space-x-3">
-            <img src="{{asset('images/logo.png')}}" class="h-9" alt="">
+            <img src="{{asset('images/logo.png')}}" class="h-9">
             <span class="font-ComicLemon text-2xl self-center whitespace-nowrap text-white">EcoPeduli</span>
         </a>
         <div class="flex items-center space-x-3 lg:order-2">
