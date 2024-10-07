@@ -64,28 +64,28 @@
                         <div class="self-stretch text-white text-3xl lg:text-5xl font-bold lg:leading-snug">
                             Frequently Asked<br>Questions
                         </div>
-                        <div class="mt-8 space-y-8" x-data="{ open: null }">
+                        <div class="mt-8 space-y-8">
                             <div class="border-b border-gray-200 py-4">
-                                <h3 class="text-lg font-bold text-white cursor-pointer" @click="open === 1 ? open = null : open = 1">
+                                <h3 class="text-lg font-bold text-white">
                                     What is Eco Peduli?
                                 </h3>
-                                <div x-show="open === 1" class="mt-3 text-white">
+                                <div class="mt-3 text-white">
                                     Eco Peduli is an initiative to promote environmental awareness and sustainability through various activities and programs.
                                 </div>
                             </div>
                             <div class="border-b border-gray-200 py-4">
-                                <h3 class="text-lg font-bold text-white cursor-pointer" @click="open === 2 ? open = null : open = 2">
+                                <h3 class="text-lg font-bold text-white">
                                     How can I participate?
                                 </h3>
-                                <div x-show="open === 2" class="mt-3 text-white">
+                                <div class="mt-3 text-white">
                                     You can participate by joining our events, volunteering, or donating to support our programs.
                                 </div>
                             </div>
                             <div class="border-b border-gray-200 py-4">
-                                <h3 class="text-lg font-bold text-white cursor-pointer" @click="open === 3 ? open = null : open = 3">
+                                <h3 class="text-lg font-bold text-white">
                                     What are the benefits of joining?
                                 </h3>
-                                <div x-show="open === 3" class="mt-3 text-white">
+                                <div class="mt-3 text-white">
                                     By joining Eco Peduli, you contribute to a healthier environment, gain knowledge on sustainability, and become part of a community dedicated to making a positive impact.
                                 </div>
                             </div>
