@@ -12,7 +12,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col justify-between items-center w-full min-h-screen left-0 mt-12 bg-primary px-8 py-20 space-y-20">
+                <div class="flex flex-col justify-between items-center w-full min-h-screen left-0 mt-12 bg-primary px-8 py-24 space-y-20">
                     <div class="flex flex-row justify-between items-center w-full px-64">
                         <div class="w-[284.58px] h-[434.48px] px-[40.99px] pd-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex">
                             <img src="{{asset('images/arya.png')}}" class="-mt-12">
