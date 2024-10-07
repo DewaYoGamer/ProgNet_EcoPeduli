@@ -25,7 +25,7 @@
     <div class="flex flex-col h-[2580px] lg:h-[1500px]">
         <div class="flex-grow lg:p-4 xl:p-12 2xl:p-20" id="custom-bg">
             <div class="relative px-20 xl:px-0 lg:pr-[560px] xl:pr-[725px] 2xl:pr-[850px] lg:mx-0 xl:mx-5 2xl:mx-0 flex">
-                <img src="{{ asset('images/images1.svg') }}" class="hidden lg:flex absolute right-0 rounded-[20px] lg:h-[280px] lg:mt-44 lg:mr-12 xl:mr-6 xl:h-[375px] xl:mt-20 2xl:h-auto 2xl:mt-0 2xl:mr-12">
+                <img src="{{ asset('images/images1.svg') }}" class="invisible lg:visible absolute right-0 rounded-[20px] lg:h-[280px] lg:mt-44 lg:mr-12 xl:mr-6 xl:h-[375px] xl:mt-20 2xl:h-auto 2xl:mt-0 2xl:mr-12">
                 <div class="lg:w-[400px] xl:w-[500px] 2xl:w-[648px] pt-12 2xl:pt-0 lg:ml-0 xl:ml-6 2xl:ml-12">
                     <div class="text-center lg:text-left self-stretch text-black text-3xl lg:text-5xl font-bold xl:leading-tight">
                         Selamatkan dan Hijaukan<br>Lingkungan Melalui<br>Bank Sampah
