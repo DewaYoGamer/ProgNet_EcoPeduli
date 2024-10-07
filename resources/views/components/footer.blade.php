@@ -1,4 +1,4 @@
-<footer class="w-full h-[180px] bg-[#fafafa] flex flex-col justify-center items-center">
+<footer class="w-full h-[180px] bg-[#fafafa] flex flex-col justify-center items-center -mt-20">
     <div class="flex space-x-3 select-none">
         <img src="{{asset('images/logo.png')}}" class="h-9">
         <span class="font-ComicLemon text-2xl self-center whitespace-nowrap text-primary">EcoPeduli</span>
