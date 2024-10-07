@@ -13,8 +13,8 @@
                     </div>
                 </div>
                 <div class="flex flex-col justify-between items-center w-full min-h-screen left-0 mt-12 bg-primary px-8 py-20 space-y-20">
-                    <div class="flex flex-row justify-between items-center w-full">
-                        <div class="w-[284.58px] h-[434.48px] px-[40.99px] pd-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex lg:mt-0 xl:ml-24 2xl:ml-48">
+                    <div class="flex flex-row justify-between items-center w-full px-64">
+                        <div class="w-[284.58px] h-[434.48px] px-[40.99px] pd-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex">
                             <img src="{{asset('images/arya.png')}}" class="-mt-12">
                             <div class="self-stretch text-primary text-2xl font-semibold">Arya</div>
                             <div class="self-stretch text-black text-base font-medium">Ini Arya</div>
@@ -24,14 +24,14 @@
                             <div class="self-stretch text-primary text-2xl font-semibold">Arya</div>
                             <div class="self-stretch text-black text-base font-medium">Ini juga Arya</div>
                         </div>
-                        <div class="w-[284.58px] h-[434.48px] px-[40.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex lg:mb-0 xl:mr-24 2xl:mr-48">
+                        <div class="w-[284.58px] h-[434.48px] px-[40.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex">
                             <img src="{{asset('images/arya.png')}}" class="-mt-12">
                             <div class="self-stretch text-primary text-2xl font-semibold">Arya</div>
                             <div class="self-stretch text-black text-base font-medium">Kalau ini Arya</div>
                         </div>
                     </div>
-                    <div class="flex flex-row justify-between items-center w-full">
-                        <div class="w-[284.58px] h-[434.48px] px-[40.99px] pd-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex lg:mt-0 xl:ml-24 2xl:ml-48">
+                    <div class="flex flex-row justify-between items-center w-full px-64">
+                        <div class="w-[284.58px] h-[434.48px] px-[40.99px] pd-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex">
                             <img src="{{asset('images/arya.png')}}" class="-mt-12">
                             <div class="self-stretch text-primary text-2xl font-semibold">Arya</div>
                             <div class="self-stretch text-black text-base font-medium">Ini Arya juga</div>
@@ -41,16 +41,16 @@
                             <div class="self-stretch text-primary text-2xl font-semibold">Arya</div>
                             <div class="self-stretch text-black text-base font-medium">Yang di bawah juga Arya</div>
                         </div>
-                        <div class="w-[284.58px] h-[434.48px] px-[40.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex lg:mb-0 xl:mr-24 2xl:mr-48">
+                        <div class="w-[284.58px] h-[434.48px] px-[40.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex">
                             <img src="{{asset('images/arya.png')}}" class="-mt-12">
                             <div class="self-stretch text-primary text-2xl font-semibold">Arya</div>
                             <div class="self-stretch text-black text-base font-medium">Ini Arya yang lainnya</div>
                         </div>
                     </div>
                 </div>
-                <div class="relative flex flex-col justify-center items-center mt-20 space-y-12">
-                    <img src="{{ asset('images/nature.jpg') }}" class="rounded-[25px] h-[700px]">
-                    <div class="w-[1050px]">
+                <div class="relative flex flex-col justify-center items-center mt-20 space-y-12 px-8">
+                    <img src="{{ asset('images/nature.jpg') }}" class="rounded-[15px] w-[1250px] h-[400px] object-cover">
+                    <div class="w-[1000px]">
                         <div class="self-stretch text-black text-3xl lg:text-5xl font-bold xl:leading-tight">
                             Misi Kami
                         </div>
@@ -59,8 +59,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-row justify-between w-full min-h-screen mt-12 bg-primary px-8 py-20">
-                    <div class="w-[1000px] px-32 flex flex-col">
+                <div class="flex flex-row justify-center w-full min-h-screen mt-12 bg-primary py-20">
+                    <div class="w-[1000px] px-40 flex flex-col">
                         <div class="self-stretch text-white text-3xl lg:text-5xl font-bold lg:leading-snug">
                             Frequently Asked<br>Questions
                         </div>
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                     </div>
-                    <img src="{{ asset('images/question.svg') }}" class="h-[500px] mt-20 mr-28 rotate-12">
+                    <img src="{{ asset('images/question.svg') }}" class="h-[500px] mt-20 mr-12 rotate-12">
                 </div>
             </div>
             <x-footer></x-footer>
