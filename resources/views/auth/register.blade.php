@@ -17,12 +17,14 @@
                     <label for="telepon" class="ml-2 text-sm font-medium text-gray-900">Gunakan Nomor Telepon</label>
                 </div>
                 <div class="mb-[12px]">
-                    <input type="password" placeholder="Kata Sandi" class="w-full px-5 py-3 text-base border focus:border-primary" require oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong!')>
+                    <input type="password" placeholder="Kata Sandi" class="w-full px-5 py-3 text-base border focus:border-primary" require oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong!')">
                 </div>
                 <div class="mb-[20px]">
-                    <input type="password" placeholder="Masukkan Ulang Kata Sandi" class="w-full px-5 py-3 text-base border focus:border-primary" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong!')>
+                    <input type="password" placeholder="Masukkan Ulang Kata Sandi" class="w-full px-5 py-3 text-base border focus:border-primary" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong!')">
                 </div>
-                <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">DAFTAR</button>
+                <div class="mb-4 font-bold">
+                    <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">DAFTAR</Button>
+                </div>
             </form>
             <p class="mt-4 text-center text-sm text-gray-600">
                 Sudah memiliki akun?
