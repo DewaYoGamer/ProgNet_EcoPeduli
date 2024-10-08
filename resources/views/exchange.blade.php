@@ -9,5 +9,18 @@
                 Tukarkan <span class="text-primary font-bold">poin</span> yang anda miliki menjadi berbagai <span class="text-primary font-bold">sembako</span> yang bermanfaat
             </div>
         </div>
+        <div class="flex flex-col mb-20 py-18 space-y-24 mt-20">
+            <div class="flex flex-row justify-evenly items-center">
+                <div class="bg-white h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
+                    
+                </div>
+                <div class="bg-white h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
+
+                </div>
+                <div class="bg-white h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
+
+                </div>
+            </div>
+        </div>
     </div>
 </x-layout>
