@@ -1,64 +1,55 @@
 <x-layout>
     <x-slot name="title">Jadwal | Eco Peduli</x-slot>
-    <div class="justify-between">
-        <div class="flex flex-col bg-fourth min-h-screen w-[57rem] p-16 items-center justify-center pl-32">
-            <h1 class="w-full text-center text-3xl lg:text-5xl font-bold">
-                Jadwal Pengambilan
-            </h1>
-            <div class="w-full mt-16 space-y-8">
-                <div class="bg-white w-full h-[10rem] rounded-[14px]">
-
+    <div class="flex flex-col">
+        <div class="flex flex-col justify-center items-center my-12 pt-6">
+                <div class="text-center self-stretch text-black text-3xl lg:text-5xl font-bold xl:leading-tight">
+                    Jadwal Pengumpulan
                 </div>
-                <div class="bg-white w-full h-[10rem] rounded-[14px]">
-
+                <div class="w-[30rem] mt-12 text-center -mb-12">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum et perspiciatis nemo mollitia maxime? Nesciunt quae at modi, eaque vitae assumenda atque doloremque molestiae tenetur.
                 </div>
-                <div class="bg-white w-full h-[10rem] rounded-[14px]">
-
+        </div>
+        <div class="flex flex-col mb-20 py-28 space-y-24 bg-primary mt-20">
+            <div class="flex flex-row justify-evenly items-center">
+                <div class="bg-white h-[20rem] w-[20rem] rounded-xl flex flex-col py-10">
+                    <div class="self-stretch text-5xl font-semibold text-center">
+                        Senin
+                    </div>
                 </div>
-                <div class="bg-white w-full h-[10rem] rounded-[14px]">
-
+                <div class="bg-white h-[20rem] w-[20rem] rounded-xl flex flex-col py-10">
+                    <div class="self-stretch text-5xl font-semibold text-center">
+                        Selasa
+                    </div>
                 </div>
-                <div class="bg-white w-full h-[10rem] rounded-[14px]">
-
+                <div class="bg-white h-[20rem] w-[20rem] rounded-xl flex flex-col py-10">
+                    <div class="self-stretch text-5xl font-semibold text-center">
+                        Rabu
+                    </div>
+                </div>
+                <div class="bg-white h-[20rem] w-[20rem] rounded-xl flex flex-col py-10">
+                    <div class="self-stretch text-5xl font-semibold text-center">
+                        Kamis
+                    </div>
                 </div>
             </div>
-            <div class="flex flex-row justify-around w-1/4 h-[3rem] rounded-[6px] mt-12">
-                <button class="bg-white w-12 h-12 rounded-lg"><</button>
-                <button class="bg-white w-12 h-12 rounded-lg">1</button>
-                <button class="bg-white w-12 h-12 rounded-lg">></button>
+            <div class="flex flex-row justify-evenly items-center">
+                <div class="bg-white h-[20rem] w-[20rem] rounded-xl flex flex-col py-10">
+                    <div class="self-stretch text-5xl font-semibold text-center">
+                        Jumat
+                    </div>
+                </div>
+                <div class="bg-white h-[20rem] w-[20rem] rounded-xl flex flex-col py-10">
+                    <div class="self-stretch text-5xl font-semibold text-center">
+                        Sabtu
+                    </div>
+                </div>
+                <div class="bg-white h-[20rem] w-[20rem] rounded-xl flex flex-col py-10">
+                    <div class="self-stretch text-5xl font-semibold text-center">
+                        Minggu
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="">
-
-        </div>
+        <x-footer></x-footer>
     </div>
-
-
-    {{-- <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold mb-6">Jadwal Kegiatan</h1>
-        <table class="min-w-full bg-white">
-            <thead>
-                <tr>
-                    <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-tight">Tanggal</th>
-                    <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-tight">Waktu</th>
-                    <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-tight">Kegiatan</th>
-                    <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-tight">Lokasi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="py-2 px-4 border-b border-gray-300">01/01/2023</td>
-                    <td class="py-2 px-4 border-b border-gray-300">09:00 - 12:00</td>
-                    <td class="py-2 px-4 border-b border-gray-300">Penanaman Pohon</td>
-                    <td class="py-2 px-4 border-b border-gray-300">Taman Kota</td>
-                </tr>
-                <tr>
-                    <td class="py-2 px-4 border-b border-gray-300">05/01/2023</td>
-                    <td class="py-2 px-4 border-b border-gray-300">14:00 - 17:00</td>
-                    <td class="py-2 px-4 border-b border-gray-300">Pembersihan Pantai</td>
-                    <td class="py-2 px-4 border-b border-gray-300">Pantai Indah</td>
-                </tr>
-            </tbody>
-        </table>
-    </div> --}}
 </x-layout>

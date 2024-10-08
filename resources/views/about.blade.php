@@ -7,7 +7,7 @@
                         <div class="text-center self-stretch text-black text-3xl lg:text-5xl font-bold xl:leading-tight">
                             Temui dengan tim Lorem ipsum dolor sit amet consectetur adipisicing.
                         </div>
-                        <div class="self-stretch h-[130px] mt-6 text-justify">
+                        <div class="self-stretch h-[130px] mt-6 text-center">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum et perspiciatis nemo mollitia maxime? Nesciunt quae at modi, eaque vitae assumenda atque doloremque molestiae tenetur.
                         </div>
                     </div>
