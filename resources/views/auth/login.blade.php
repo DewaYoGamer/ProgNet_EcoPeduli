@@ -7,6 +7,13 @@
                     <p>{{ session('success') }}</p>
                 </div>
             @endif
+
+            @if(session()->has('error'))
+                <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">
+                    <p>{{ session('error') }}</p>
+                </div>
+            @endif
+            
             <div class="flex justify-center mb-4">
                 <img src="{{ asset('images/logo.png') }}" class="h-24">
             </div>
@@ -14,10 +21,16 @@
             <form action="/login" method="POST">
                 @csrf
                 <div class="mb-[12px]">
-                    <input type="text" name="username" id="username" placeholder="Nama Pengguna" class="w-full px-5 py-3 text-base border focus:border-primary" autofocus required>
+                    <input type="text" name="username" id="username" placeholder="Nama Pengguna" class="w-full px-5 py-3 text-base border focus:border-primary" autofocus required value="{{ old('username') }}">
+                    @error('username')
+                        <div class="text-red-500">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-[20px]">
                     <input type="password" name="password" id="password" placeholder="Kata Sandi" class="w-full px-5 py-3 text-base border focus:border-primary" required>
+                    @error('password')
+                        <div class="text-red-500">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="flex justify-between items-center mb-4">
                     <div class="flex items-center">
