@@ -11,7 +11,7 @@
         </div>
         <div class="flex flex-col mb-20 py-32 space-y-24 mt-20 bg-primary">
             <div class="flex flex-row justify-evenly items-center">
-                <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 px-5 items-center justify-between border-slate-200 border-2">
+                <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 px-9 items-center justify-between border-slate-200 border-2">
                     <div class="flex flex-col -mt-4">
                         <div class="self-stretch text-3xl font-semibold text-center">
                             Pemilahan Sampah
@@ -20,35 +20,35 @@
                     <div class="flex flex-row space-x-3">
                         <img src="{{ asset('images/pemilahan.jpg') }}" class="w-[15rem] h-[15rem] rounded object-cover">
                     </div>
-                    <button class="bg-lime-500 w-full text-center p-3 rounded-[8px] text-white font-bold text-xl">
+                    <a href="/pemilahan" class="bg-lime-500 w-full text-center p-3 rounded-[8px] text-white font-bold text-xl">
                         Pelajari Sekarang
-                    </button>
+                    </a>
                 </div>
-                <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 px-5 items-center justify-between border-slate-200 border-2">
+                <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 px-9 items-center justify-between border-slate-200 border-2">
                     <div class="flex flex-col -mt-4">
                         <div class="self-stretch text-3xl font-semibold text-center">
                             Pengelolaan Sampah
                         </div>
                     </div>
                     <div class="flex flex-row space-x-3">
-                        <img src="{{ asset('images/gambar_gula.png') }}" class="w-[15rem] h-[15rem] rounded object-cover">
+                        <img src="{{ asset('images/pengelolaan.jpg') }}" class="w-[15rem] h-[15rem] rounded object-cover">
                     </div>
-                    <button class="bg-lime-500 w-full text-center p-3 rounded-[8px] text-white font-bold text-xl">
+                    <a href="/pengelolaan" class="bg-lime-500 w-full text-center p-3 rounded-[8px] text-white font-bold text-xl">
                         Pelajari Sekarang
-                    </button>
+                    </a>
                 </div>
-                <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 px-5 items-center justify-between border-slate-200 border-2">
+                <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 px-9 items-center justify-between border-slate-200 border-2">
                     <div class="flex flex-col -mt-4">
                         <div class="self-stretch text-3xl font-semibold text-center">
                             Dampak Buruk Sampah
                         </div>
                     </div>
-                    <div class="flex flex-row space-x-3">
-                        <img src="{{ asset('images/gambar_sembako.png') }}" class="w-[15rem] h-[15rem] rounded object-cover">
+                    <div class="flex flex-row space-x-3 ">
+                        <img src="{{ asset('images/dampak.jpg') }}" class="w-[15rem] h-[15rem] rounded object-cover">
                     </div>
-                    <button class="bg-lime-500 w-full text-center p-3 rounded-[8px] text-white font-bold text-xl">
+                    <a href="/dampak" class="bg-lime-500 w-full text-center p-3 rounded-[8px] text-white font-bold text-xl">
                         Pelajari Sekarang
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

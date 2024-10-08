@@ -37,3 +37,15 @@ Route::get('/register', function () {
 Route::get('/pengguna', function () {
     return view('dashboard.dashboard_pengguna');
 });
+
+Route::get('/pemilahan', function () {
+    return view('educate_pemilahan');
+});
+
+Route::get('/pengelolaan', function () {
+    return view('educate_pengelolaan');
+});
+
+Route::get('/dampak', function () {
+    return view('educate_dampak');
+});
