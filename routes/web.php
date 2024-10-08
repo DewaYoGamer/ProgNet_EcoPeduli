@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('index');
@@ -53,3 +55,7 @@ Route::get('/new_password', function () {
 Route::get('/succes_change', function () {
     return view('auth.succes_change');
 });
+
+// Mencoba Database
+Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/login', [LoginController::class, 'authenticate']);
