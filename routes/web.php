@@ -30,15 +30,15 @@ Route::get('/test', function () {
 
 Route::get('/login', function () {
     return view('auth.login');
-});
+}) -> name('login') -> middleware('guest');
 
 Route::get('/register', function () {
     return view('auth.register');
-});
+}) -> middleware('guest');
 
 Route::get('/pengguna', function () {
     return view('dashboard.dashboard_pengguna');
-});
+}) -> middleware('auth');
 
 Route::get('/forgot', function () {
     return view('auth.forgot');
@@ -59,3 +59,4 @@ Route::get('/succes_change', function () {
 // Mencoba Database
 Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);

@@ -2,12 +2,25 @@
     <x-slot name="title">Tukar | Eco Peduli</x-slot>
     <div class="flex flex-col">
         <div class="flex flex-col justify-center items-center pt-6">
+            @auth
+                <div class="text-center self-stretch text-black text-3xl lg:text-5xl font-bold xl:leading-tight mt-6 -mb-12">
+                    Halo, {{ auth()->user()->username }}
+                </div>
+            @endauth
             <div class="text-center self-stretch text-black text-3xl lg:text-5xl font-bold xl:leading-tight mt-12">
                 Ayo Tukarkan <span class="text-primary">Poinmu!</span>
             </div>
             <div class="font mt-12 text-center">
                 Tukarkan <span class="text-primary font-bold">poin</span> yang anda miliki menjadi berbagai <span class="text-primary font-bold">sembako</span> yang bermanfaat
             </div>
+            @auth
+                <form action="/logout" method="POST">
+                    @csrf
+                    <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl mt-6 -mb-6">
+                        Logout
+                    </button>
+                </form>
+            @endauth
         </div>
         <div class="flex flex-col mb-48 py-18 space-y-24 mt-20">
             <div class="flex flex-row justify-evenly items-center">
