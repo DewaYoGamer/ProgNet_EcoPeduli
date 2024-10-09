@@ -43,7 +43,15 @@
                         <a href="#" class="{{ request()->is('') ? 'text-secondary bg-lime-600 ': 'text-white hover:bg-transparent lg:hover:text-lime-300 hover:bg-gray-200' }} block py-2 px-3 rounded bg-transparent p-0 font-bold text-xl ">Profil Pengguna</a>
                     </li>
                     <li>
-                        <a href="#" class="{{ request()->is('') ? 'text-secondary bg-lime-600 ': 'text-white lg:hover:bg-transparent lg:hover:text-lime-300 hover:bg-gray-200' }} block py-2 px-3 rounded bg-transparent p-0 font-bold text-xl -mt-3">Logout</a>
+                        <a href="#" class="{{ request()->is('') ? 'text-secondary bg-lime-600 ': 'text-white lg:hover:bg-transparent lg:hover:text-lime-300 hover:bg-gray-200' }} block py-2 px-3 rounded bg-transparent p-0 font-bold text-xl -mt-3">Bantuan</a>
+                        @auth
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-2xl mt-6 -mb-6">
+                                Logout
+                            </button>
+                        </form>
+                        @endauth
                     </li>
                 </ul>
             </div>
