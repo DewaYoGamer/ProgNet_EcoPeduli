@@ -60,3 +60,15 @@ Route::get('/succes_change', function () {
 Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/pemilahan', function () {
+    return view('educate_pemilahan');
+});
+
+Route::get('/dampak', function () {
+    return view('educate_dampak');
+});
+
+Route::get('/pengelolaan', function () {
+    return view('educate_pengelolaan');
+});
