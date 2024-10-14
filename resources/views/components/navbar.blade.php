@@ -5,7 +5,12 @@
             <span class="font-ComicLemon text-2xl self-center whitespace-nowrap text-white">EcoPeduli</span>
         </a>
         <div class="flex items-center space-x-3 lg:order-2">
-            <a href="/login" type="button" class="hidden sm:flex text-primary bg-white hover:bg-gray-200 font-bold rounded-lg text-sm px-4 py-2 text-center">Masuk</a>
+            @auth
+                <a href="/pengguna" type="button" class="hidden sm:flex text-primary bg-white hover:bg-gray-200 font-bold rounded-lg text-sm px-4 py-2 text-center">Dashboard</a>
+            @else
+                <a href="/login" type="button" class="hidden sm:flex text-primary bg-white hover:bg-gray-200 font-bold rounded-lg text-sm px-4 py-2 text-center">Masuk</a>
+            @endauth
+            
             <button id="menu-toggle" data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg lg:hidden" aria-controls="navbar-sticky" aria-expanded="false">
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>

@@ -14,10 +14,9 @@
                 Tukarkan <span class="text-primary font-bold">poin</span> yang anda miliki menjadi berbagai <span class="text-primary font-bold">sembako</span> yang bermanfaat
             </div>
             @auth
-                <form action="/logout" method="POST">
-                    @csrf
+                <form action="/pengguna">
                     <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl mt-6 -mb-6">
-                        Logout
+                        Pergi ke Dashboard
                     </button>
                 </form>
             @endauth
