@@ -9,25 +9,20 @@
         </div>
         <div class="flex flex-col mb-20 p-20 space-y-24 mt-36 bg-primary">
             <div class="flex flex-row justify-evenly items-center">
-                <div class="bg-[#FAFAFA] h-[49rem] w-full rounded-xl flex flex-col p-10 items-left justify-between border-slate-200 border-2">
+                <div class="bg-[#FAFAFA] h-[30rem] w-full rounded-xl flex flex-col p-10 items-left justify-between border-slate-200 border-2">
                     <div class="flex flex-row">
-                        <img src="{{ asset('images/pemilahan.jpg') }}" class="w-[30rem] h-[38rem] rounded object-cover">
+                        <img src="{{ asset('images/pemilahan.jpg') }}" class="w-[38rem] h-[20rem] rounded object-cover">
                         <div class="px-10 self-stretch text-2xl flex">
                             <p class="font-normal text-justify">
-                                <span class="font-semibold">Pemilahan Sampah</span>
-                                <br>Pemilahan sampah yang baik dan benar sangat penting untuk mendukung pengelolaan sampah yang efektif dan mengurangi dampak negatif terhadap lingkungan. Berikut adalah langkah-langkah pemilahan sampah yang dapat diterapkan:
-                                <br>1. Menyiapkan Tempat Sampah Terpisah:
-                                Pastikan ada beberapa tempat sampah dengan kategori yang jelas. Biasanya pemisahan dilakukan berdasarkan jenis sampah, antara lain:
-                                Sampah Organik: Sampah yang mudah terurai, seperti sisa makanan, daun, dan kulit buah.
-                                Sampah Anorganik: Sampah yang tidak mudah terurai, seperti plastik, kertas, kaleng, dan kaca.
-                                Sampah Berbahaya (B3): Bahan berbahaya dan beracun seperti baterai, lampu neon, atau obat-obatan.
-                                <br>2. Memahami Jenis-Jenis Sampah:
-                                Penting untuk memahami jenis sampah agar pemisahan berjalan efektif:
-                                Sampah Organik: Sampah basah yang dapat diolah menjadi kompos.
-                                Sampah Anorganik Daur Ulang: Seperti botol plastik, kertas, dan logam yang dapat diolah kembali.
-                                Sampah Anorganik Tidak Daur Ulang: Seperti styrofoam atau bahan campuran plastik dan logam yang sulit didaur ulang. Sampah B3: Sampah yang membutuhkan penanganan khusus.
-                                <br>3. Melakukan Pemilahan di Rumah atau Tempat Usaha:
-                                Lakukan pemilahan dari sumbernya, yaitu rumah atau tempat usaha. Pisahkan sampah sesuai kategori yang sudah disiapkan di tempat sampah yang berbeda.
+                                <span class="font-bold text-5xl">Pemilahan Sampah</span>
+                                <br>
+                                <span class="mt-10 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik1-btn">1. Apa Pentingnya Pemilahan Sampah dalam Kehidupan Sehari-hari?</span>
+                                <br>
+                                <span class="mt-4 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik2-btn">2. Bagaimana Cara Melakukan Pemilahan Sampah yang Efektif?</span>
+                                <br>
+                                <span class="mt-4 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik3-btn">3. Apa Tantangan yang Dihadapi dalam Pemilahan Sampah di Masyarakat?</span>
+                                <br>
+                                <span class="mt-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik4-btn">4. Apa Manfaat Daur Ulang dalam Konteks Pemilahan Sampah?</span>
                             </p>
                         </div>
                     </div>
@@ -37,6 +32,95 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal overlay for Topik 1 -->
+        <div id="topik1-modal" class="fixed inset-0 hidden z-50 items-center justify-center bg-black bg-opacity-50">
+            <div class="bg-white rounded-lg w-[90rem] p-8">
+                <h2 class="text-4xl font-bold mb-4">1. Apa Pentingnya Pemilahan Sampah dalam Kehidupan Sehari-hari?</h2>
+                <p class="text-2xl">
+                    Pemilahan sampah penting untuk mengurangi jumlah limbah yang masuk ke tempat pembuangan akhir (TPA), sehingga dapat memperpanjang umur TPA dan mengurangi dampak negatif terhadap lingkungan. Dengan memisahkan sampah organik dan anorganik, kita dapat mengoptimalkan proses daur ulang dan pengelolaan limbah, serta mengurangi polusi dan emisi gas rumah kaca.
+                </p>
+                <button id="close-modal1" class="bg-lime-500 font-bold text-white px-4 py-2 rounded-lg mt-6">Tutup</button>
+            </div>
+        </div>
+
+        <!-- Modal overlay for Topik 2 -->
+        <div id="topik2-modal" class="fixed inset-0 hidden z-50 items-center justify-center bg-black bg-opacity-50">
+            <div class="bg-white rounded-lg w-[90rem] p-8">
+                <h2 class="text-4xl font-bold mb-4">2. Bagaimana Cara Melakukan Pemilahan Sampah yang Efektif?</h2>
+                <p class="text-2xl">
+                    Melakukan pemilahan sampah yang efektif di rumah dapat dimulai dengan menyediakan beberapa wadah terpisah untuk sampah organik, anorganik, dan daur ulang. Pastikan untuk memberikan informasi yang jelas kepada anggota keluarga mengenai jenis sampah yang harus dibuang ke masing-masing wadah.
+                </p>
+                <button id="close-modal2" class="bg-lime-500 font-bold text-white px-4 py-2 rounded-lg mt-6">Tutup</button>
+            </div>
+        </div>
+
+        <!-- Modal overlay for Topik 3 -->
+        <div id="topik3-modal" class="fixed inset-0 hidden z-50 items-center justify-center bg-black bg-opacity-50">
+            <div class="bg-white rounded-lg w-[95rem] p-8">
+                <h2 class="text-4xl font-bold mb-4">3. Apa Tantangan yang Dihadapi dalam Pemilahan Sampah di Masyarakat?</h2>
+                <p class="text-2xl">
+                    Tantangan dalam pemilahan sampah di masyarakat meliputi kurangnya kesadaran dan edukasi mengenai pentingnya pemilahan, fasilitas pengelolaan sampah yang tidak memadai, dan kebiasaan masyarakat yang sulit diubah.
+                </p>
+                <button id="close-modal3" class="bg-lime-500 font-bold text-white px-4 py-2 rounded-lg mt-6">Tutup</button>
+            </div>
+        </div>
+
+        <!-- Modal overlay for Topik 4 -->
+        <div id="topik4-modal" class="fixed inset-0 hidden z-50 items-center justify-center bg-black bg-opacity-50">
+            <div class="bg-white rounded-lg w-[90rem] p-8">
+                <h2 class="text-4xl font-bold mb-4">4. Apa Manfaat Daur Ulang dalam Konteks Pemilahan Sampah?</h2>
+                <p class="text-2xl">
+                    Daur ulang memiliki banyak manfaat, seperti mengurangi jumlah sampah yang masuk ke TPA, menghemat sumber daya alam, dan mengurangi pencemaran lingkungan. Daur ulang juga dapat menciptakan lapangan kerja baru dalam industri pengelolaan limbah.
+                </p>
+                <button id="close-modal4" class="bg-lime-500 font-bold text-white px-4 py-2 rounded-lg mt-6">Tutup</button>
+            </div>
+        </div>
+
+
         <x-footer></x-footer>
     </div>
+
+    <script>
+        // JavaScript to handle modal open and close
+        const modals = {
+            topik1: { btn: document.getElementById('topik1-btn'), modal: document.getElementById('topik1-modal'), closeBtn: document.getElementById('close-modal1') },
+            topik2: { btn: document.getElementById('topik2-btn'), modal: document.getElementById('topik2-modal'), closeBtn: document.getElementById('close-modal2') },
+            topik3: { btn: document.getElementById('topik3-btn'), modal: document.getElementById('topik3-modal'), closeBtn: document.getElementById('close-modal3') },
+            topik4: { btn: document.getElementById('topik4-btn'), modal: document.getElementById('topik4-modal'), closeBtn: document.getElementById('close-modal4') }
+        };
+
+        // Function to open modal
+        function openModal(modal) {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');  // Make sure it displays as flex when opened
+        }
+
+        // Function to close modal
+        function closeModal(modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');  // Remove flex when closing
+        }
+
+        for (const key in modals) {
+            const { btn, modal, closeBtn } = modals[key];
+
+            // Open modal on button click
+            btn.addEventListener('click', () => {
+                openModal(modal);
+            });
+
+            // Close modal on close button click
+            closeBtn.addEventListener('click', () => {
+                closeModal(modal);
+            });
+
+            // Close modal if clicked outside of the modal content
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal);
+                }
+            });
+        }
+    </script>
 </x-layout>
