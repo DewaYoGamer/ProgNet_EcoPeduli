@@ -35,9 +35,19 @@
                     <div class="flex flex-row space-x-3">
                         <img src="{{ asset('images/gambar_beras.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
                     </div>
-                    <button class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
-                        Tukarkan Sekarang!
-                    </button>
+                    @auth
+                        <form action="/pengguna">
+                            <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
+                                Tukarkan Sekarang!
+                            </button>
+                        </form>
+                    @else
+                        <form action="/login">
+                            <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
+                                Tukarkan Sekarang!
+                            </button>
+                        </form>
+                    @endauth
                 </div>
                 <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
                     <div class="flex flex-col -mt-4">
@@ -51,9 +61,19 @@
                     <div class="flex flex-row space-x-3">
                         <img src="{{ asset('images/gambar_gula.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
                     </div>
-                    <button class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
-                        Tukarkan Sekarang!
-                    </button>
+                    @auth
+                        <form action="/pengguna">
+                            <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
+                                Tukarkan Sekarang!
+                            </button>
+                        </form>
+                    @else
+                        <form action="/login">
+                            <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
+                                Tukarkan Sekarang!
+                            </button>
+                        </form>
+                    @endauth
                 </div>
                 <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
                     <div class="flex flex-col -mt-4">
@@ -67,9 +87,19 @@
                     <div class="flex flex-row space-x-3">
                         <img src="{{ asset('images/gambar_sembako.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
                     </div>
-                    <button class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
-                        Tukarkan Sekarang!
-                    </button>
+                    @auth
+                        <form action="/pengguna">
+                            <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
+                                Tukarkan Sekarang!
+                            </button>
+                        </form>
+                    @else
+                        <form action="/login">
+                            <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
+                                Tukarkan Sekarang!
+                            </button>
+                        </form>
+                    @endauth
                 </div>
             </div>
         </div>
