@@ -70,7 +70,7 @@
                                     <img src="{{ asset('images/pengelolaan.jpg') }}" class="w-[15rem] h-[15rem] rounded-full object-cover shadow-md">
                                 </div>
                                 <div class="mt-4">
-                                    <a href="/pengelolaan" class="bg-white w-full text-center p-3 rounded-[8px] text-lime-600 font-bold text-2xl shadow-mdhover:bg-lime-600 hover:text-white transition-colors">
+                                    <a href="/pengelolaan" class="bg-white w-full text-center p-3 rounded-[8px] text-lime-600 font-bold text-2xl shadow-md hover:bg-lime-600 hover:text-white transition-colors">
                                         Pelajari Sekarang
                                     </a>
                                 </div>
