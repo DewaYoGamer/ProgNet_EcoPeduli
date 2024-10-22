@@ -44,6 +44,7 @@
 
         .disappear {
             opacity: 0;
+            height: 0;
             visibility: hidden;
         }
 

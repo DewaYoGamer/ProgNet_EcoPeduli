@@ -37,7 +37,7 @@ Route::get('/register', function () {
 }) -> middleware('guest');
 
 Route::get('/pengguna', function () {
-    return view('dashboard.dashboard_pengguna');
+    return view('dashboard.dashboardPengguna_index');
 }) -> middleware('auth');
 
 Route::get('/forgot', function () {
