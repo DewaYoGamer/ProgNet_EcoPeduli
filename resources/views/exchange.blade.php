@@ -36,7 +36,7 @@
                         <img src="{{ asset('images/gambar_beras.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
                     </div>
                     @auth
-                        <form action="/pengguna">
+                        <form action="/pengguna/penukaran_poin">
                             <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
                                 Tukarkan Sekarang!
                             </button>
@@ -62,7 +62,7 @@
                         <img src="{{ asset('images/gambar_gula.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
                     </div>
                     @auth
-                        <form action="/pengguna">
+                        <form action="/pengguna/penukaran_poin">
                             <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
                                 Tukarkan Sekarang!
                             </button>
@@ -88,7 +88,7 @@
                         <img src="{{ asset('images/gambarMie.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
                     </div>
                     @auth
-                        <form action="/pengguna">
+                        <form action="/pengguna/penukaran_poin">
                             <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
                                 Tukarkan Sekarang!
                             </button>

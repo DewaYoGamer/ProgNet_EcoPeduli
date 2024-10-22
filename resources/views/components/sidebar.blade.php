@@ -19,19 +19,19 @@
             <div class="text-navigasi-1 text-samping pt-4 text-slate-300 text-opacity-35 text-xl font-bold -mb-2">
                 Navigasi Utama
             </div>
-            <li class="{{ request()->is('/pengguna') ? 'text-secondary' : 'text-white hover:text-lime-300 rounded-md mt-2' }} flex items-center gap-x-4 p-2 font-bold text-xl">
+            <li class="{{ request()->is('pengguna') ? 'text-secondary' : 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2">
                 <span class="material-symbols-outlined dashboard">
                     dashboard
                 </span>
                 <a href="/pengguna" class="text-dashboard">Dashboard</a>
             </li>
-            <li class="{{ request()->is('') ? 'text-secondary': 'text-white hover:text-lime-300 rounded-md mt-2' }} flex items-center gap-x-4 p-2 font-bold text-xl">
+            <li class="{{ request()->is('pengguna/penukaran_poin') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2">
                 <span class="material-symbols-outlined penukaran">
                     currency_exchange
                 </span>
                 <a href="/pengguna/penukaran_poin" class="text-penukaran">Penukaran</a>
             </li>
-            <li class="{{ request()->is('') ? 'text-secondary': 'text-white hover:text-lime-300 rounded-md mt-2' }} flex items-center gap-x-4 p-2 font-bold text-xl">
+            <li class="{{ request()->is('pengguna/jadwal') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2">
                 <span class="material-symbols-outlined jadwal">
                     today
                 </span>
@@ -45,30 +45,29 @@
             <div class="text-navigasi-2 pt-4 text-slate-300 text-opacity-35 text-xl font-bold -mb-2 text-samping">
                 Pengaturan Akun
             </div>
-            <li class="{{ request()->is('') ? 'text-secondary': 'text-white hover:text-lime-300 rounded-md mt-2' }} flex items-center gap-x-4 p-2 font-bold text-xl">
+            <li class="{{ request()->is('pengguna/profil') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2">
                 <span class="material-symbols-outlined profil">
                     person
                 </span>
                 <a href="/pengguna/profil" class="text-profil">Profil Pengguna</a>
             </li>
-            <li class="{{ request()->is('') ? 'text-secondary': 'text-white hover:text-lime-300 rounded-md mt-2' }} flex items-center gap-x-4 p-2 font-bold text-xl">
+            <li class="{{ request()->is('/') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2">
                 <span class="material-symbols-outlined beranda">
                     home
                 </span>
                 <a href="/" class="text-beranda">Beranda</a>
             </li>
-            <li class="{{ request()->is('') ? 'text-secondary': 'text-white hover:text-lime-300 rounded-md mt-2' }} flex items-center gap-x-4 p-2 font-bold text-xl">
+            <li class="{{ request()->is('login') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2" id="logoutButton">
                 <span class="material-symbols-outlined logout">
                     logout
                 </span>
                 <form action="/logout" method="POST">
                     @csrf
-                    <button type="submit" class="text-logout">
+                    <button type="submit" class="text-logout" id="logoutButton">
                         Logout
                     </button>
                 </form>
             </li>
-
         </ul>
         {{-- End Opsi Bawah --}}
     </div>

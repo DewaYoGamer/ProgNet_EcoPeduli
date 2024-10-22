@@ -101,6 +101,13 @@
                 icon.classList.toggle('adjusting');
             });
         });
+
+        document.getElementById('logoutButton').addEventListener('click', function(event) {
+            var confirmLogout = confirm('Apakah Anda yakin ingin logout?');
+            if (!confirmLogout) {
+                event.preventDefault();
+            }
+        });
     </script>
 </body>
 </html>
