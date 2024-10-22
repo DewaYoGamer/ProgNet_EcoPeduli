@@ -17,7 +17,7 @@
             width: 288px; /* Default size */
             transition: width 0.5s;
         }
-    
+
         .sidebar.collapsed {
             width: 132px; /* Reduced size */
         }
@@ -32,14 +32,14 @@
         }
 
         /* Transisi untuk teks dan elemen yang menghilang */
-        .logo-text, 
-        .text-navigasi-1, 
-        .text-navigasi-2, 
-        .text-dashboard, 
-        .text-penukaran, 
-        .text-jadwal, 
-        .text-profil, 
-        .text-beranda, 
+        .logo-text,
+        .text-navigasi-1,
+        .text-navigasi-2,
+        .text-dashboard,
+        .text-penukaran,
+        .text-jadwal,
+        .text-profil,
+        .text-beranda,
         .text-logout {
             transition: opacity 0.4s ease, visibility 0.4s ease;
         }
@@ -61,8 +61,8 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 </head>
 <body>
-    <x-sidebar></x-sidebar>
-    <div>
+    <div class="flex flex-row">
+        <x-sidebar></x-sidebar>
         {{ $slot }}
     </div>
     {{-- KODE JS --}}
