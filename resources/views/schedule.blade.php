@@ -2,10 +2,10 @@
     <x-slot name="title">Jadwal | Eco Peduli</x-slot>
     <div class="flex flex-col">
         <div class="flex flex-col justify-center items-center my-12 pt-6">
-                <div class="text-center self-stretch text-black text-4xl md:text-5xl font-bold xl:leading-tight">
+                <div class="text-center self-stretch text-black text-4xl md:text-5xl font-bold">
                     Jadwal Pengumpulan
                 </div>
-                <div class="w-[30rem] md:w-[45rem] mt-12 text-center -mb-12">
+                <div class="px-12 md:px-36 2xl:px-96 mt-12 text-center -mb-12 lg:text-2xl">
                     Pengumpulan sampah dilakukan setiap hari sesuai dengan jadwal yang tertera. Pengumpulan sampah dilakukan oleh petugas kami yang akan <span class="text-primary font-bold">datang ke rumah anda</span>. Sampah <span class="text-primary font-bold">daur ulang</span> dapat ditukarkan menjadi <span class="text-primary font-bold">poin</span> sesuai dengan berat dari sampah yang anda kumpulkan.
                 </div>
         </div>

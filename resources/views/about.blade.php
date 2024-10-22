@@ -7,7 +7,7 @@
                         <div class="text-center self-stretch text-black text-5xl font-bold ">
                             Temui Tim <span class="text-primary font-bold">Eco-Peduli</span>
                         </div>
-                        <div class="self-stretch text-xl h-[130px] mt-12 -mb-6 xl:mt-12 xl:-mb-0 text-center">
+                        <div class="self-stretch text-2xl h-[130px] mt-12 -mb-6 xl:mt-12 xl:-mb-0 text-center">
                             Tim yang senantiasa berkomitmen untuk memberikan yang terbaik bagi lingkungan dan masyarakat.
                         </div>
                     </div>
@@ -56,12 +56,12 @@
                         <div class="self-stretch text-black text-3xl lg:text-5xl font-bold xl:leading-tight">
                             Misi Kami
                         </div>
-                        <div class="self-stretch h-[130px] mt-6 text-justify">
+                        <div class="self-stretch h-[130px] mt-6 text-justify text-xl">
                             Misi utama dari <span class="text-primary font-bold">Eco-Peduli</span> adalah untuk mengajak masyarakat agar peduli terhadap lingkungan melalui hal-hal yang positif dan tentunya memberikan banyak keuntungan. Kami berkomitmen untuk memberikan yang terbaik bagi lingkungan dan masyarakat. Dengan adanya <span class="text-primary font-bold">Eco-Peduli</span>, maka masalah sampah yang selama ini menjadi momok bagi lingkungan dapat diatasi dengan baik.
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-row justify-center w-full min-h-screen mt-12 bg-primary py-20">
+                <div class="flex flex-row justify-center w-full min-h-screen mt-24 bg-primary py-20">
                     <div class="w-[1000px] pl-28 pr-12 flex flex-col">
                         <div class="self-stretch text-white text-3xl lg:text-5xl font-bold lg:leading-snug">
                             Pertanyaan yang<br>sering ditanyakan
