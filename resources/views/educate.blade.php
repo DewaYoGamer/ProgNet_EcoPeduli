@@ -15,16 +15,16 @@
         </div>
 
         <!-- Carousel Section -->
-        <div class="flex flex-col mb-20 py-32 space-y-24 mt-20 bg-primary">
-            <div class="relative w-full h-[20rem]overflow-hidden">
-                <div class="flex transition-transform duration-500 ease-in-out transform" id="carousel" style="transform: translateX(-100%);">
+        <div class="flex flex-col mb-20 py-24 space-y-24 mt-20 bg-primary">
+            <div class="flex flex-col justify-center items-center relative w-full h-[35rem] overflow-hidden">
+                <div class="flex items-center transition-transform duration-500 ease-in-out transform" id="carousel" style="transform: translateX(-100%);">
                     <!-- Clone Last Item (for infinite loop) -->
                     <div class="w-full flex-shrink-0 flex justify-center">
-                        <div class="bg-gradient-to-r from-third to-fourth h-[30rem] w-[100rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <div class="bg-gradient-to-r from-third to-fourth h-[30rem] w-[80rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
                             <div class="flex flex-col justify-between h-full">
                                 <div class="flex flex-col">
                                     <div class="self-stretch text-5xl font-semibold text-left text-white">Dampak Buruk Sampah</div>
-                                    <p class="text-white text-left text-xl mt-2">Kenali bahaya dari sampah yang dibuang sembarangan dan dampaknya terhadap lingkungan!</p>
+                                    <p class="text-white text-left text-2xl mt-2">Kenali bahaya dari sampah yang dibuang sembarangan dan dampaknya terhadap lingkungan!</p>
                                 </div>
                                 <div class="flex flex-row justify-end">
                                     <img src="{{ asset('images/dampak.jpg') }}" class="w-[15rem] h-[15rem] rounded-full object-cover shadow-md">
@@ -40,11 +40,11 @@
 
                     <!-- Item 1 (Pemilahan Sampah) -->
                     <div class="w-full flex-shrink-0 flex justify-center">
-                        <div class="bg-gradient-to-r from-third to-fourth h-[30rem] w-[100rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <div class="bg-gradient-to-r from-third to-fourth h-[30rem] w-[80rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
                             <div class="flex flex-col justify-between h-full">
                                 <div class="flex flex-col">
                                     <div class="self-stretch text-5xl font-semibold text-left text-white">Pemilahan Sampah</div>
-                                    <p class="text-white text-left text-xl mt-2">Pelajari cara memilah sampah yang benar untuk menjaga lingkungan kita!</p>
+                                    <p class="text-white text-left text-2xl mt-2">Pelajari cara memilah sampah yang benar untuk menjaga lingkungan kita!</p>
                                 </div>
                                 <div class="flex flex-row justify-end">
                                     <img src="{{ asset('images/pemilahan.jpg') }}" class="w-[15rem] h-[15rem] rounded-full object-cover shadow-md">
@@ -60,11 +60,11 @@
 
                     <!-- Item 2 (Pengelolaan Sampah) -->
                     <div class="w-full flex-shrink-0 flex justify-center">
-                        <div class="bg-gradient-to-r from-third to-fourth h-[30rem] w-[100rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <div class="bg-gradient-to-r from-third to-fourth h-[30rem] w-[80rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
                             <div class="flex flex-col justify-between h-full">
                                 <div class="flex flex-col">
                                     <div class="self-stretch text-5xl font-semibold text-left text-white">Pengelolaan Sampah</div>
-                                    <p class="text-white text-left text-xl mt-2">Ketahui langkah-langkah pengelolaan sampah di rumah untuk mengurangi limbah!</p>
+                                    <p class="text-white text-left text-2xl mt-2">Ketahui langkah-langkah pengelolaan sampah di rumah untuk mengurangi limbah!</p>
                                 </div>
                                 <div class="flex flex-row justify-end">
                                     <img src="{{ asset('images/pengelolaan.jpg') }}" class="w-[15rem] h-[15rem] rounded-full object-cover shadow-md">
@@ -80,11 +80,11 @@
 
                     <!-- Item 3 (Dampak Buruk Sampah) -->
                     <div class="w-full flex-shrink-0 flex justify-center">
-                        <div class="bg-gradient-to-r from-third to-fourth h-[30rem] w-[100rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <div class="bg-gradient-to-r from-third to-fourth h-[30rem] w-[80rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
                             <div class="flex flex-col justify-between h-full">
                                 <div class="flex flex-col">
                                     <div class="self-stretch text-5xl font-semibold text-left text-white">Dampak Buruk Sampah</div>
-                                    <p class="text-white text-left text-xl mt-2">Kenali bahaya dari sampah yang dibuang sembarangan dan dampaknya terhadap lingkungan!</p>
+                                    <p class="text-white text-left text-2xl mt-2">Kenali bahaya dari sampah yang dibuang sembarangan dan dampaknya terhadap lingkungan!</p>
                                 </div>
                                 <div class="flex flex-row justify-end">
                                     <img src="{{ asset('images/dampak.jpg') }}" class="w-[15rem] h-[15rem] rounded-full object-cover shadow-md">
@@ -100,11 +100,11 @@
 
                     <!-- Clone First Item (for infinite loop) -->
                     <div class="w-full flex-shrink-0 flex justify-center">
-                        <div class="bg-gradient-to-r from-third to-fourth h-[30rem] w-[100rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <div class="bg-gradient-to-r from-third to-fourth h-[30rem] w-[80rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
                             <div class="flex flex-col justify-between h-full">
                                 <div class="flex flex-col">
                                     <div class="self-stretch text-5xl font-semibold text-left text-white">Pemilahan Sampah</div>
-                                    <p class="text-white text-left text-xl mt-2">Pelajari cara memilah sampah yang benar untuk menjaga lingkungan kita!</p>
+                                    <p class="text-white text-left text-2xl mt-2">Pelajari cara memilah sampah yang benar untuk menjaga lingkungan kita!</p>
                                 </div>
                                 <div class="flex flex-row justify-end">
                                     <img src="{{ asset('images/pemilahan.jpg') }}" class="w-[15rem] h-[15rem] rounded-full object-cover shadow-md">

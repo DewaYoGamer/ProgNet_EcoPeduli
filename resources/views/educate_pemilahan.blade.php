@@ -9,24 +9,20 @@
         </div>
         <div class="flex flex-col mb-20 p-20 space-y-24 mt-36 bg-primary">
             <div class="flex flex-row justify-evenly items-center">
-                <div class="bg-[#FAFAFA] h-[30rem] w-full rounded-xl flex flex-col p-10 items-left justify-between border-slate-200 border-2">
-                    <div class="flex flex-row">
-                        <img src="{{ asset('images/pemilahan.jpg') }}" class="w-[38rem] h-[20rem] rounded object-cover">
-                        <div class="px-10 self-stretch text-2xl flex">
-                            <p class="font-normal text-justify">
-                                <span class="font-bold text-5xl">Pemilahan Sampah</span>
-                                <br>
-                                <span class="mt-10 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik1-btn">1. Apa Pentingnya Pemilahan Sampah dalam Kehidupan Sehari-hari?</span>
-                                <br>
-                                <span class="mt-4 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik2-btn">2. Bagaimana Cara Melakukan Pemilahan Sampah yang Efektif?</span>
-                                <br>
-                                <span class="mt-4 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik3-btn">3. Apa Tantangan yang Dihadapi dalam Pemilahan Sampah di Masyarakat?</span>
-                                <br>
-                                <span class="mt-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik4-btn">4. Apa Manfaat Daur Ulang dalam Konteks Pemilahan Sampah?</span>
-                            </p>
-                        </div>
+                <div class="bg-[#FAFAFA] h-full w-full rounded-xl flex flex-col p-10 items-left justify-between border-slate-200 border-2">
+                    <div class="flex flex-col">
+                        <img src="{{ asset('images/pemilahan1.jpg') }}" class="w-full h-[30rem] rounded-[12px] object-cover object-top">
+                        <p class="font-normal text-justify">
+                            <span class="mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik1-btn">1. Apa Pentingnya Pemilahan Sampah dalam Kehidupan Sehari-hari?</span>
+                            <br>
+                            <span class="mt-4 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik2-btn">2. Bagaimana Cara Melakukan Pemilahan Sampah yang Efektif?</span>
+                            <br>
+                            <span class="mt-4 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik3-btn">3. Apa Tantangan yang Dihadapi dalam Pemilahan Sampah di Masyarakat?</span>
+                            <br>
+                            <span class="mt-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik4-btn">4. Apa Manfaat Daur Ulang dalam Konteks Pemilahan Sampah?</span>
+                        </p>
                     </div>
-                    <a href="/educate" class="bg-lime-500 w-full text-center p-3 rounded-[8px] text-white font-bold text-xl my-10">
+                    <a href="/educate" class="bg-lime-500 w-full text-center p-3 rounded-[8px] text-white font-bold text-xl mt-8">
                         KEMBALI
                     </a>
                 </div>

@@ -9,13 +9,10 @@
         </div>
         <div class="flex flex-col mb-20 p-20 space-y-24 mt-36 bg-primary">
             <div class="flex flex-row justify-evenly items-center">
-                <div class="bg-[#FAFAFA] h-[33rem] w-full rounded-xl flex flex-col p-10 items-left justify-between border-slate-200 border-2">
-                    <div class="flex flex-row">
-                        <img src="{{ asset('images/dampak.jpg') }}" class="w-[38rem] h-[22rem] rounded object-cover">
-                        <div class="px-10 self-stretch text-2xl flex">
+                <div class="bg-[#FAFAFA] h-full w-full rounded-xl flex flex-col p-10 items-left justify-between border-slate-200 border-2">
+                    <div class="flex flex-col">
+                        <img src="{{ asset('images/dampak1.jpg') }}" class="w-full h-[30rem] rounded object-cover object-top">
                             <p class="font-normal text-justify">
-                                <span class="font-bold text-5xl">Dampak Buruk Sampah</span>
-                                <br>
                                 <span class="mt-10 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik1-btn">1. Apa Dampak Buruk Sampah Terhadap Kesehatan dan Lingkungan?</span>
                                 <br>
                                 <span class="mt-4 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik2-btn">2. Apa Dampak Sampah Plastik terhadap Ekosistem Laut?</span>
@@ -24,7 +21,6 @@
                                 <br>
                                 <span class="mt-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik4-btn">4. Apa Bahaya Limbah Elektronik bagi Kesehatan dan Lingkungan?</span>
                             </p>
-                        </div>
                     </div>
                     <a href="/educate" class="bg-lime-500 w-full text-center p-3 rounded-[8px] text-white font-bold text-xl my-10">
                         KEMBALI
