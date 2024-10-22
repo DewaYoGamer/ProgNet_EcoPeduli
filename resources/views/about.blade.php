@@ -7,7 +7,7 @@
                         <div class="text-center self-stretch text-black text-5xl font-bold ">
                             Temui Tim <span class="text-primary font-bold">Eco-Peduli</span>
                         </div>
-                        <div class="self-stretch text-xl h-[130px] mt-12 -mb-6 xl:mt-12 xl:-mb-0 text-center">
+                        <div class="self-stretch text-2xl h-[130px] mt-12 -mb-6 xl:mt-12 xl:-mb-0 text-center">
                             Tim yang senantiasa berkomitmen untuk memberikan yang terbaik bagi lingkungan dan masyarakat.
                         </div>
                     </div>
