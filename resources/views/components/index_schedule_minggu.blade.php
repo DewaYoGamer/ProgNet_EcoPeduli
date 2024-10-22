@@ -9,9 +9,8 @@
         <div class="border-t-2 border-t-gray-300 w-[12rem] md:w-[16rem] mb-4">
         </div>
         <div class="flex flex-row space-x-3">
-            <img src="{{ asset('images/arya.png') }}" class="w-10 h-10 rounded-full object-cover">
-            <img src="{{ asset('images/arya.png') }}" class="w-10 h-10 rounded-full object-cover">
-            <img src="{{ asset('images/arya.png') }}" class="w-10 h-10 rounded-full object-cover">
+            <img src="{{ asset('images/yoga.jpg') }}" class="w-10 h-10 rounded-full object-cover">
+            <img src="{{ asset('images/wira.jpg') }}" class="w-10 h-10 rounded-full object-cover">
         </div>
     </div>
 </div>

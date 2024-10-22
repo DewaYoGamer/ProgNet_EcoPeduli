@@ -5,7 +5,7 @@
                 <div class="text-center self-stretch text-black text-4xl md:text-5xl font-bold xl:leading-tight">
                     Jadwal Pengumpulan
                 </div>
-                <div class="w-[30rem] md:w-[45rem] mt-12 text-center -mb-12">
+                <div class="px-36 2xl:px-96 mt-12 text-center -mb-12 lg:text-xl leading-8">
                     Pengumpulan sampah dilakukan setiap hari sesuai dengan jadwal yang tertera. Pengumpulan sampah dilakukan oleh petugas kami yang akan <span class="text-primary font-bold">datang ke rumah anda</span>. Sampah <span class="text-primary font-bold">daur ulang</span> dapat ditukarkan menjadi <span class="text-primary font-bold">poin</span> sesuai dengan berat dari sampah yang anda kumpulkan.
                 </div>
         </div>
