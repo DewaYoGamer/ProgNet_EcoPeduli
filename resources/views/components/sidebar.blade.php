@@ -1,4 +1,4 @@
-<div class="flex">
+<nav class="flex">
     {{-- SIDEBAR --}}
     <div class="sidebar bg-[#50623A] h-screen p-5 pt-8 relative">
         {{-- Tombol Arrow --}}
@@ -19,23 +19,23 @@
             <div class="text-navigasi-1 text-samping pt-4 text-slate-300 text-opacity-35 text-xl font-bold -mb-2">
                 Navigasi Utama
             </div>
-            <li class="{{ request()->is('') ? 'text-secondary': 'text-white hover:text-lime-300 rounded-md mt-2' }} flex items-center gap-x-4 p-2 font-bold text-xl">
-                <span class="material-symbols-outlined block float-left dashboard">
+            <li class="{{ request()->is('/pengguna') ? 'text-secondary' : 'text-white hover:text-lime-300 rounded-md mt-2' }} flex items-center gap-x-4 p-2 font-bold text-xl">
+                <span class="material-symbols-outlined dashboard">
                     dashboard
                 </span>
-                <a href="#" class="text-dashboard">Dashboard</a>
+                <a href="/pengguna" class="text-dashboard">Dashboard</a>
             </li>
             <li class="{{ request()->is('') ? 'text-secondary': 'text-white hover:text-lime-300 rounded-md mt-2' }} flex items-center gap-x-4 p-2 font-bold text-xl">
                 <span class="material-symbols-outlined penukaran">
                     currency_exchange
                 </span>
-                <a href="#" class="text-penukaran">Penukaran</a>
+                <a href="/pengguna/penukaran_poin" class="text-penukaran">Penukaran</a>
             </li>
             <li class="{{ request()->is('') ? 'text-secondary': 'text-white hover:text-lime-300 rounded-md mt-2' }} flex items-center gap-x-4 p-2 font-bold text-xl">
                 <span class="material-symbols-outlined jadwal">
                     today
                 </span>
-                <a href="#" class="text-jadwal">Jadwal</a>
+                <a href="/pengguna/jadwal" class="text-jadwal">Jadwal</a>
             </li>
         </ul>
         {{-- End Opsi Atas --}}
@@ -49,7 +49,7 @@
                 <span class="material-symbols-outlined profil">
                     person
                 </span>
-                <a href="#" class="text-profil">Profil Pengguna</a>
+                <a href="/pengguna/profil" class="text-profil">Profil Pengguna</a>
             </li>
             <li class="{{ request()->is('') ? 'text-secondary': 'text-white hover:text-lime-300 rounded-md mt-2' }} flex items-center gap-x-4 p-2 font-bold text-xl">
                 <span class="material-symbols-outlined beranda">
@@ -73,4 +73,4 @@
         {{-- End Opsi Bawah --}}
     </div>
     {{-- END SIDEBAR --}}
-</div>
+</nav>

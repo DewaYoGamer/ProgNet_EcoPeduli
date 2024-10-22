@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 
+// ============= Landing Page (Middeleware) =============
 Route::get('/', function () {
     return view('index');
 });
@@ -28,6 +29,19 @@ Route::get('/test', function () {
     return view('test');
 });
 
+Route::get('/pemilahan', function () {
+    return view('educate_pemilahan');
+});
+
+Route::get('/dampak', function () {
+    return view('educate_dampak');
+});
+
+Route::get('/pengelolaan', function () {
+    return view('educate_pengelolaan');
+});
+
+// ============= Auth =============
 Route::get('/login', function () {
     return view('auth.login');
 }) -> name('login') -> middleware('guest');
@@ -35,10 +49,6 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('auth.register');
 }) -> middleware('guest');
-
-Route::get('/pengguna', function () {
-    return view('dashboard.dashboardPengguna_index');
-}) -> middleware('auth');
 
 Route::get('/forgot', function () {
     return view('auth.forgot');
@@ -56,19 +66,24 @@ Route::get('/succes_change', function () {
     return view('auth.succes_change');
 });
 
-// Mencoba Database
+// ============= Dashboard =============
+Route::get('/pengguna', function () {
+    return view('dashboard.dashboardPengguna_index');
+}) -> middleware('auth');
+
+Route::get('/pengguna/penukaran_poin', function () {
+    return view('dashboard.dashboardPengguna_penukaran');
+}) -> middleware('auth');
+
+Route::get('/pengguna/jadwal', function () {
+    return view('dashboard.dashboardPengguna_jadwal');
+}) -> middleware('auth');
+
+Route::get('/pengguna/profil', function () {
+    return view('dashboard.dashboardPengguna_profil');
+}) -> middleware('auth');
+
+// ============= Database CRUD =============
 Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
-
-Route::get('/pemilahan', function () {
-    return view('educate_pemilahan');
-});
-
-Route::get('/dampak', function () {
-    return view('educate_dampak');
-});
-
-Route::get('/pengelolaan', function () {
-    return view('educate_pengelolaan');
-});
