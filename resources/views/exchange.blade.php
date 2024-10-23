@@ -26,7 +26,7 @@
                 <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
                     <div class="flex flex-col -mt-4">
                         <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
-                            300 POIN
+                            300 POIN / KG
                         </div>
                         <div class="self-stretch text-5xl font-semibold text-center">
                             Beras
@@ -52,7 +52,7 @@
                 <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
                     <div class="flex flex-col -mt-4">
                         <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
-                            250 POIN
+                            250 POIN / KG
                         </div>
                         <div class="self-stretch text-5xl font-semibold text-center">
                             Gula
@@ -78,7 +78,7 @@
                 <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
                     <div class="flex flex-col -mt-4">
                         <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
-                            60 POIN
+                            60 POIN / PCS
                         </div>
                         <div class="self-stretch text-5xl font-semibold text-center">
                             Mie Instan
