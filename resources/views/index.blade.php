@@ -54,84 +54,68 @@
                     <div class="self-stretch text-black text-base font-medium">Menukarkan Poin yang Telah Didapatkan Sebelumnya dengan <b class="text-primary">Sembako</b>. Seperti Beras, Gula, dan sebagainya. </div>
                 </div>
             </div>
-            <div class="flex flex-row mt-[920px] justify-around">
-                <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
-                    <div class="flex flex-col -mt-4">
-                        <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
-                            300 POIN / KG
-                        </div>
-                        <div class="self-stretch text-5xl font-semibold text-center">
-                            Beras
-                        </div>
-                    </div>
-                    <div class="flex flex-row space-x-3">
-                        <img src="{{ asset('images/gambar_beras.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
-                    </div>
-                    @auth
-                        <form action="/pengguna/penukaran_poin">
-                            <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
-                                Tukarkan Sekarang!
-                            </button>
-                        </form>
-                    @else
-                        <form action="/login">
-                            <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
-                                Tukarkan Sekarang!
-                            </button>
-                        </form>
-                    @endauth
+            <div class="mt-[780px]">
+                <div class="text-center self-stretch text-black text-3xl lg:text-5xl font-bold xl:leading-tight mt-12">
+                    Tahukah Anda?
                 </div>
-                <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
-                    <div class="flex flex-col -mt-4">
-                        <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
-                            250 POIN / KG
-                        </div>
-                        <div class="self-stretch text-5xl font-semibold text-center">
-                            Gula
-                        </div>
-                    </div>
-                    <div class="flex flex-row space-x-3">
-                        <img src="{{ asset('images/gambar_gula.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
-                    </div>
-                    @auth
-                        <form action="/pengguna/penukaran_poin">
-                            <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
-                                Tukarkan Sekarang!
-                            </button>
-                        </form>
-                    @else
-                        <form action="/login">
-                            <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
-                                Tukarkan Sekarang!
-                            </button>
-                        </form>
-                    @endauth
+                <div class="text-2xl mt-6 text-center mb-6">
+                    <span class="text-primary font-bold">Sampah Daur Ulang</span> yang anda miliki dapat ditukarkan menjadi <span class="text-primary font-bold">Poin</span> <br>dengan jumlah yang beragam!
                 </div>
-                <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
-                    <div class="flex flex-col -mt-4">
-                        <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
-                            60 POIN / PCS
+                <div class="flex flex-row justify-around">
+                    <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
+                        <div class="flex flex-col -mt-4">
+                            <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
+                                50 Poin / KG
+                            </div>
+                            <div class="self-stretch text-4xl font-semibold text-center">
+                                Sampah Plastik
+                            </div>
                         </div>
-                        <div class="self-stretch text-5xl font-semibold text-center">
-                            Mie Instan
+                        <div class="flex flex-row space-x-3">
+                            <img src="{{ asset('images/gambar_botolPlastik.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
                         </div>
-                    </div>
-                    <div class="flex flex-row space-x-3">
-                        <img src="{{ asset('images/gambarMie.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
-                    </div>
-                    @auth
-                        <form action="/pengguna/penukaran_poin">
+                        <form action="/exchange">
                             <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
-                                Tukarkan Sekarang!
+                                Tukarkan Poinmu!
                             </button>
                         </form>
-                    @else
-                        <form action="/login">
+                    </div>
+                    <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
+                        <div class="flex flex-col -mt-4">
+                            <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
+                                100 Poin / KG
+                            </div>
+                            <div class="self-stretch text-5xl font-semibold text-center">
+                                Kaleng
+                            </div>
+                        </div>
+                        <div class="flex flex-row space-x-3">
+                            <img src="{{ asset('images/gambar_kaleng.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
+                        </div>
+                        <form action="/exchange">
                             <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
-                                Tukarkan Sekarang!
+                                Tukarkan Poinmu!
                             </button>
                         </form>
-                    @endauth
+                    </div>
+                    <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2 mb-8">
+                        <div class="flex flex-col -mt-4">
+                            <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
+                                200 POIN / KG
+                            </div>
+                            <div class="self-stretch text-5xl font-semibold text-center">
+                                Botol Kaca
+                            </div>
+                        </div>
+                        <div class="flex flex-row space-x-3">
+                            <img src="{{ asset('images/gambar_botolKaca.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
+                        </div>
+                        <form action="/exchange">
+                            <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
+                                Tukarkan Poinmu!
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
