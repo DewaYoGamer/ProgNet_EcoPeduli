@@ -22,9 +22,9 @@
             }
         }
     </style>
-    <div class="flex flex-col h-[2580px] lg:h-[2200px]">
-        <div class="flex-grow lg:p-4 xl:p-12 2xl:p-20" id="custom-bg">
-            <div class="relative px-20 xl:px-0 lg:pr-[560px] xl:pr-[650px] 2xl:pr-[800px] lg:mx-0 xl:mx-5 2xl:mx-0 flex">
+    <div class="flex flex-col h-full">
+        <div class="flex-grow" id="custom-bg">
+            <div class="relative px-20 xl:px-0 lg:pr-[560px] xl:pr-[650px] 2xl:pr-[800px] lg:mx-0 xl:mx-12 2xl:mx-24 flex mt-16">
                 <img src="{{ asset('images/images1.svg') }}" class="invisible lg:visible absolute right-0 rounded-[20px] lg:h-[280px] lg:mt-44 lg:mr-12 xl:mr-6 xl:h-[375px] xl:mt-20 2xl:h-auto 2xl:mt-0 2xl:mr-12">
                 <div class="lg:w-[400px] xl:w-[500px] 2xl:w-[648px] pt-12 2xl:pt-0 lg:ml-0 xl:ml-6 2xl:ml-12">
                     <div class="text-center lg:text-left self-stretch text-black text-3xl lg:text-5xl font-bold xl:leading-tight">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col lg:flex-row justify-between items-center w-full h-[1650px] lg:h-[650px] left-0 top-[750px] absolute bg-primary px-8 py-20 lg:py-0">
+            <div class="flex flex-col lg:flex-row justify-between items-center w-full h-[1650px] lg:h-[650px] left-0 top-[750px] bg-primary px-8 py-20 lg:py-0 mt-24">
                 <div class="w-[284.58px] h-[434.48px] px-[40.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex lg:mt-0 xl:ml-24 2xl:ml-48">
                     <img src="{{asset('images/sorting.png')}}" class="h-48">
                     <div class="self-stretch text-black text-2xl font-semibold">Memilah</div>
@@ -54,7 +54,7 @@
                     <div class="self-stretch text-black text-base font-medium">Menukarkan Poin yang Telah Didapatkan Sebelumnya dengan <b class="text-primary">Sembako</b>. Seperti Beras, Gula, dan sebagainya. </div>
                 </div>
             </div>
-            <div class="mt-[780px]">
+            <div class="mb-28">
                 <div class="text-center self-stretch text-black text-3xl lg:text-5xl font-bold xl:leading-tight mt-12">
                     Tahukah Anda?
                 </div>
