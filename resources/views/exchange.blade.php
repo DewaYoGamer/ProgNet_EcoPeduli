@@ -10,8 +10,8 @@
             <div class="text-center self-stretch text-black text-3xl lg:text-5xl font-bold xl:leading-tight mt-12">
                 Ayo Tukarkan <span class="text-primary">Poinmu!</span>
             </div>
-            <div class="font mt-12 text-center">
-                Tukarkan <span class="text-primary font-bold">poin</span> yang anda miliki menjadi berbagai <span class="text-primary font-bold">sembako</span> yang bermanfaat
+            <div class="text-2xl mt-12 text-center">
+                Tukarkan <span class="text-primary font-bold">poin</span> yang anda miliki menjadi berbagai <span class="text-primary font-bold">sembako</span> yang bermanfaat!
             </div>
             @auth
                 <form action="/pengguna">
