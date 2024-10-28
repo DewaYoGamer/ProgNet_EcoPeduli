@@ -68,8 +68,13 @@ Route::get('/succes_change', function () {
 
 // ============= Dashboard =============
 Route::get('/pengguna', function () {
+    if (Auth::check()) {
+        if (Auth::user()->role === 'admin') {
+            return redirect('/admin'); // Redirect to admin dashboard
+        }
+    }
     return view('dashboard.dashboardPengguna_index');
-}) -> middleware('auth');
+})->middleware('auth');
 
 Route::get('/pengguna/penukaran_poin', function () {
     return view('dashboard.dashboardPengguna_penukaran');
@@ -82,6 +87,26 @@ Route::get('/pengguna/jadwal', function () {
 Route::get('/pengguna/profil', function () {
     return view('dashboard.dashboardPengguna_profil');
 }) -> middleware('auth');
+
+// ============= Admin =============
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin', function () {
+        return view('admin.dashboard');
+    });
+
+    Route::get('/admin/users', function () {
+        return view('admin.dashboardAdmin_users');
+    });
+
+    Route::get('/admin/reports', function () {
+        return view('admin.dashboardAdmin_reports');
+    });
+
+    Route::get('/admin/settings', function () {
+        return view('admin.dashboardAdmin_settings');
+    });
+});
 
 // ============= Database CRUD =============
 Route::post('/register', [RegisterController::class, 'store']);

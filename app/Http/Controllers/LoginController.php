@@ -17,10 +17,15 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
+            $user = Auth::user();
+            if ($user->role === 'admin') {
+                return redirect()->intended('/admin');
+            }
+
             return redirect()->intended('/pengguna');
         }
 
-        return back()->with ('error', 'Login gagal! Silahkan coba lagi.');
+        return back()->with('error', 'Login gagal! Silahkan coba lagi.');
     }
 
     public function logout(Request $request)
@@ -28,7 +33,6 @@ class LoginController extends Controller
         Auth::logout();
 
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect('/login');
