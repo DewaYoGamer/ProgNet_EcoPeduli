@@ -89,10 +89,9 @@ Route::get('/pengguna/profil', function () {
 }) -> middleware('auth');
 
 // ============= Admin =============
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', function () {
-        return view('admin.dashboard');
+        return view('dashboard_admin.dashboardAdmin_index');
     });
 
     Route::get('/admin/users', function () {
