@@ -14,6 +14,12 @@
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="mb-[12px]">
+                    <input type="text" name="name" id="name" placeholder="Nama Lengkap" class="w-full px-5 py-3 text-base border focus:border-primary" required value="{{ old('name') }}">
+                    @error('username')
+                        <div class="text-red-500">{{ $message }}</div>
+                    @enderror
+                </div>
                 <div class="mb-[6px]">
                     <input type="email" name="email" id="email" placeholder="Email" class="w-full px-5 py-3 text-base border focus:border-primary" required value="{{ old('email') }}" >
                     @error('email')
