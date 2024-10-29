@@ -58,9 +58,9 @@ return new class extends Migration
         });
 
         Schema::create('tb_penukaran_poin', function (Blueprint $table) {
-            $table->string('kode_unik') -> primary();
+            $table->char('kode_unik', 5) -> primary();
             $table->string('username');
-            $table->string('keterangan_penukaran');
+            $table->text('keterangan_penukaran');
             $table->integer('poin');
             $table->string('status')->default('pending');
             $table->timestamps();

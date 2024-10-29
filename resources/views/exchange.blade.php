@@ -19,6 +19,9 @@
                         Pergi ke Dashboard
                     </button>
                 </form>
+                <div class="text-3xl font-bold mt-10 -mb-[60px] bg-[#fafafa] border-2 rounded-xl p-6">
+                    Poin Pengguna: <span class="text-primary"> {{ auth()->user()->poin }} Poin </span>
+                </div>
             @endauth
         </div>
         <div class="flex flex-col mb-48 py-18 space-y-24 mt-20">
