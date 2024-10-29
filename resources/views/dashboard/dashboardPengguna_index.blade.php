@@ -5,16 +5,16 @@
             <div class="flex flex-row">
                 <div class="w-[26rem] h-[19rem] mr-16 text-left bg-[#e7c41a] p-6 text-white">
                     <div class="flex justify-center">
-                        <img src="{{ asset('images/yoga.jpg') }}" alt="Profile Picture" class="w-24 h-24 rounded-full object-cover">
+                        <img src="{{ asset($user->avatar ? 'images/' . $user->avatar : 'images/noavatar.png') }}" alt="Profile Picture" class="w-24 h-24 rounded-full object-cover">
                     </div>
                     <div class="text-left mt-3">
-                        <p class="text-gray-600 text-sm font-semibold">Username</p>
+                        <p class="text-gray-600 text-sm font-semibold">Nama Pengguna</p>
                         <div class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-1 inline-block">
-                                <p class="text-gray-800 font-medium">@wiraguna</p>
+                            <p class="text-gray-800 font-medium">{{ $user -> username }}</p>
                         </div>
-                        <p class="text-gray-600 text-sm font-semibold mt-4">Nama</p>
+                        <p class="text-gray-600 text-sm font-semibold mt-4">Nama Lengkap</p>
                         <div class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-1 inline-block">
-                             <p class="text-gray-800 font-medium">Agus Arya Wiraguna</p>
+                             <p class="text-gray-800 font-medium">{{ $user -> name}}</p>
                         </div>
                     </div>
                 </div>

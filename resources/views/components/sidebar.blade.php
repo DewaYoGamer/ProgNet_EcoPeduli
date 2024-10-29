@@ -12,7 +12,7 @@
             <a href="/">
                 <img src="{{asset('images/logo.png')}}" class="h-12" alt="logo-eco-peduli">
             </a>
-            
+
             <p class="logo-text mt-2 font-ComicLemon text-2xl whitespace-nowrap text-white">EcoPeduli</p>
         </div>
         {{-- End Logo --}}

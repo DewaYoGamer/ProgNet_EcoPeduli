@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\UserController;
 
 // ============= Landing Page (Middeleware) =============
 Route::get('/', function () {
@@ -68,28 +70,19 @@ Route::get('/succes_change', function () {
 
 // ============= Dashboard =============
 Route::middleware(['auth'])->group(function () {
-    Route::get('/pengguna', function () {
-        if (Auth::check()) {
-            if (Auth::user()->role === 'admin') {
-                return redirect('/admin'); // Redirect to admin dashboard
-            } else if (Auth::user()->role === 'operator') {
-                return redirect('/operator'); // Redirect to operator dashboard
-            }
-        }
-        return view('dashboard.dashboardPengguna_index');
-    });
-    
+    Route::get('/pengguna', [UserDashboardController::class, 'index']);
+
     Route::get('/pengguna/penukaran_poin', function () {
         return view('dashboard.dashboardPengguna_penukaran');
     });
-    
+
     Route::get('/pengguna/jadwal', function () {
         return view('dashboard.dashboardPengguna_jadwal');
     });
-    
-    Route::get('/pengguna/profil', function () {
-        return view('dashboard.dashboardPengguna_profil');
-    }); 
+
+    Route::get('/pengguna/profil', [UserDashboardController::class, 'profile'])->name('user.profile');
+    Route::post('/pengguna/profil/update', [UserDashboardController::class, 'update'])->name('user.update');
+    Route::post('/upload-cropped-image', [UserController::class, 'uploadCroppedImage'])->name('upload.cropped.image');
 });
 
 // ============= Admin =============

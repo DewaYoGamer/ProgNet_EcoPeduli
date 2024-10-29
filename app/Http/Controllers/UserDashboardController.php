@@ -1,21 +1,37 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserDashboardController extends Controller
 {
     public function index()
     {
-        // Check if the user is an admin
-        if (Auth::user()->role === 'admin') {
-            return redirect('/dashboard_admin.dashboardAdmin_index'); // Redirect to admin dashboard
-        } else if (Auth::user()->role === 'operator') {
-            return redirect('/dashboard_operator.dashboardOperator_index'); // Redirect to operator dashboard
+        $user = Auth::user();
+
+        if ($user) {
+            if ($user->role === 'admin') {
+                return redirect('/admin'); // Redirect to admin dashboard
+            } else if ($user->role === 'operator') {
+                return redirect('/operator'); // Redirect to operator dashboard
+            }
         }
 
-        // Otherwise, load the user dashboard
-        return view('dashboard.dashboardPengguna_index');
+        return view('dashboard.dashboardPengguna_index', compact('user'));
+    }
+
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('dashboard.dashboardPengguna_profil', compact('user'));
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $user->update($request->all());
+
+        return redirect()->route('user.profile')->with('success', 'Profil berhasil diperbarui!');
     }
 }
