@@ -67,26 +67,30 @@ Route::get('/succes_change', function () {
 });
 
 // ============= Dashboard =============
-Route::get('/pengguna', function () {
-    if (Auth::check()) {
-        if (Auth::user()->role === 'admin') {
-            return redirect('/admin'); // Redirect to admin dashboard
+Route::middleware(['auth'])->group(function () {
+    Route::get('/pengguna', function () {
+        if (Auth::check()) {
+            if (Auth::user()->role === 'admin') {
+                return redirect('/admin'); // Redirect to admin dashboard
+            } else if (Auth::user()->role === 'operator') {
+                return redirect('/operator'); // Redirect to operator dashboard
+            }
         }
-    }
-    return view('dashboard.dashboardPengguna_index');
-})->middleware('auth');
-
-Route::get('/pengguna/penukaran_poin', function () {
-    return view('dashboard.dashboardPengguna_penukaran');
-}) -> middleware('auth');
-
-Route::get('/pengguna/jadwal', function () {
-    return view('dashboard.dashboardPengguna_jadwal');
-}) -> middleware('auth');
-
-Route::get('/pengguna/profil', function () {
-    return view('dashboard.dashboardPengguna_profil');
-}) -> middleware('auth');
+        return view('dashboard.dashboardPengguna_index');
+    });
+    
+    Route::get('/pengguna/penukaran_poin', function () {
+        return view('dashboard.dashboardPengguna_penukaran');
+    });
+    
+    Route::get('/pengguna/jadwal', function () {
+        return view('dashboard.dashboardPengguna_jadwal');
+    });
+    
+    Route::get('/pengguna/profil', function () {
+        return view('dashboard.dashboardPengguna_profil');
+    }); 
+});
 
 // ============= Admin =============
 Route::middleware(['auth'])->group(function () {
@@ -104,6 +108,22 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/admin/settings', function () {
         return view('admin.dashboardAdmin_settings');
+    });
+});
+
+// ============= Operator =============
+Route::middleware(['auth'])->group(function () {
+    Route::get('/operator', function () {
+        return view('dashboard_operator.dashboardOperator_index');
+    });
+    Route::get('/operator/penukaran_sampah', function () {
+        return view('dashboard_operator.dashboardOperator_penukaranSampah');
+    });
+    Route::get('/operator/jadwal_pengambilan', function () {
+        return view('dashboard_operator.dashboardOperator_tambahJadwal');
+    });
+    Route::get('/operator/profil', function () {
+        return view('dashboard_operator.dashboardOperator_profilOperator');
     });
 });
 

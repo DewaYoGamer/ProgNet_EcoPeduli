@@ -1,6 +1,6 @@
-<x-layout_dashboard>
+<x-layout_admin>
     <x-slot name="title">Dashboard Pengguna | Eco Peduli</x-slot>
     <div class="text-4xl text-bold">
-        Halaman Jadwal
+        Halaman Penukaran
     </div>
-</x-layout_dashboard>
+</x-layout_admin>

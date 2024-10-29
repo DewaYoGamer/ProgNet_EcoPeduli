@@ -11,6 +11,8 @@ class UserDashboardController extends Controller
         // Check if the user is an admin
         if (Auth::user()->role === 'admin') {
             return redirect('/dashboard_admin.dashboardAdmin_index'); // Redirect to admin dashboard
+        } else if (Auth::user()->role === 'operator') {
+            return redirect('/dashboard_operator.dashboardOperator_index'); // Redirect to operator dashboard
         }
 
         // Otherwise, load the user dashboard
