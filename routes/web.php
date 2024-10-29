@@ -94,16 +94,12 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard_admin.dashboardAdmin_index');
     });
 
-    Route::get('/admin/users', function () {
-        return view('admin.dashboardAdmin_users');
+    Route::get('/admin/penukaran_poin', function () {
+        return view('dashboard_admin.dashboardAdmin_penukaranPoin');
     });
 
-    Route::get('/admin/reports', function () {
-        return view('admin.dashboardAdmin_reports');
-    });
-
-    Route::get('/admin/settings', function () {
-        return view('admin.dashboardAdmin_settings');
+    Route::get('/admin/penukaran_sampah', function () {
+        return view('dashboard_admin.dashboardAdmin_penukaranSampah');
     });
 });
 

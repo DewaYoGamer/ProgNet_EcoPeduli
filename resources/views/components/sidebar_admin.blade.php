@@ -22,31 +22,31 @@
             <div class="text-navigasi-1 text-samping pt-4 text-slate-300 text-opacity-35 text-xl font-bold -mb-2">
                 Navigasi Utama
             </div>
-            <li class="{{ request()->is('pengguna') ? 'text-secondary' : 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2">
-                <a href="/pengguna">
+            <li class="{{ request()->is('admin') ? 'text-secondary' : 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2">
+                <a href="/admin">
                     <span class="material-symbols-outlined dashboard">
                         dashboard
                     </span>
                 </a>
-                <a href="/pengguna" class="text-dashboard -mt-1.5">
+                <a href="/admin" class="text-dashboard -mt-1.5">
                     Dashboard
                 </a>
             </li>
-            <li class="{{ request()->is('pengguna/penukaran_poin') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-1">
-                <a href="/pengguna/penukaran_poin">
+            <li class="{{ request()->is('admin/penukaran_sampah') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-1 w-[300px]">
+                <a href="/admin/penukaran_sampah">
                     <span class="material-symbols-outlined penukaran">
                         currency_exchange
                     </span>
                 </a>
-                <a href="/pengguna/penukaran_poin" class="text-penukaran -mt-1.5">Penukaran</a>
+                <a href="/admin/penukaran_sampah" class="text-penukaran -mt-1.5">Penukaran Sampah</a>
             </li>
-            <li class="{{ request()->is('pengguna/jadwal') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-1">
-                <a href="/pengguna/jadwal">
+            <li class="{{ request()->is('admin/penukaran_poin') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-1">
+                <a href="/admin/penukaran_poin">
                     <span class="material-symbols-outlined jadwal">
                         today
                     </span>
                 </a>
-                <a href="/pengguna/jadwal" class="text-jadwal -mt-1.5">Jadwal</a>
+                <a href="/admin/penukaran_poin" class="text-jadwal -mt-1.5">Penukaran Poin</a>
             </li>
         </ul>
         {{-- End Opsi Atas --}}
@@ -56,15 +56,7 @@
             <div class="text-navigasi-2 pt-4 text-slate-300 text-opacity-35 text-xl font-bold -mb-2 text-samping">
                 Pengaturan Akun
             </div>
-            <li class="{{ request()->is('pengguna/profil') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2">
-                <a href="/pengguna/profil">
-                    <span class="material-symbols-outlined profil">
-                        person
-                    </span>
-                </a>
-                <a href="/pengguna/profil" class="text-profil -mt-1.5">Profil Pengguna</a>
-            </li>
-            <li class="{{ request()->is('/') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-1">
+            <li class="{{ request()->is('/') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2">
                 <a href="/">
                     <span class="material-symbols-outlined beranda">
                         home
