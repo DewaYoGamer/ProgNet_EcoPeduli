@@ -5,7 +5,7 @@
             <div class="flex flex-row">
                 <div class="w-[26rem] h-[19rem] mr-16 text-left bg-[#e7c41a] p-6 text-white">
                     <div class="flex justify-center">
-                        <img src="{{ asset($user->avatar ? 'images/' . $user->avatar : 'images/noavatar.png') }}" alt="Profile Picture" class="w-24 h-24 rounded-full object-cover">
+                        <img src="{{ asset($user->avatar ? 'images/users/' . $user->avatar : 'images/noavatar.png') }}" alt="Profile Picture" class="w-24 h-24 rounded-full object-cover">
                     </div>
                     <div class="text-left mt-3">
                         <p class="text-gray-600 text-sm font-semibold">Nama Pengguna</p>
