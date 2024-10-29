@@ -1,6 +1,6 @@
 <nav class="flex">
     {{-- SIDEBAR --}}
-    <div class="sidebar bg-[#50623A] h-screen p-5 pt-8 relative">
+    <div class="sidebar bg-[#50623A] h-auto min-h-screen p-5 pt-8 relative">
         {{-- Tombol Arrow --}}
         <span class="ikon-min material-symbols-outlined bg-[#fafafa] rounded-full absolute -right-4 top-9 border-4 border-[#50623A] cursor-pointer" style="font-size: 38px">
             chevron_left
@@ -8,8 +8,11 @@
         {{-- End Tombol Arrow --}}
 
         {{-- Logo --}}
-        <div class="flex w-auto h-24 items-center flex-col">
-            <img src="{{asset('images/logo.png')}}" class="h-12" alt="">
+        <div class="flex w-auto h-24 items-center flex-col logo-eco -ml-[20px]">
+            <a href="/">
+                <img src="{{asset('images/logo.png')}}" class="h-12" alt="logo-eco-peduli">
+            </a>
+            
             <p class="logo-text mt-2 font-ComicLemon text-2xl whitespace-nowrap text-white">EcoPeduli</p>
         </div>
         {{-- End Logo --}}
@@ -20,22 +23,30 @@
                 Navigasi Utama
             </div>
             <li class="{{ request()->is('pengguna') ? 'text-secondary' : 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2">
-                <span class="material-symbols-outlined dashboard">
-                    dashboard
-                </span>
-                <a href="/pengguna" class="text-dashboard">Dashboard</a>
+                <a href="/pengguna">
+                    <span class="material-symbols-outlined dashboard">
+                        dashboard
+                    </span>
+                </a>
+                <a href="/pengguna" class="text-dashboard -mt-1.5">
+                    Dashboard
+                </a>
             </li>
-            <li class="{{ request()->is('pengguna/penukaran_poin') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2">
-                <span class="material-symbols-outlined penukaran">
-                    currency_exchange
-                </span>
-                <a href="/pengguna/penukaran_poin" class="text-penukaran">Penukaran</a>
+            <li class="{{ request()->is('pengguna/penukaran_poin') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-1">
+                <a href="/pengguna/penukaran_poin">
+                    <span class="material-symbols-outlined penukaran">
+                        currency_exchange
+                    </span>
+                </a>
+                <a href="/pengguna/penukaran_poin" class="text-penukaran -mt-1.5">Penukaran</a>
             </li>
-            <li class="{{ request()->is('pengguna/jadwal') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2">
-                <span class="material-symbols-outlined jadwal">
-                    today
-                </span>
-                <a href="/pengguna/jadwal" class="text-jadwal">Jadwal</a>
+            <li class="{{ request()->is('pengguna/jadwal') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-1">
+                <a href="/pengguna/jadwal">
+                    <span class="material-symbols-outlined jadwal">
+                        today
+                    </span>
+                </a>
+                <a href="/pengguna/jadwal" class="text-jadwal -mt-1.5">Jadwal</a>
             </li>
         </ul>
         {{-- End Opsi Atas --}}
@@ -46,18 +57,22 @@
                 Pengaturan Akun
             </div>
             <li class="{{ request()->is('pengguna/profil') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2">
-                <span class="material-symbols-outlined profil">
-                    person
-                </span>
-                <a href="/pengguna/profil" class="text-profil">Profil Pengguna</a>
+                <a href="/pengguna/profil">
+                    <span class="material-symbols-outlined profil">
+                        person
+                    </span>
+                </a>
+                <a href="/pengguna/profil" class="text-profil -mt-1.5">Profil Pengguna</a>
             </li>
-            <li class="{{ request()->is('/') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2">
-                <span class="material-symbols-outlined beranda">
-                    home
-                </span>
-                <a href="/" class="text-beranda">Beranda</a>
+            <li class="{{ request()->is('/') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-1">
+                <a href="/">
+                    <span class="material-symbols-outlined beranda">
+                        home
+                    </span>
+                </a>
+                <a href="/" class="text-beranda -mt-1.5">Beranda</a>
             </li>
-            <li class="{{ request()->is('login') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2" id="logoutButton">
+            <li class="{{ request()->is('login') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-1" id="logoutButton">
                 <span class="material-symbols-outlined logout">
                     logout
                 </span>

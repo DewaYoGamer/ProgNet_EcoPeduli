@@ -55,6 +55,7 @@
             font-size: 42px;
             transition: font-size 0.5s ease;
         }
+        
     </style>
 
     {{-- Script Section --}}
@@ -100,6 +101,7 @@
             iconsToResize.forEach(function(icon) {
                 icon.classList.toggle('adjusting');
             });
+            
         });
 
         document.getElementById('logoutButton').addEventListener('click', function(event) {
