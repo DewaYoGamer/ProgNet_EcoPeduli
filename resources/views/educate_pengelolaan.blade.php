@@ -14,20 +14,20 @@
                         <img src="{{ asset('images/pengelolaan1.jpg') }}" class="w-full h-[30rem] rounded object-cover object-top">
                         <div class="flex flex-row mt-8 items-center">
                             <img src="{{ asset('images/Asset 6.png') }}" class="w-[4rem] h-[6rem] mr-8">
-                            <p class="text-justify mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik1-btn">Bagaimana Cara Pengelolaan Sampah yang Baik dan Benar di Rumah Tangga?</p>
+                            <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik1-btn">Bagaimana Cara Pengelolaan Sampah yang Baik dan Benar di Rumah Tangga?</p>
                         </div>
                         <div class="flex flex-row mt-8 items-center">
                             <img src="{{ asset('images/Asset 5.png') }}" class="w-[4rem] h-[2rem] mr-8">
-                            <p class="text-justify mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik2-btn">Apa dampak dari pengelolaan sampah yang buruk terhadap lingkungan?</p>
+                            <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik2-btn">Apa dampak dari pengelolaan sampah yang buruk terhadap lingkungan?</p>
                         </div>
                         <div class="flex flex-row mt-8 items-center">
                             <img src="{{ asset('images/Asset 3.png') }}" class="w-[4rem] h-[4rem] mr-8">
-                            <p class="text-justify mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik3-btn">Apa Tantangan dalam Pengelolaan Sampah dan Bagaimana Mengatasinya?</p>
+                            <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik3-btn">Apa Tantangan dalam Pengelolaan Sampah dan Bagaimana Mengatasinya?</p>
                         </div>
                         <div class="flex flex-row mt-8 items-center">
                             <img src="{{ asset('images/Asset 7.png') }}" class="w-[4rem] h-[4rem] mr-8">
-                            <p class="text-justify mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik4-btn">Apa Peran Bank Sampah dalam Pengelolaan Sampah dan Sistem Kerjanya?</p>
-                        </div>     
+                            <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik4-btn">Apa Peran Bank Sampah dalam Pengelolaan Sampah dan Sistem Kerjanya?</p>
+                        </div>
                     </div>
                     <a href="/educate" class="bg-lime-500 w-full text-center p-3 rounded-[8px] text-white font-bold text-xl my-10">
                         KEMBALI

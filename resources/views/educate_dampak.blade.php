@@ -14,19 +14,19 @@
                         <img src="{{ asset('images/dampak1.jpg') }}" class="w-full h-[30rem] rounded object-cover object-top">
                         <div class="flex flex-row mt-8 items-center">
                             <img src="{{ asset('images/Asset 8.png') }}" class="w-[6rem] h-[3rem] mr-8">
-                            <p class="text-justify mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik1-btn">Apa Dampak Buruk Sampah Terhadap Kesehatan dan Lingkungan?</p>
+                            <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik1-btn">Apa Dampak Buruk Sampah Terhadap Kesehatan dan Lingkungan?</p>
                         </div>
                         <div class="flex flex-row mt-8 items-center">
                             <img src="{{ asset('images/Asset 9.png') }}" class="w-[6rem] h-[3rem] mr-8">
-                            <p class="text-justify mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik2-btn">Apa Dampak Sampah Plastik terhadap Ekosistem Laut?</p>
+                            <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik2-btn">Apa Dampak Sampah Plastik terhadap Ekosistem Laut?</p>
                         </div>
                         <div class="flex flex-row mt-8 items-center">
                             <img src="{{ asset('images/Asset 5.png') }}" class="w-[6rem] h-[3rem] mr-8">
-                            <p class="text-justify mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik3-btn">Bagaimana Sampah yang Menumpuk Dapat Menyebabkan Banjir?</p>
+                            <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik3-btn">Bagaimana Sampah yang Menumpuk Dapat Menyebabkan Banjir?</p>
                         </div>
                         <div class="flex flex-row mt-8 items-center">
                             <img src="{{ asset('images/Asset 10.png') }}" class="w-[4rem] h-[5rem] ml-4 mr-12">
-                            <p class="text-justify mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik4-btn">Apa Bahaya Limbah Elektronik bagi Kesehatan dan Lingkungan?</p>
+                            <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik4-btn">Apa Bahaya Limbah Elektronik bagi Kesehatan dan Lingkungan?</p>
                         </div>
                     </div>
                     <a href="/educate" class="bg-lime-500 w-full text-center p-3 rounded-[8px] text-white font-bold text-xl my-10">

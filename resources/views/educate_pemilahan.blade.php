@@ -14,20 +14,20 @@
                         <img src="{{ asset('images/pemilahan1.jpg') }}" class="w-full h-[30rem] rounded-[12px] object-cover object-top">
                             <div class="flex flex-row mt-8 items-center">
                                 <img src="{{ asset('images/Asset 1.png') }}" class="w-[4rem] h-[6rem] mr-8">
-                                <p class="text-justify mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik1-btn">Apa Pentingnya Pemilahan Sampah dalam Kehidupan Sehari-hari?</p>
+                                <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik1-btn">Apa Pentingnya Pemilahan Sampah dalam Kehidupan Sehari-hari?</p>
                             </div>
                             <div class="flex flex-row mt-8 items-center">
                                 <img src="{{ asset('images/Asset 2.png') }}" class="w-[4rem] h-[5rem] mr-8">
-                                <p class="text-justify mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik2-btn">Bagaimana Cara Melakukan Pemilahan Sampah yang Efektif?</p>
+                                <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik2-btn">Bagaimana Cara Melakukan Pemilahan Sampah yang Efektif?</p>
                             </div>
                             <div class="flex flex-row mt-8 items-center">
                                 <img src="{{ asset('images/Asset 3.png') }}" class="w-[4rem] h-[4rem] mr-8">
-                                <p class="text-justify mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik3-btn">Apa Tantangan yang Dihadapi dalam Pemilahan Sampah di Masyarakat?</p>
+                                <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik3-btn">Apa Tantangan yang Dihadapi dalam Pemilahan Sampah di Masyarakat?</p>
                             </div>
                             <div class="flex flex-row mt-8 items-center">
                                 <img src="{{ asset('images/Asset 4.png') }}" class="w-[4rem] h-[4rem] mr-8">
-                                <p class="text-justify mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:underline" id="topik4-btn">Apa Manfaat Daur Ulang dalam Konteks Pemilahan Sampah?</p>
-                            </div>     
+                                <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik4-btn">Apa Manfaat Daur Ulang dalam Konteks Pemilahan Sampah?</p>
+                            </div>
                     </div>
                     <a href="/educate" class="bg-lime-500 w-full text-center p-3 rounded-[8px] text-white font-bold text-xl mt-8">
                         KEMBALI
