@@ -68,7 +68,7 @@
 
                 <!-- Tambah Point Button -->
                 <div class="col-span-2 flex justify-center mt-4">
-                    <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-green-700">
+                    <button type="submit" class="bg-green-600 text-white text-2xl px-6 py-2 rounded-md font-semibold hover:bg-green-700">
                         Tambah Poin!
                     </button>
                 </div>
