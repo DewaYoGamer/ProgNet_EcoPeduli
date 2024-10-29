@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('username')->unique();
-            $table->string('poin')->default(0);
+            $table->integer('poin')->default(0);
             $table->string('email')->unique();
             $table->string('password');
             $table->string('name')->nullable();
@@ -43,6 +43,28 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        Schema::create('tb_penukaran_sampah', function (Blueprint $table) {
+            $table-> id();
+            $table->string('nama_operator')->nullable();
+            $table->string('nama_pengguna')->nullable();
+            $table->string('tipe_sampah')->nullable();
+            $table->integer('berat')->nullable();
+            $table->string('catatan')->nullable();
+            $table->string('foto_bukti')->nullable();
+            $table->integer('total_poin')->nullable();
+            $table->string('status')->default('pending');
+            $table->timestamps();
+        });
+
+        Schema::create('tb_penukaran_poin', function (Blueprint $table) {
+            $table->string('kode_unik') -> primary();
+            $table->string('username');
+            $table->string('keterangan_penukaran');
+            $table->integer('poin');
+            $table->string('status')->default('pending');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -53,5 +75,7 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('tb_penukaran_poin');
+        Schema::dropIfExists('tb_penukaran_sampah');
     }
 };
