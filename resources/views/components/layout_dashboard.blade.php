@@ -110,7 +110,6 @@
                 const csrfToken = document.querySelector('meta[name="csrf-token"]');
                 if (!csrfToken) return alert('CSRF token not found');
 
-                const csrfToken = document.querySelector('meta[name="csrf-token"]');
                 fetch('{{ route('upload.cropped.image') }}', {
                     method: 'POST',
                     headers: {
