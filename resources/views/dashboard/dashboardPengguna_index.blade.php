@@ -46,13 +46,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="border px-4 py-2">1</td>
-                            <td class="border px-4 py-2">KD005</td>
-                            <td class="border px-4 py-2">4 Kg Beras, 2 Kg Gula</td>
-                            <td class="border px-4 py-2">Belum Ditukarkan</td>
-                        </tr>
-                        <!-- Tambahkan baris sesuai kebutuhan -->
+                        @forelse ($kodeUniks as $index => $code)
+                            <tr>
+                                <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                                <td class="border px-4 py-2">{{ $code->kode_unik }}</td>
+                                <td class="border px-4 py-2">{{ $code->keterangan_penukaran }}</td>
+                                <td class="border px-4 py-2">{{ $code->status }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="border px-4 py-2 text-center">Belum ada kode unik</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
@@ -70,31 +75,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="border px-4 py-2">1</td>
-                            <td class="border px-4 py-2">KD001</td>
-                            <td class="border px-4 py-2">1 Kg Beras, 2 Buah Mie Instan</td>
-                            <td class="border px-4 py-2">Senin, 1 Oktober 2024</td>
-                        </tr>
-                        <tr>
-                            <td class="border px-4 py-2">2</td>
-                            <td class="border px-4 py-2">KD002</td>
-                            <td class="border px-4 py-2">2 Kg Gula</td>
-                            <td class="border px-4 py-2">Jumat, 11 Oktober 2024</td>
-                        </tr>
-                        <tr>
-                            <td class="border px-4 py-2">3</td>
-                            <td class="border px-4 py-2">KD003</td>
-                            <td class="border px-4 py-2">3 Kg Beras</td>
-                            <td class="border px-4 py-2">Kamis, 17 Oktober 2024</td>
-                        </tr>
-                        <tr>
-                            <td class="border px-4 py-2">4</td>
-                            <td class="border px-4 py-2">KD004</td>
-                            <td class="border px-4 py-2">5 Buah Mie Instant</td>
-                            <td class="border px-4 py-2">Rabu, 23 Oktober 2024</td>
-                        </tr>
-                        <!-- Tambahkan baris sesuai kebutuhan -->
+                        @forelse ($riwayatPenukaran as $index => $history)
+                            <tr>
+                                <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                                <td class="border px-4 py-2">{{ $history->kode_unik }}</td>
+                                <td class="border px-4 py-2">{{ $history->keterangan_penukaran }}</td>
+                                <td class="border px-4 py-2">{{ $history->created_at }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="border px-4 py-2 text-center">Belum ada riwayat penukaran</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
