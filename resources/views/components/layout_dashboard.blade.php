@@ -15,52 +15,17 @@
 
     {{-- CSS Section --}}
     <style>
-        .sidebar {
-            width: 288px; /* Default size */
-            transition: width 0.5s;
-        }
-
-        .sidebar.collapsed {
-            width: 132px; /* Reduced size */
-        }
-
-        .ikon-min{
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .ikon-min.rotate{
-            transition: transform 0.5s ease-in-out;
-            transform: rotate(180deg);
-        }
-
-        /* Transisi untuk teks dan elemen yang menghilang */
-        .logo-text,
-        .text-navigasi-1,
-        .text-navigasi-2,
-        .text-dashboard,
-        .text-penukaran,
-        .text-jadwal,
-        .text-profil,
-        .text-beranda,
-        .text-logout {
+        /* Sidebar & Transition Styling */
+        .sidebar { width: 288px; transition: width 0.5s; }
+        .sidebar.collapsed { width: 132px; }
+        .ikon-min { transition: transform 0.5s ease-in-out; }
+        .ikon-min.rotate { transform: rotate(180deg); }
+        .logo-text, .text-navigasi-1, .text-navigasi-2, .text-dashboard, .text-penukaran, .text-jadwal, .text-profil, .text-beranda, .text-logout {
             transition: opacity 0.4s ease, visibility 0.4s ease;
         }
-
-        .disappear {
-            opacity: 0;
-            height: 0;
-            visibility: hidden;
-        }
-
-        /* Ukuran font ikon yang disesuaikan */
-        .adjusting {
-            font-size: 42px;
-            transition: font-size 0.5s ease;
-        }
-        .cropper-image {
-            max-width: 70vw; /* 90% of the viewport width */
-            max-height: 60vh; /* 80% of the viewport height */
-        }
+        .disappear { opacity: 0; height: 0; visibility: hidden; }
+        .adjusting { font-size: 42px; transition: font-size 0.5s ease; }
+        .cropper-image { max-width: 70vw; max-height: 60vh; }
     </style>
 
     {{-- Script Section --}}
@@ -72,7 +37,8 @@
         <x-sidebar></x-sidebar>
         {{ $slot }}
     </div>
-    {{-- KODE JS --}}
+
+    {{-- JavaScript Section --}}
     <script>
         document.querySelector('.ikon-min').addEventListener('click', function() {
             var sidebar = document.querySelector('.sidebar');
@@ -107,18 +73,17 @@
             iconsToResize.forEach(function(icon) {
                 icon.classList.toggle('adjusting');
             });
-
         });
 
         document.getElementById('logoutButton').addEventListener('click', function(event) {
-            var confirmLogout = confirm('Apakah Anda yakin ingin logout?');
-            if (!confirmLogout) {
+            if (!confirm('Apakah Anda yakin ingin logout?')) {
                 event.preventDefault();
             }
         });
+
         document.getElementById('upload-image').addEventListener('change', function(event) {
             const file = event.target.files[0];
-            if (file && file.size <= 2 * 1024 * 1024) { // Check if file size is less than or equal to 2MB
+            if (file && file.size <= 2 * 1024 * 1024) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     document.getElementById('image-to-crop').src = e.target.result;
@@ -132,35 +97,22 @@
         });
 
         let cropper;
-
         function initializeCropper() {
             const image = document.getElementById('image-to-crop');
-            if (cropper) {
-                cropper.destroy(); // Destroy the previous cropper instance
-            }
-            cropper = new Cropper(image, {
-                aspectRatio: 1,
-                viewMode: 1,
-            });
+            if (cropper) cropper.destroy();
+            cropper = new Cropper(image, { aspectRatio: 1, viewMode: 1 });
         }
 
         document.getElementById('crop-button').addEventListener('click', function() {
-            const canvas = cropper.getCroppedCanvas();
-            canvas.toBlob(function(blob) {
+            cropper.getCroppedCanvas().toBlob(function(blob) {
                 const formData = new FormData();
                 formData.append('cropped_image', blob, 'cropped_image.png');
-
                 const csrfToken = document.querySelector('meta[name="csrf-token"]');
-                if (!csrfToken) {
-                    alert('CSRF token not found');
-                    return;
-                }
+                if (!csrfToken) return alert('CSRF token not found');
 
-                fetch('{{ route('upload.cropped.image') }}', {
+                fetch('{{ route('upload.cropped.image', [], true) }}', {
                     method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken.getAttribute('content')
-                    },
+                    headers: { 'X-CSRF-TOKEN': csrfToken.getAttribute('content') },
                     body: formData
                 })
                 .then(response => response.json())
@@ -170,25 +122,19 @@
                         document.getElementById('cropper-modal').classList.add('hidden');
                         cropper.destroy();
                         cropper = null;
-                        document.getElementById('upload-image').value = ''; // Reset the file input value
-                        window.location.reload(); // Refresh the page
-                    } else {
-                        alert('Failed to upload image');
-                    }
+                        document.getElementById('upload-image').value = '';
+                        window.location.reload();
+                    } else alert('Failed to upload image');
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+                .catch(error => console.error('Error:', error));
             });
         });
 
         document.getElementById('kembali-button').addEventListener('click', function() {
             document.getElementById('cropper-modal').classList.add('hidden');
-            if (cropper) {
-                cropper.destroy(); // Destroy the cropper instance
-                cropper = null; // Reset the cropper variable
-            }
-            document.getElementById('upload-image').value = ''; // Reset the file input value
+            if (cropper) cropper.destroy();
+            cropper = null;
+            document.getElementById('upload-image').value = '';
         });
     </script>
 </body>
