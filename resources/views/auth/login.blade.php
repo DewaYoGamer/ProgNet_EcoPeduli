@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot name="title">Masuk | Eco Peduli</x-slot>
-    <div class="flex items-center justify-center min-h-screen bg-gray-100 overflow-hidden -mt-20">
+    <div class="flex items-center justify-center min-h-screen bg-gray-100 overflow-hidden mt-20">
         <div class="bg-white p-6 rounded shadow-md w-full max-w-sm mx-6 mb-16">
             @if(session()->has('success'))
                 <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">

@@ -2,7 +2,7 @@
     <x-slot name="title">Dashboard Admin | Eco Peduli</x-slot>
 
     <div class="w-4/5 p-4">
-        <div class="text-2xl font-bold mb-4 text-primary text-center">LIST PENUKARAN PENGGUNA</div>
+        <div class="text-3xl font-bold mb-4 text-primary text-center mt-10">INFORMASI PENUKARAN ECO-PEDULI</div>
 
         <!-- Penukaran Sampah Section -->
         <div class="bg-white shadow-md rounded-lg p-4 mb-6">
@@ -20,15 +20,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="py-1 px-2 border text-center">1</td>
-                        <td class="py-1 px-2 border">Yoga</td>
-                        <td class="py-1 px-2 border">Wiraguna</td>
-                        <td class="py-1 px-2 border">Senin, 1 Oktober 2024</td>
-                        <td class="py-1 px-2 border">100</td>
-                        <td class="py-1 px-2 border">Foto.jpg</td>
-                        <td class="py-1 px-2 border">Belum</td>
-                    </tr>
+                    @php
+                        $data_tb_penukaran_sampah = DB::table('tb_penukaran_sampah')->get();
+                    @endphp
+                    @forelse ($data_tb_penukaran_sampah as $index => $code)
+                        <tr>
+                            <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                            <td class="border px-4 py-2">{{ $code->nama_operator }}</td>
+                            <td class="border px-4 py-2">{{ $code->nama_pengguna }}</td>
+                            <td class="border px-4 py-2">{{ $code->created_at }}</td>
+                            <td class="border px-4 py-2">{{ $code->total_poin }}</td>
+                            <td class="border px-4 py-2">{{ $code->foto_bukti }}</td>
+                            <td class="border px-4 py-2">{{ $code->status }}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="border px-4 py-2 text-center">Belum ada kode unik</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
@@ -48,15 +57,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="py-1 px-2 border text-center">1</td>
-                        <td class="py-1 px-2 border">KD002</td>
-                        <td class="py-1 px-2 border">Wiraguna</td>
-                        <td class="py-1 px-2 border">2 Mie Instan</td>
-                        <td class="py-1 px-2 border">20</td>
-                        <td class="py-1 px-2 border">Senin, 2 Oktober 2024</td>
-                        <td class="py-1 px-2 border">Belum</td>
-                    </tr>
+                    @php
+                        $data_tb_penukaran_poin = DB::table('tb_penukaran_poin')->get();
+                    @endphp
+                    @forelse ($data_tb_penukaran_poin as $index => $code)
+                        <tr>
+                            <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                            <td class="border px-4 py-2">{{ $code->kode_unik }}</td>
+                            <td class="border px-4 py-2">{{ $code->username }}</td>
+                            <td class="border px-4 py-2">{{ $code->keterangan_penukaran }}</td>
+                            <td class="border px-4 py-2">{{ $code->poin }}</td>
+                            <td class="border px-4 py-2">{{ $code->created_at }}</td>
+                            <td class="border px-4 py-2">{{ $code->status }}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="border px-4 py-2 text-center">Belum ada kode unik</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
@@ -74,24 +92,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="py-1 px-2 border text-center">1</td>
-                        <td class="py-1 px-2 border text-center">KD001</td>
-                        <td class="py-1 px-2 border">1 Kg Beras, 2 Buah Mie Instan</td>
-                        <td class="py-1 px-2 border">Senin, 1 Oktober 2024</td>
-                    </tr>
-                    <tr>
-                        <td class="py-1 px-2 border text-center">2</td>
-                        <td class="py-1 px-2 border text-center">KD002</td>
-                        <td class="py-1 px-2 border">1 Kg Beras, 2 Buah Mie Instan</td>
-                        <td class="py-1 px-2 border">Senin, 1 Oktober 2024</td>
-                    </tr>
-                    <tr>
-                        <td class="py-1 px-2 border text-center">3</td>
-                        <td class="py-1 px-2 border text-center">KD003</td>
-                        <td class="py-1 px-2 border">1 Kg Beras, 2 Buah Mie Instan</td>
-                        <td class="py-1 px-2 border">Senin, 1 Oktober 2024</td>
-                    </tr>
+                    @php
+                        $data_tb_penukaran_poin = DB::table('tb_penukaran_poin')->where('status', 'accepted')->get();
+                    @endphp
+                    @forelse ($data_tb_penukaran_poin as $index => $code)
+                        <tr>
+                            <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                            <td class="border px-4 py-2">{{ $code->kode_unik }}</td>
+                            <td class="border px-4 py-2">{{ $code->keterangan_penukaran }}</td>
+                            <td class="border px-4 py-2">{{ $code->updated_at }}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="border px-4 py-2 text-center">Belum ada kode unik</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
