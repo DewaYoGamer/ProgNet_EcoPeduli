@@ -17,10 +17,12 @@ class UserController extends Controller
         $image = $request->file('cropped_image');
         $imageName = $user->id . '.png'; // Use user ID as the image name and PNG format
 
-        // Delete the old image if it exists
-        $oldImagePath = public_path('images/users/' . $user->avatar);
-        if (file_exists($oldImagePath)) {
-            unlink($oldImagePath);
+        // Delete the old image if it exists and is not empty
+        if (!empty($user->avatar)) {
+            $oldImagePath = public_path('images/users/' . $user->avatar);
+            if (file_exists($oldImagePath)) {
+                unlink($oldImagePath);
+            }
         }
 
         // Save the new image
