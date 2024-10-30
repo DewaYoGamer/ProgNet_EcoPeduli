@@ -9,10 +9,11 @@ class UserController extends Controller
 {
     public function uploadCroppedImage(Request $request)
     {
+        \Log::info('Upload request received', $request->all());
         $request->validate([
             'cropped_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
+        
         $user = Auth::user();
         $image = $request->file('cropped_image');
         $imageName = $user->id . '.png'; // Use user ID as the image name and PNG format
