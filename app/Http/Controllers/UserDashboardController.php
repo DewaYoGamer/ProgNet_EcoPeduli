@@ -42,8 +42,7 @@ class UserDashboardController extends Controller
     public function update(Request $request)
     {
         $user = Auth::user();
-        $user-> update($request->all());
-
+        $user -> update($request->all());
         return redirect()->route('user.profile')->with('success', 'Profil berhasil diperbarui!');
     }
 }

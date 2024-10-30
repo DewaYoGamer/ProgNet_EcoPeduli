@@ -144,7 +144,7 @@
             });
         }
 
-                document.getElementById('crop-button').addEventListener('click', function() {
+        document.getElementById('crop-button').addEventListener('click', function() {
             const canvas = cropper.getCroppedCanvas();
             canvas.toBlob(function(blob) {
                 const formData = new FormData();
