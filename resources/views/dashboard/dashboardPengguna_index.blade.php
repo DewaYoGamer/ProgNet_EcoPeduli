@@ -14,7 +14,7 @@
                         </div>
                         <p class="text-gray-600 text-sm font-semibold mt-4">Nama Lengkap</p>
                         <div class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-1 inline-block">
-                             <p class="text-gray-800 font-medium">{{ $user -> name}}</p>
+                            <p class="text-gray-800 font-medium">{{ $user -> name}}</p>
                         </div>
                     </div>
                 </div>

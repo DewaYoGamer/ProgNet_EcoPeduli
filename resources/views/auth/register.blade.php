@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot name="title">Daftar | Eco Peduli</x-slot>
-    <div class = "flex items-center justify-center min-h-screen bg-gray-100 overflow-hidden -mt-20">
+    <div class = "flex items-center justify-center min-h-screen bg-gray-100 overflow-hidden mt-20">
         <div class="bg-white p-6 rounded shadow-md w-full max-w-sm mx-6">
             <div class="flex justify-center mb-4">
                 <img src="{{ asset('images/logo.png') }}" class="h-24">

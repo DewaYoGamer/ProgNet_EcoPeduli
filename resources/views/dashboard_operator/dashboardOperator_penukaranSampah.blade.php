@@ -68,7 +68,7 @@
 
                 <!-- Tambah Point Button -->
                 <div class="col-span-2 flex justify-center mt-4">
-                    <button type="submit" class="bg-green-600 text-white text-2xl px-6 py-2 rounded-md font-semibold hover:bg-green-700">
+                    <button type="submit" class="bg-green-600 text-white text-2xl px-6 py-2 rounded-md font-semibold hover:bg-green-700" onclick="return konfirmasiPenukaran()">
                         Tambah Poin!
                     </button>
                 </div>
@@ -98,6 +98,14 @@
             // Hitung total poin
             const totalPoin = berat * poinPerKg;
             document.getElementById('total_poin').value = totalPoin;
+        }
+
+        function konfirmasiPenukaran() {
+            const totalPoints = document.getElementById('total_poin').value;
+            const pengguna = document.getElementById('nama_pengguna').value;
+
+            const confirmation = confirm(`Apakah Anda yakin ingin memberikan ${totalPoints} poin kepada pengguna ${pengguna}?`);
+            return confirmation; // True jika 'OK' diklik, False jika 'Cancel' diklik
         }
     </script>
 </x-layout_operator>
