@@ -15,9 +15,9 @@ class UserController extends Controller
 
         $user = Auth::user();
         $image = $request->file('cropped_image');
-        $imageName = $user->id . '.png'; // Use user ID as the image name and PNG format
+        $imageName = $user->id . '_' . time() . '.png'; // Append timestamp for uniqueness
 
-        // Delete the old image if it exists and is not empty
+        // Delete the old image if it exists
         if (!empty($user->avatar)) {
             $oldImagePath = public_path('images/users/' . $user->avatar);
             if (file_exists($oldImagePath)) {
@@ -25,13 +25,14 @@ class UserController extends Controller
             }
         }
 
-        // Save the new image
+        // Save the new image to the public directory
         $image->move(public_path('images/users'), $imageName);
 
-        // Update user's avatar in the database
+        // Update the user's avatar path in the database
         $user->avatar = $imageName;
         $user->save();
 
+        // Return a response with the HTTPS URL
         return response()->json(['success' => true, 'image_url' => asset('images/users/' . $imageName)]);
     }
 }
