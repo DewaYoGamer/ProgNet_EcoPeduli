@@ -179,7 +179,7 @@
                 .catch(error => {
                     console.error('Error:', error);
                 });
-            });
+            }, 'image/png'); // Ensure the blob is generated as a PNG to avoid browser compatibility issues
         });
 
         document.getElementById('kembali-button').addEventListener('click', function() {
@@ -190,6 +190,7 @@
             }
             document.getElementById('upload-image').value = ''; // Reset the file input value
         });
+
     </script>
 </body>
 </html>
