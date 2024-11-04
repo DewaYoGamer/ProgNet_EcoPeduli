@@ -85,7 +85,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/pengguna/profil', [UserDashboardController::class, 'profile'])->name('user.profile');
     Route::post('/pengguna/profil/update', [UserDashboardController::class, 'update'])->name('user.update');
-    Route::post('/upload-cropped-image', [UserController::class, 'uploadCroppedImage'])->name('upload.cropped.image');
+    Route::post('/pengguna/profil/update-image', [UserDashboardController::class, 'uploadCroppedImage'])->name('upload.cropped.image');
 });
 
 // ============= Admin =============

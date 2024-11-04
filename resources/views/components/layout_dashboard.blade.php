@@ -135,9 +135,6 @@
 
         function initializeCropper() {
             const image = document.getElementById('image-to-crop');
-            if (cropper) {
-                cropper.destroy(); // Destroy the previous cropper instance
-            }
             cropper = new Cropper(image, {
                 aspectRatio: 1,
                 viewMode: 1,
@@ -166,20 +163,15 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        document.getElementById('profile-picture').src = data.image_url;
-                        document.getElementById('cropper-modal').classList.add('hidden');
-                        cropper.destroy();
-                        cropper = null;
-                        document.getElementById('upload-image').value = ''; // Reset the file input value
-                        window.location.reload(); // Refresh the page
+                        window.location.href = data.redirect_url;
                     } else {
-                        alert('Failed to upload image');
+                        alert('Gagal mengunggah foto profil');
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
                 });
-            }, 'image/png'); // Ensure the blob is generated as a PNG to avoid browser compatibility issues
+            });
         });
 
         document.getElementById('kembali-button').addEventListener('click', function() {
