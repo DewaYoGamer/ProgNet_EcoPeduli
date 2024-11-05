@@ -142,7 +142,10 @@
         }
 
         document.getElementById('crop-button').addEventListener('click', function() {
-            const canvas = cropper.getCroppedCanvas();
+            const canvas = cropper.getCroppedCanvas({
+                width: 200,
+                height: 200
+            });
             canvas.toBlob(function(blob) {
                 const formData = new FormData();
                 formData.append('cropped_image', blob, 'cropped_image.png');
