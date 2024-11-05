@@ -105,9 +105,8 @@ Route::middleware(['auth'])->group(function () {
 
 // ============= Operator =============
 Route::middleware(['auth'])->group(function () {
-    Route::get('/operator', function () {
-        return view('dashboard_operator.dashboardOperator_index');
-    });
+    Route::get('/operator', [UserDashboardController::class, 'index_operator']);
+
     Route::get('/operator/penukaran_sampah', function () {
         return view('dashboard_operator.dashboardOperator_penukaranSampah');
     });
