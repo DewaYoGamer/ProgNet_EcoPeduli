@@ -49,7 +49,7 @@
                     <tbody>
                         @forelse ($informasi_penukaran as $index_operator => $code)
                             <tr>
-                                <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                                <td class="border px-4 py-2">{{ $index_operator + 1 }}</td>
                                 <td class="border px-4 py-2">{{ $code->nama_pengguna }}</td>
                                 <td class="border px-4 py-2">{{ $code->berat }}</td>
                                 <td class="border px-4 py-2">{{ $code->total_poin }}</td>
@@ -80,7 +80,7 @@
                     <tbody>
                         @forelse ($riwayatPenukaran as $index_operator => $code)
                             <tr>
-                                <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                                <td class="border px-4 py-2">{{ $index_operator + 1 }}</td>
                                 <td class="border px-4 py-2">{{ $code->nama_pengguna }}</td>
                                 <td class="border px-4 py-2">{{ $code->berat }}</td>
                                 <td class="border px-4 py-2">{{ $code->total_poin }}</td>

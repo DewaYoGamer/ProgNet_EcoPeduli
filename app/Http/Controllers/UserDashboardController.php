@@ -11,11 +11,8 @@ class UserDashboardController extends Controller
     public function index()
     {
         $user = Auth::user();
-
-        if ($user) {
-            if ($user->role === 'admin') {
-                return redirect('/admin'); // Redirect to admin dashboard
-            }
+        if ($user->role !== 'user') {
+            return $this->redirectToRole($user->role);
         }
 
         // Ambil data kode unik untuk user yang sedang login
@@ -34,6 +31,9 @@ class UserDashboardController extends Controller
 
     public function index_operator(){
         $user = Auth::user();
+        if ($user->role !== 'operator') {
+            return $this->redirectToRole($user->role);
+        }
 
         // Untuk Seluruh Data
         $informasi_penukaran = DB::table('tb_penukaran_sampah')
@@ -46,6 +46,34 @@ class UserDashboardController extends Controller
             ->get();
 
         return view('dashboard_operator.dashboardOperator_index', compact('user', 'informasi_penukaran', 'riwayatPenukaran'));
+    }
+
+    public function index_admin(){
+        $user = Auth::user();
+        if ($user->role !== 'admin') {
+            return $this->redirectToRole($user->role);
+        }
+
+        $data_tb_penukaran_sampah = DB::table('tb_penukaran_sampah')->get();
+        $data_tb_penukaran_poin = DB::table('tb_penukaran_poin')->get();
+        $data_tb_penukaran_poin_acc = DB::table('tb_penukaran_poin')->where('status', 'accepted')->get();
+
+        return view('dashboard_admin.dashboardAdmin_index', compact('user', 'data_tb_penukaran_sampah', 'data_tb_penukaran_poin', 'data_tb_penukaran_poin_acc'));
+    }
+
+    private function redirectToRole($role)
+    {
+        // Arahkan ke halaman berdasarkan peran
+        switch ($role) {
+            case 'admin':
+                return redirect('/admin');
+            case 'operator':
+                return redirect('/operator');
+            case 'user':
+                return redirect('/pengguna');
+            default:
+                return redirect('/'); // Default ke halaman utama jika role tidak dikenal
+        }
     }
 
     public function profile()
