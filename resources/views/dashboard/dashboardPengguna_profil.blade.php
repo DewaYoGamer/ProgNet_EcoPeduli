@@ -138,4 +138,5 @@
             </div>
         </div>
     </div>
+    <x-upimage></x-upimage>
 </x-layout_dashboard>
