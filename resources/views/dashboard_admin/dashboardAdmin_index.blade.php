@@ -11,31 +11,28 @@
                 <thead>
                     <tr class="bg-primary text-white">
                         <th class="py-1 px-2 border">No</th>
+                        <th class="py-1 px-2 border">ID</th>
                         <th class="py-1 px-2 border">Operator</th>
                         <th class="py-1 px-2 border">Pengguna</th>
                         <th class="py-1 px-2 border">Tanggal Penukaran</th>
                         <th class="py-1 px-2 border">Poin yang diterima</th>
-                        <th class="py-1 px-2 border">Bukti Penukaran</th>
                         <th class="py-1 px-2 border">Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @php
-                        $data_tb_penukaran_sampah = DB::table('tb_penukaran_sampah')->get();
-                    @endphp
-                    @forelse ($data_tb_penukaran_sampah as $index => $code)
+                    @forelse ($data_tb_penukaran_sampah as $index_admin => $code)
                         <tr>
-                            <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                            <td class="border px-4 py-2">{{ $index_admin + 1 }}</td>
+                            <td class="border px-4 py-2 font-bold">{{ $code->id }}</td>
                             <td class="border px-4 py-2">{{ $code->nama_operator }}</td>
                             <td class="border px-4 py-2">{{ $code->nama_pengguna }}</td>
                             <td class="border px-4 py-2">{{ $code->created_at }}</td>
                             <td class="border px-4 py-2">{{ $code->total_poin }}</td>
-                            <td class="border px-4 py-2">{{ $code->foto_bukti }}</td>
-                            <td class="border px-4 py-2">{{ $code->status }}</td>
+                            <td class="border px-4 py-2 font-bold">{{ $code->status }}</td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="border px-4 py-2 text-center">Belum ada kode unik</td>
+                            <td colspan="4" class="border px-4 py-2 text-center">Belum ada data Penukaran Sampah</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -57,22 +54,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @php
-                        $data_tb_penukaran_poin = DB::table('tb_penukaran_poin')->get();
-                    @endphp
-                    @forelse ($data_tb_penukaran_poin as $index => $code)
+                    @forelse ($data_tb_penukaran_poin as $index_admin => $code)
                         <tr>
-                            <td class="border px-4 py-2">{{ $index + 1 }}</td>
-                            <td class="border px-4 py-2">{{ $code->kode_unik }}</td>
+                            <td class="border px-4 py-2">{{ $index_admin + 1 }}</td>
+                            <td class="border px-4 py-2 font-bold">{{ $code->kode_unik }}</td>
                             <td class="border px-4 py-2">{{ $code->username }}</td>
                             <td class="border px-4 py-2">{{ $code->keterangan_penukaran }}</td>
                             <td class="border px-4 py-2">{{ $code->poin }}</td>
                             <td class="border px-4 py-2">{{ $code->created_at }}</td>
-                            <td class="border px-4 py-2">{{ $code->status }}</td>
+                            <td class="border px-4 py-2 font-bold">{{ $code->status }}</td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="border px-4 py-2 text-center">Belum ada kode unik</td>
+                            <td colspan="4" class="border px-4 py-2 text-center">Belum ada data Penukaran Poin</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -92,19 +86,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @php
-                        $data_tb_penukaran_poin = DB::table('tb_penukaran_poin')->where('status', 'accepted')->get();
-                    @endphp
-                    @forelse ($data_tb_penukaran_poin as $index => $code)
+                    @forelse ($data_tb_penukaran_poin_acc as $index_admin => $code)
                         <tr>
-                            <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                            <td class="border px-4 py-2">{{ $index_admin + 1 }}</td>
                             <td class="border px-4 py-2">{{ $code->kode_unik }}</td>
                             <td class="border px-4 py-2">{{ $code->keterangan_penukaran }}</td>
                             <td class="border px-4 py-2">{{ $code->updated_at }}</td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="border px-4 py-2 text-center">Belum ada kode unik</td>
+                            <td colspan="4" class="border px-4 py-2 text-center">Belum ada Riwayat Penukaran</td>
                         </tr>
                     @endforelse
                 </tbody>

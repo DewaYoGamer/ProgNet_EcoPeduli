@@ -15,52 +15,17 @@
 
     {{-- CSS Section --}}
     <style>
-        .sidebar {
-            width: 288px; /* Default size */
-            transition: width 0.5s;
-        }
-
-        .sidebar.collapsed {
-            width: 132px; /* Reduced size */
-        }
-
-        .ikon-min{
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .ikon-min.rotate{
-            transition: transform 0.5s ease-in-out;
-            transform: rotate(180deg);
-        }
-
-        /* Transisi untuk teks dan elemen yang menghilang */
-        .logo-text,
-        .text-navigasi-1,
-        .text-navigasi-2,
-        .text-dashboard,
-        .text-penukaran,
-        .text-jadwal,
-        .text-profil,
-        .text-beranda,
-        .text-logout {
+        /* Sidebar & Transition Styling */
+        .sidebar { width: 288px; transition: width 0.5s; }
+        .sidebar.collapsed { width: 132px; }
+        .ikon-min { transition: transform 0.5s ease-in-out; }
+        .ikon-min.rotate { transform: rotate(180deg); }
+        .logo-text, .text-navigasi-1, .text-navigasi-2, .text-dashboard, .text-penukaran, .text-jadwal, .text-profil, .text-beranda, .text-logout {
             transition: opacity 0.4s ease, visibility 0.4s ease;
         }
-
-        .disappear {
-            opacity: 0;
-            height: 0;
-            visibility: hidden;
-        }
-
-        /* Ukuran font ikon yang disesuaikan */
-        .adjusting {
-            font-size: 42px;
-            transition: font-size 0.5s ease;
-        }
-        .cropper-image {
-            max-width: 70vw; /* 90% of the viewport width */
-            max-height: 60vh; /* 80% of the viewport height */
-        }
+        .disappear { opacity: 0; height: 0; visibility: hidden; }
+        .adjusting { font-size: 42px; transition: font-size 0.5s ease; }
+        .cropper-image { max-width: 70vw; max-height: 60vh; }
     </style>
 
     {{-- Script Section --}}
@@ -72,7 +37,8 @@
         <x-sidebar></x-sidebar>
         {{ $slot }}
     </div>
-    {{-- KODE JS --}}
+
+    {{-- JavaScript Section --}}
     <script>
         document.querySelector('.ikon-min').addEventListener('click', function() {
             var sidebar = document.querySelector('.sidebar');
@@ -107,12 +73,10 @@
             iconsToResize.forEach(function(icon) {
                 icon.classList.toggle('adjusting');
             });
-
         });
 
         document.getElementById('logoutButton').addEventListener('click', function(event) {
-            var confirmLogout = confirm('Apakah Anda yakin ingin logout?');
-            if (!confirmLogout) {
+            if (!confirm('Apakah Anda yakin ingin logout?')) {
                 event.preventDefault();
             }
         });

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use Carbon\Carbon;
 
 class PenukaranSampahController extends Controller
 {
@@ -21,16 +22,9 @@ class PenukaranSampahController extends Controller
             'total_poin' => ['required', 'numeric', 'min:1'],
         ]);
         $validated['nama_operator'] = $user->username;
+        $validated['created_at'] = Carbon::now('Asia/Singapore');
+        $validated['updated_at'] = Carbon::now('Asia/Singapore');
         DB::table('tb_penukaran_sampah')->insert($validated);
-
-        // Update poin pengguna di tabel users
-        $poin_pengguna = User::where('username', $validated['nama_pengguna'])->first();
-        $poin_before = $poin_pengguna->poin;
-        $poin_after = $poin_before + $request->total_poin;
-
-        DB::table('users')
-            ->where('username', $request->nama_pengguna)
-            ->update(['poin' =>  $poin_after]);
         
         return redirect('/operator/penukaran_sampah')->with('success', 'Penukaran poin berhasil disimpan.');
     }

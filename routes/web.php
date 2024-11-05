@@ -8,6 +8,7 @@ use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PenukaranSampahController;
 use App\Http\Controllers\PenukaranPoinController;
+use App\Http\Controllers\AdminController;
 
 // ============= Landing Page (Middeleware) =============
 Route::get('/', function () {
@@ -90,9 +91,7 @@ Route::middleware(['auth'])->group(function () {
 
 // ============= Admin =============
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin', function () {
-        return view('dashboard_admin.dashboardAdmin_index');
-    });
+    Route::get('/admin', [UserDashboardController::class, 'index_admin']);
 
     Route::get('/admin/penukaran_poin', function () {
         return view('dashboard_admin.dashboardAdmin_penukaranPoin');
@@ -105,9 +104,8 @@ Route::middleware(['auth'])->group(function () {
 
 // ============= Operator =============
 Route::middleware(['auth'])->group(function () {
-    Route::get('/operator', function () {
-        return view('dashboard_operator.dashboardOperator_index');
-    });
+    Route::get('/operator', [UserDashboardController::class, 'index_operator']);
+
     Route::get('/operator/penukaran_sampah', function () {
         return view('dashboard_operator.dashboardOperator_penukaranSampah');
     });
@@ -125,3 +123,7 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 Route::post('/tukar_sampah', [PenukaranSampahController::class, 'store']);
 Route::post('/tukar_poin', [PenukaranPoinController::class, 'store']);
+Route::post('/terima_penukaran_sampah', [AdminController::class, 'updateData']);
+Route::post('/cari_data_sampah', [AdminController::class, 'searchData']);
+Route::post('/cari_data_poin', [AdminController::class, 'searchData_Poin']);
+Route::post('/terima_penukaran_poin', [AdminController::class, 'updateData_Poin']);

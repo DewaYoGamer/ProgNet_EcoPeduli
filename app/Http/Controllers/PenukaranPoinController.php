@@ -42,17 +42,11 @@ class PenukaranPoinController extends Controller
         $table_data['username'] = $user->username;
         $table_data['poin'] = $validated['totalPoints'];
         $table_data['keterangan_penukaran'] = $keteranganPenukaran;
-        $table_data['created_at'] = Carbon::now();
-        $table_data['updated_at'] = Carbon::now();
+        $table_data['created_at'] = Carbon::now('Asia/Singapore');
+        $table_data['updated_at'] = Carbon::now('Asia/Singapore');
 
         // Menyimpan data ke tabel
         DB::table('tb_penukaran_poin')->insert($table_data);
-
-        // Mengurangi poin pengguna
-        $poin_after = $user->poin - $validated['totalPoints'];
-        DB::table('users')
-            ->where('username', $user->username)
-            ->update(['poin' =>  $poin_after]);
 
         return redirect('/pengguna/penukaran_poin')->with('success', 'Penukaran poin berhasil disimpan.');
     }
