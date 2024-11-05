@@ -41,6 +41,7 @@
                         <a href="/forgot">Lupa Kata Sandi?</a>
                     </p>
                 </div>
+                <x-turnstile />
                 <div class="mb-4 font-bold">
                     <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">MASUK</Button>
                 </div>
