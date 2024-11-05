@@ -125,3 +125,5 @@ Route::post('/tukar_sampah', [PenukaranSampahController::class, 'store']);
 Route::post('/tukar_poin', [PenukaranPoinController::class, 'store']);
 Route::post('/terima_penukaran_sampah', [AdminController::class, 'updateData']);
 Route::post('/cari_data_sampah', [AdminController::class, 'searchData']);
+Route::post('/cari_data_poin', [AdminController::class, 'searchData_Poin']);
+Route::post('/terima_penukaran_poin', [AdminController::class, 'updateData_Poin']);

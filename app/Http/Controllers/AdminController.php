@@ -12,7 +12,7 @@ class AdminController extends Controller
 {
     public function updateData(Request $request)
     {
-        // Update poin pengguna di tabel users
+        // Mengambil data pengguna
         $data_pengguna = DB::table('users')
             ->where('username', $request->nama_pengguna)
             ->first();
@@ -55,5 +55,51 @@ class AdminController extends Controller
         } else {
             return redirect('/admin/penukaran_sampah')->with('error', 'ID penukaran tidak ditemukan!');
         }
+    }
+
+    public function searchData_Poin(Request $request)
+    {
+        $validated = $request->validate([
+            'kode_unik' => ['required', 'exists:tb_penukaran_poin,kode_unik'],
+        ]);
+    
+        $data = DB::table('tb_penukaran_poin')->where('kode_unik', $request->kode_unik)->first();
+    
+        if ($data) {
+            // Menyimpan data ke session
+            return redirect('/admin/penukaran_poin') -> with([
+                'data' => $data
+            ]);
+        } else {
+            return redirect('/admin/penukaran_poin')->with('error', 'ID penukaran tidak ditemukan!');
+        }
+    }
+
+    public function updateData_Poin(Request $request){
+        // Mengambil data pengguna
+        $data_pengguna = DB::table('users')
+            ->where('username', $request->username)
+            ->first();
+        
+        $poin_pengguna = $data_pengguna->poin;
+        $poin_before = $poin_pengguna;
+        $poin_after = $poin_before - $request->poin;
+
+        // Kurangkan Poin
+        DB::table('users')
+            ->where('username', $request->username)
+            ->update(['poin' =>  $poin_after]);
+        
+        // Update Acc
+        DB::table('tb_penukaran_poin')
+            ->where('kode_unik', $request->kode_unik)
+            ->update(['status' => 'accepted']);
+        
+        // Update Waktu
+        DB::table('tb_penukaran_poin')
+            ->where('kode_unik', $request->kode_unik)
+            ->update(['updated_at' => Carbon::now('Asia/Singapore')]);
+
+        return redirect('/admin/penukaran_poin')->with('success', 'Penukaran poin berhasil dilakukan. Silahkan berikan barang kepada penukar!.');
     }
 }

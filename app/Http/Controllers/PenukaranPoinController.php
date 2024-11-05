@@ -48,12 +48,6 @@ class PenukaranPoinController extends Controller
         // Menyimpan data ke tabel
         DB::table('tb_penukaran_poin')->insert($table_data);
 
-        // Mengurangi poin pengguna
-        $poin_after = $user->poin - $validated['totalPoints'];
-        DB::table('users')
-            ->where('username', $user->username)
-            ->update(['poin' =>  $poin_after]);
-
         return redirect('/pengguna/penukaran_poin')->with('success', 'Penukaran poin berhasil disimpan.');
     }
 
