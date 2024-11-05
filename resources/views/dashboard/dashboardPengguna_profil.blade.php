@@ -116,7 +116,13 @@
                 <img id="profile-picture" src="{{ asset($user->avatar ? 'images/users/' . $user->avatar : 'images/noavatar.png') }}" alt="Profile Picture" class="w-64 rounded-full">
                 <input type="file" id="upload-image" accept="image/*" class="hidden">
                 <button onclick="document.getElementById('upload-image').click()" class="w-[12rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">Ganti Foto Profil</button>
+                @if(session('success2'))
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mt-4" role="alert">
+                        <span class="block sm:inline">{{ session('success2') }}</span>
+                    </div>
+                @endif
             </div>
+
         </div>
 
         <!-- Modal for Image Cropper -->
@@ -131,11 +137,5 @@
                 </div>
             </div>
         </div>
-
-        <!-- Form to submit cropped image -->
-        <form id="upload-cropped-image-form" action="{{ route('upload.cropped.image') }}" method="POST" enctype="multipart/form-data" class="hidden">
-            @csrf
-            <input type="hidden" name="cropped_image" id="cropped-image-input">
-        </form>
     </div>
 </x-layout_dashboard>

@@ -50,7 +50,7 @@
                         <label for="cntBeras" class="block text-lg font-semibold text-slate-400">Jumlah Penukaran</label>
                         <input type="number" id="cntBeras" name="cntBeras" class="w-[90%] border-2 border-secondary p-2 rounded-md -mb-3" min="0" value="0" oninput="calculateTotalPoints()">
                     </div>
-    
+
                     <!-- Item Gula -->
                     <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
                         <div class="flex flex-col -mt-4">
@@ -67,7 +67,7 @@
                         <label for="cntGula" class="block text-lg font-semibold text-slate-400">Jumlah Penukaran</label>
                         <input type="number" id="cntGula" name="cntGula" class="w-[90%] border-2 border-secondary p-2 rounded-md -mb-3" min="0" value="0" oninput="calculateTotalPoints()">
                     </div>
-    
+
                     <!-- Item Mie -->
                     <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
                         <div class="flex flex-col -mt-4">
@@ -85,13 +85,13 @@
                         <input type="number" id="cntMie" name="cntMie" class="w-[90%] border-2 border-secondary p-2 rounded-md -mb-3" min="0" value="0" oninput="calculateTotalPoints()">
                     </div>
                 </div>
-    
+
                 <!-- Total Poin -->
                 <div class="mt-6 text-3xl font-bold">
                     Total Poin:
                     <input type="number" id="totalPoints" name="totalPoints" class="text-red-500 outline-none p-2" min="0" value="0" readonly>
                 </div>
-    
+
                 <!-- Tombol Aksi -->
                 <div class="flex justify-between mt-6">
                     <button type="button" class="bg-pink-500 text-white text-2xl font-semibold py-2 px-4 rounded-md" onclick="resetFields()">Reset Barang</button>

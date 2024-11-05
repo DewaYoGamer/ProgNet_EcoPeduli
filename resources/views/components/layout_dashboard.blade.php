@@ -99,8 +99,10 @@
         let cropper;
         function initializeCropper() {
             const image = document.getElementById('image-to-crop');
-            if (cropper) cropper.destroy();
-            cropper = new Cropper(image, { aspectRatio: 1, viewMode: 1 });
+            cropper = new Cropper(image, {
+                aspectRatio: 1,
+                viewMode: 1,
+            });
         }
 
         document.getElementById('crop-button').addEventListener('click', function() {
@@ -121,13 +123,10 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        document.getElementById('profile-picture').src = data.image_url;
-                        document.getElementById('cropper-modal').classList.add('hidden');
-                        cropper.destroy();
-                        cropper = null;
-                        document.getElementById('upload-image').value = '';
-                        window.location.reload();
-                    } else alert('Failed to upload image');
+                        window.location.href = data.redirect_url;
+                    } else {
+                        alert('Gagal mengunggah foto profil');
+                    }
                 })
                 .catch(error => console.error('Error:', error));
             });
@@ -139,6 +138,7 @@
             cropper = null;
             document.getElementById('upload-image').value = '';
         });
+
     </script>
 </body>
 </html>
