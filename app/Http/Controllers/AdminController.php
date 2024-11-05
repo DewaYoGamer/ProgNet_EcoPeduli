@@ -16,7 +16,7 @@ class AdminController extends Controller
         $data_pengguna = DB::table('users')
             ->where('username', $request->nama_pengguna)
             ->first();
-        
+
         $poin_pengguna = $data_pengguna->poin;
         $poin_before = $poin_pengguna;
         $poin_after = $poin_before + $request->total_poin;
@@ -30,7 +30,7 @@ class AdminController extends Controller
         DB::table('tb_penukaran_sampah')
             ->where('id', $request->id)
             ->update(['status' => 'accepted']);
-        
+
         // Update Waktu
         DB::table('tb_penukaran_sampah')
             ->where('id', $request->id)
@@ -44,9 +44,9 @@ class AdminController extends Controller
         $validated = $request->validate([
             'id' => ['required', 'exists:tb_penukaran_sampah,id'],
         ]);
-    
+
         $data = DB::table('tb_penukaran_sampah')->where('id', $request->id)->first();
-    
+
         if ($data) {
             // Menyimpan data ke session
             return redirect('/admin/penukaran_sampah') -> with([
@@ -62,9 +62,9 @@ class AdminController extends Controller
         $validated = $request->validate([
             'kode_unik' => ['required', 'exists:tb_penukaran_poin,kode_unik'],
         ]);
-    
+
         $data = DB::table('tb_penukaran_poin')->where('kode_unik', $request->kode_unik)->first();
-    
+
         if ($data) {
             // Menyimpan data ke session
             return redirect('/admin/penukaran_poin') -> with([
@@ -81,20 +81,11 @@ class AdminController extends Controller
             ->where('username', $request->username)
             ->first();
         
-        $poin_pengguna = $data_pengguna->poin;
-        $poin_before = $poin_pengguna;
-        $poin_after = $poin_before - $request->poin;
-
-        // Kurangkan Poin
-        DB::table('users')
-            ->where('username', $request->username)
-            ->update(['poin' =>  $poin_after]);
-        
         // Update Acc
         DB::table('tb_penukaran_poin')
             ->where('kode_unik', $request->kode_unik)
             ->update(['status' => 'accepted']);
-        
+
         // Update Waktu
         DB::table('tb_penukaran_poin')
             ->where('kode_unik', $request->kode_unik)
