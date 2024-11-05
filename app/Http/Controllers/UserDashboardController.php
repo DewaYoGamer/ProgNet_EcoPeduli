@@ -14,8 +14,6 @@ class UserDashboardController extends Controller
         if ($user) {
             if ($user->role === 'admin') {
                 return redirect('/admin'); // Redirect to admin dashboard
-            } else if ($user->role === 'operator') {
-                return redirect('/operator'); // Redirect to operator dashboard
             }
         }
 
@@ -31,6 +29,22 @@ class UserDashboardController extends Controller
             ->get();
 
         return view('dashboard.dashboardPengguna_index', compact('user', 'kodeUniks', 'riwayatPenukaran'));
+    }
+
+    public function index_operator(){
+        $user = Auth::user();
+
+        // Untuk Seluruh Data
+        $informasi_penukaran = DB::table('tb_penukaran_sampah')
+            ->get();
+        
+        // Untuk Statusnya ACC
+        $riwayatPenukaran = DB::table('tb_penukaran_sampah')
+            ->where('nama_pengguna', $user->username)
+            ->where('status', 'accepted')
+            ->get();
+
+        return view('dashboard_operator.dashboardOperator_index', compact('user', 'informasi_penukaran', 'riwayatPenukaran'));
     }
 
     public function profile()

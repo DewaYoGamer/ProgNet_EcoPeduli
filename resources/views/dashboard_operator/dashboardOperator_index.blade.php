@@ -10,11 +10,11 @@
                     <div class="text-left mt-3">
                         <p class="text-gray-600 text-sm font-semibold">Username</p>
                         <div class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-1 inline-block">
-                                <p class="text-gray-800 font-medium">@aryaarinatha</p>
+                            <p class="text-gray-800 font-medium">{{ $user -> username }}</p>
                         </div>
                         <p class="text-gray-600 text-sm font-semibold mt-4">Nama</p>
                         <div class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-1 inline-block">
-                             <p class="text-gray-800 font-medium">I Ketut Arya Arinatha Wardana</p>
+                            <p class="text-gray-800 font-medium">{{ $user -> name}}</p>
                         </div>
                     </div>
                 </div>
@@ -47,14 +47,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="border px-4 py-2">1</td>
-                            <td class="border px-4 py-2">@wiraguna</td>
-                            <td class="border px-4 py-2">4 Kg</td>
-                            <td class="border px-4 py-2">100 Poin</td>
-                            <td class="border px-4 py-2">Belum Disetujui</td>
-                        </tr>
-                        <!-- Tambahkan baris sesuai kebutuhan -->
+                        @forelse ($informasi_penukaran as $index_operator => $code)
+                            <tr>
+                                <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                                <td class="border px-4 py-2">{{ $code->nama_pengguna }}</td>
+                                <td class="border px-4 py-2">{{ $code->berat }}</td>
+                                <td class="border px-4 py-2">{{ $code->total_poin }}</td>
+                                <td class="border px-4 py-2">{{ $code->status }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="border px-4 py-2 text-center">Belum ada kode unik</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
@@ -73,21 +78,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="border px-4 py-2">1</td>
-                            <td class="border px-4 py-2">@nyoman</td>
-                            <td class="border px-4 py-2">5 Kg</td>
-                            <td class="border px-4 py-2">100 Poin</td>
-                            <td class="border px-4 py-2">Senin, 1 Oktober 2024</td>
-                        </tr>
-                        <tr>
-                            <td class="border px-4 py-2">2</td>
-                            <td class="border px-4 py-2">@yoga</td>
-                            <td class="border px-4 py-2">2 Kg</td>
-                            <td class="border px-4 py-2">20 Poin</td>
-                            <td class="border px-4 py-2">Jumat, 11 Oktober 2024</td>
-                        </tr>
-                        <!-- Tambahkan baris sesuai kebutuhan -->
+                        @forelse ($riwayatPenukaran as $index_operator => $code)
+                            <tr>
+                                <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                                <td class="border px-4 py-2">{{ $code->nama_pengguna }}</td>
+                                <td class="border px-4 py-2">{{ $code->berat }}</td>
+                                <td class="border px-4 py-2">{{ $code->total_poin }}</td>
+                                <td class="border px-4 py-2">{{ $code->updated_at }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="border px-4 py-2 text-center">Belum ada kode unik</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

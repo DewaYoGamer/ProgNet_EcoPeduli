@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use Carbon\Carbon;
 
 class PenukaranSampahController extends Controller
 {
@@ -21,6 +22,8 @@ class PenukaranSampahController extends Controller
             'total_poin' => ['required', 'numeric', 'min:1'],
         ]);
         $validated['nama_operator'] = $user->username;
+        $validated['created_at'] = Carbon::now();
+        $validated['updated_at'] = Carbon::now();
         DB::table('tb_penukaran_sampah')->insert($validated);
 
         // Update poin pengguna di tabel users
