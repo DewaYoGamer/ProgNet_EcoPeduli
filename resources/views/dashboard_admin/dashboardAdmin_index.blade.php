@@ -9,7 +9,7 @@
             <h2 class="text-lg font-semibold mb-2">Penukaran Sampah</h2>
             <table class="min-w-full bg-white border w-full text-sm">
                 <thead>
-                    <tr class="bg-primary text-white">
+                    <tr class="bg-third text-white">
                         <th class="py-1 px-2 border">No</th>
                         <th class="py-1 px-2 border">ID</th>
                         <th class="py-1 px-2 border">Operator</th>
@@ -43,7 +43,7 @@
             <h2 class="text-lg font-semibold mb-2">Penukaran Poin</h2>
             <table class="min-w-full bg-white border w-full text-sm">
                 <thead>
-                    <tr class="bg-primary text-white">
+                    <tr class="bg-third text-white">
                         <th class="py-1 px-2 border">No</th>
                         <th class="py-1 px-2 border">Kode Unik</th>
                         <th class="py-1 px-2 border">Username</th>
@@ -78,7 +78,7 @@
             <h2 class="text-lg font-semibold mb-2">Riwayat Penukaran</h2>
             <table class="min-w-full bg-white border w-full text-sm">
                 <thead>
-                    <tr class="bg-primary text-white">
+                    <tr class="bg-third text-white">
                         <th class="py-1 px-2 border">No</th>
                         <th class="py-1 px-2 border">Kode Unik</th>
                         <th class="py-1 px-2 border">Deskripsi</th>
