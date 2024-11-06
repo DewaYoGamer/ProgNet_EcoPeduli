@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PenukaranSampahController;
 use App\Http\Controllers\PenukaranPoinController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EducateController;
 
 // ============= Landing Page (Middeleware) =============
 Route::get('/', function () {
@@ -27,24 +28,15 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/educate', function () {
-    return view('educate');
+Route::prefix('educate')->group(function () {
+    Route::get('/', [EducateController::class, 'index']);
+    Route::get('/pemilahan', [EducateController::class, 'pemilahan']);
+    Route::get('/dampak', [EducateController::class, 'dampak']);
+    Route::get('/pengelolaan', [EducateController::class, 'pengelolaan']);
 });
 
 Route::get('/test', function () {
     return view('test');
-});
-
-Route::get('/pemilahan', function () {
-    return view('educate_pemilahan');
-});
-
-Route::get('/dampak', function () {
-    return view('educate_dampak');
-});
-
-Route::get('/pengelolaan', function () {
-    return view('educate_pengelolaan');
 });
 
 // ============= Auth =============

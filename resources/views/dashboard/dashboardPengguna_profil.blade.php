@@ -138,5 +138,5 @@
             </div>
         </div>
     </div>
-    <x-upimage></x-upimage>
+    <x-script.upimage />
 </x-layout_dashboard>
