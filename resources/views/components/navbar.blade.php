@@ -10,7 +10,7 @@
             @else
                 <a href="/login" type="button" class="hidden sm:flex text-primary bg-white hover:bg-gray-200 font-bold rounded-lg text-sm px-4 py-2 text-center">Masuk</a>
             @endauth
-            
+
             <button id="menu-toggle" data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg lg:hidden" aria-controls="navbar-sticky" aria-expanded="false">
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
@@ -20,19 +20,19 @@
         <div class="hidden w-full lg:flex lg:items-center lg:space-x-8 lg:w-auto lg:ml-auto lg:mr-8" id="navbar-sticky">
             <ul class="flex flex-col lg:flex-row p-4 lg:p-0 mt-4 lg:mt-0 font-medium rounded-lg bg-white lg:bg-transparent lg:space-x-8">
                 <li>
-                    <a href="/" class="{{ request()->is('/') ? 'lg:text-secondary bg-lime-600 text-white' : 'lg:text-white lg:hover:bg-transparent lg:hover:text-lime-300 hover:bg-gray-200 text-primary' }} block py-2 px-3 rounded lg:bg-transparent lg:p-0 font-bold">Beranda</a>
+                    <x-navlink href="/" :active="request() -> is ('/')">Beranda</x-navlink>
                 </li>
                 <li>
-                    <a href="/schedule" class="{{ request()->is('schedule') ? 'lg:text-secondary bg-lime-600 text-white' : 'lg:text-white lg:hover:bg-transparent lg:hover:text-lime-300 hover:bg-gray-200 text-primary' }} block py-2 px-3 rounded lg:bg-transparent lg:p-0 font-bold">Jadwal</a>
+                    <x-navlink href="/schedule" :active="request() -> is ('schedule')" >Jadwal</x-navlink>
                 </li>
                 <li>
-                    <a href="/educate" class="{{ request()->is('educate') ? 'lg:text-secondary bg-lime-600 text-white' : 'lg:text-white lg:hover:bg-transparent lg:hover:text-lime-300 hover:bg-gray-200 text-primary' }} block py-2 px-3 rounded lg:bg-transparent lg:p-0 font-bold">Edukasi</a>
+                    <x-navlink href="/educate" :active="request() -> is ('educate*')" >Edukasi</x-navlink>
                 </li>
                 <li>
-                    <a href="/exchange" class="{{ request()->is('exchange') ? 'lg:text-secondary bg-lime-600 text-white' : 'lg:text-white lg:hover:bg-transparent lg:hover:text-lime-300 hover:bg-gray-200 text-primary' }} block py-2 px-3 rounded lg:bg-transparent lg:p-0 font-bold">Penukaran</a>
+                    <x-navlink href="/exchange" :active="request() -> is ('exchange')" >Penukaran</x-navlink>
                 </li>
                 <li>
-                    <a href="/about" class="{{ request()->is('about') ? 'lg:text-secondary bg-lime-600 text-white' : 'lg:text-white lg:hover:bg-transparent lg:hover:text-lime-300 hover:bg-gray-200 text-primary' }} block py-2 px-3 rounded lg:bg-transparent lg:p-0 font-bold">Tentang</a>
+                    <x-navlink href="/about" :active="request() -> is ('about')" >Tentang</x-navlink>
                 </li>
                 <li>
                     <a href="/login" class="sm:hidden block my-1 py-2 px-3 rounded lg:bg-transparent lg:p-0 font-bold text-white bg-third hover:bg-primary text-center">MASUK </a>

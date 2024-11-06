@@ -12,52 +12,52 @@
         <div class="flex flex-col mb-20 py-28 space-y-24 bg-primary mt-20">
             <div class="flex flex-row justify-evenly items-center">
                 <div>
-                    <x-index_schedule_senin></x-index_schedule_senin>
+                    <x-index_schedule_senin />
                 </div>
                 <div>
-                    <x-index_schedule_selasa></x-index_schedule_selasa>
+                    <x-index_schedule_selasa />
                 </div>
                 <div class="hidden lg:flex">
-                    <x-index_schedule_rabu></x-index_schedule_rabu>
+                    <x-index_schedule_rabu />
                 </div>
                 <div class="hidden 2xl:flex">
-                    <x-index_schedule_kamis></x-index_schedule_kamis>
+                    <x-index_schedule_kamis />
                 </div>
             </div>
             <div class="flex flex-row justify-evenly items-center">
                 <div class="flex lg:hidden">
-                    <x-index_schedule_rabu></x-index_schedule_rabu>
+                    <x-index_schedule_rabu />
                 </div>
                 <div class="flex 2xl:hidden">
-                    <x-index_schedule_kamis></x-index_schedule_kamis>
+                    <x-index_schedule_kamis />
                 </div>
                 <div class="hidden lg:flex">
-                    <x-index_schedule_jumat></x-index_schedule_jumat>
+                    <x-index_schedule_jumat />
                 </div>
                 <div class="hidden lg:flex">
-                    <x-index_schedule_sabtu></x-index_schedule_sabtu>
+                    <x-index_schedule_sabtu />
                 </div>
                 <div class="hidden 2xl:flex">
-                    <x-index_schedule_minggu></x-index_schedule_minggu>
+                    <x-index_schedule_minggu />
                 </div>
             </div>
             <div class="flex 2xl:hidden flex-row justify-evenly items-center">
                 <div class="flex lg:hidden">
-                    <x-index_schedule_jumat></x-index_schedule_jumat>
+                    <x-index_schedule_jumat />
                 </div>
                 <div class="flex lg:hidden">
-                    <x-index_schedule_sabtu></x-index_schedule_sabtu>
+                    <x-index_schedule_sabtu />
                 </div>
                 <div class="hidden lg:flex">
-                    <x-index_schedule_minggu></x-index_schedule_minggu>
+                    <x-index_schedule_minggu />
                 </div>
             </div>
             <div class="flex lg:hidden flex-row justify-evenly items-center">
                 <div>
-                    <x-index_schedule_minggu></x-index_schedule_minggu>
+                    <x-index_schedule_minggu />
                 </div>
             </div>
         </div>
-        <x-footer></x-footer>
+        <x-footer />
     </div>
 </x-layout>
