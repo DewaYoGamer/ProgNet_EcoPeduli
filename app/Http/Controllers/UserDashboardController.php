@@ -5,6 +5,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
+use App\Mail\VerificationEmail;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class UserDashboardController extends Controller
 {
@@ -38,7 +43,7 @@ class UserDashboardController extends Controller
         // Untuk Seluruh Data
         $informasi_penukaran = DB::table('tb_penukaran_sampah')
             ->get();
-        
+
         // Untuk Statusnya ACC
         $riwayatPenukaran = DB::table('tb_penukaran_sampah')
             ->where('nama_pengguna', $user->username)
@@ -85,8 +90,61 @@ class UserDashboardController extends Controller
     public function update(Request $request)
     {
         $user = Auth::user();
-        $user -> update($request->all());
+
+        $validatedData = $request->validate([
+            'username' => ['required', 'min:5', 'max:255', 'unique:users,username,' . $user->id],
+            'name' => ['required', 'min:5', 'max:255'],
+            'email' => ['required', 'email:dns', 'unique:users,email,' . $user->id],
+            'phone' => ['nullable', 'string', 'max:255'],
+            'address' => ['nullable', 'string', 'max:255'],
+            'city' => ['nullable', 'string', 'max:255'],
+            'province' => ['nullable', 'string', 'max:255'],
+            'date_birth' => ['nullable', 'date'],
+        ]);
+
+        // Check if the email has changed
+        if ($user->email !== $validatedData['email']) {
+            $validatedData['email_verified_at'] = null;
+        }
+
+        $user->update($validatedData);
+
         return redirect()->route('user.profile')->with('success', 'Profil berhasil diperbarui!');
+    }
+
+    public function sendVerificationEmail(Request $request)
+    {
+        $user = Auth::user();
+
+        // Revoke old tokens associated with the user
+        DB::table('verification_tokens')->where('user_id', $user->id)->delete();
+
+        // Generate a new verification token
+        $token = mt_rand(10000, 99999);
+
+        $id_token = Str::uuid()->toString();
+
+        // Store the token in the verification_tokens table
+        DB::table('verification_tokens')->insert([
+            'user_id' => $user->id,
+            'email' => $user->email,
+            'id_token' => $id_token,
+            'token' => $token,
+            'created_at' => Carbon::now(),
+        ]);
+
+        // Log the token for debugging
+        Log::info('Verification token generated: ' . $token);
+
+        // Send the verification email with the token
+        try {
+            Mail::to($user->email)->send(new VerificationEmail($token));
+            Log::info('Verification email sent to: ' . $user->email);
+        } catch (\Exception $e) {
+            Log::error('Failed to send verification email: ' . $e->getMessage());
+        }
+
+        return redirect()->route('verification.show', ['id_token' => $id_token, 'email' => $user->email])->with('success', 'Kode Verifikasi telah dikirim ulang.');
     }
 
     public function uploadCroppedImage(Request $request)

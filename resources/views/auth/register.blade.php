@@ -2,11 +2,16 @@
     <x-slot name="title">Daftar | Eco Peduli</x-slot>
     <div class = "flex items-center justify-center min-h-screen bg-gray-100 overflow-hidden mt-20">
         <div class="bg-white p-6 rounded shadow-md w-full max-w-sm mx-6">
+            @if(session()->has('error'))
+                <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">
+                    <p>{{ session('error') }}</p>
+                </div>
+            @endif
             <div class="flex justify-center mb-4">
                 <img src="{{ asset('images/logo.png') }}" class="h-24">
             </div>
             <h2 class="text-2xl font-bold mb-6 text-center text-primary">DAFTAR</h2>
-            <form action="/register" method="POST">
+            <form action="{{ route('register.store') }}" method="POST">
                 @csrf
                 <div class="mb-[12px]">
                     <input type="text" name="username" id="username" placeholder="Nama Pengguna" class="w-full px-5 py-3 text-base border focus:border-primary" required value="{{ old('username') }}">
@@ -41,6 +46,11 @@
                     @error('password_confirmation')
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror
+                </div>
+                <div class="mb-4">
+                    <x-turnstile
+                        data-size="flexible"
+                    />
                 </div>
                 <div class="mb-4 font-bold">
                     <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">DAFTAR</Button>
