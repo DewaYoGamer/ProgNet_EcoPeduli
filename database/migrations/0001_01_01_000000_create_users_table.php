@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('name')->nullable();
-            $table->string('phone')->unique() -> nullable();
+            $table->string('phone')->unique()->nullable();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('province')->nullable();
@@ -30,8 +30,11 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
+        Schema::create('verification_tokens', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('email')->index();
+            $table->uuid('id_token')->nullable();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });

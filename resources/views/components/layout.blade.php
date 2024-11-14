@@ -20,7 +20,6 @@
         document.addEventListener("DOMContentLoaded", function () {
             const toggleButton = document.getElementById('menu-toggle');
             const navbar = document.getElementById('navbar-sticky');
-
             toggleButton.addEventListener('click', function () {
                 navbar.classList.toggle('hidden');
             });
