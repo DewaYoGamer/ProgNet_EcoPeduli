@@ -18,7 +18,7 @@
                 <img src="{{ asset('images/logo.png') }}" class="h-24">
             </div>
             <h2 class="text-2xl font-bold mb-6 text-center text-primary">MASUK</h2>
-            <form action="/login" method="POST">
+            <form action="{{route('login.authenticate')}}" method="POST">
                 @csrf
                 <div class="mb-[12px]">
                     <input type="text" name="username" id="username" placeholder="Nama Pengguna" class="w-full px-5 py-3 text-base border focus:border-primary" autofocus required value="{{ old('username') }}">

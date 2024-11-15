@@ -12,6 +12,8 @@ use App\Mail\VerificationEmail;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class RegisterController extends Controller
 {
@@ -21,7 +23,7 @@ class RegisterController extends Controller
             $request->validate([
                 'cf-turnstile-response' => ['required', Rule::turnstile()],
             ]);
-        } catch (\Illuminate\Validation\ValidationException $e) {
+        } catch (ValidationException $e) {
             return back()->with('error', 'CAPTCHA tidak valid! Silahkan coba lagi.');
         }
 
@@ -36,6 +38,8 @@ class RegisterController extends Controller
 
         // Create the user
         $user = User::create($validatedData);
+
+        Auth::login($user);
 
         // Generate a 5-digit verification token
         $token = mt_rand(10000, 99999);
