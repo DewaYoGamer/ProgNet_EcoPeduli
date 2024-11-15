@@ -12,6 +12,7 @@ use App\Mail\VerificationEmail;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -36,6 +37,8 @@ class RegisterController extends Controller
 
         // Create the user
         $user = User::create($validatedData);
+
+        Auth::login($user);
 
         // Generate a 5-digit verification token
         $token = mt_rand(10000, 99999);

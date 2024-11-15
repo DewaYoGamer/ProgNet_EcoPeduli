@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EducateController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Middleware\CheckIfVerified;
 
 // ============= Landing Page (Middeleware) =============
 Route::get('/', function () {
@@ -81,7 +82,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/pengguna/profil/update-image', [UserDashboardController::class, 'uploadCroppedImage'])->name('upload.cropped.image');
 
     // Route to handle email verification request
-    Route::get('/pengguna/profil/verify-email', [UserDashboardController::class, 'sendVerificationEmail'])->name('user.sendVerificationEmail');
+    Route::get('/reverification', [UserDashboardController::class, 'sendVerificationEmail'])->name('user.sendVerificationEmail')->middleware(CheckIfVerified::class);
 });
 
 // ============= Admin =============
@@ -114,7 +115,7 @@ Route::middleware(['auth'])->group(function () {
 
 // ============= Database CRUD =============
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
-Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
 Route::post('/logout', [LoginController::class, 'logout']);
 Route::post('/tukar_sampah', [PenukaranSampahController::class, 'store']);
 Route::post('/tukar_poin', [PenukaranPoinController::class, 'store']);
