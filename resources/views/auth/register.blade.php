@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot name="title">Daftar | Eco Peduli</x-slot>
-    <div class = "flex items-center justify-center min-h-screen bg-gray-100 overflow-hidden mt-20">
+    <div class="flex items-center justify-center min-h-screen bg-gray-100 overflow-hidden mt-20">
         <div class="bg-white p-6 rounded shadow-md w-full max-w-sm mx-6">
             @if(session()->has('error'))
                 <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">
@@ -21,12 +21,12 @@
                 </div>
                 <div class="mb-[12px]">
                     <input type="text" name="name" id="name" placeholder="Nama Lengkap" class="w-full px-5 py-3 text-base border focus:border-primary" required value="{{ old('name') }}">
-                    @error('username')
+                    @error('name')
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-[6px]">
-                    <input type="email" name="email" id="email" placeholder="Email" class="w-full px-5 py-3 text-base border focus:border-primary" required value="{{ old('email') }}" >
+                    <input type="email" name="email" id="email" placeholder="Email" class="w-full px-5 py-3 text-base border focus:border-primary" required value="{{ old('email') }}">
                     @error('email')
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror
@@ -62,4 +62,67 @@
             </p>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+            const username = document.getElementById('username');
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const passwordConfirmation = document.getElementById('password_confirmation');
+
+            form.addEventListener('submit', function (event) {
+                let valid = true;
+
+                // Clear previous error messages
+                document.querySelectorAll('.text-red-500').forEach(el => el.textContent = '');
+
+                // Validate username
+                if (username.value.trim() === '' || username.value.length < 5) {
+                    showError(username, 'Nama Pengguna Terlalu Pendek');
+                    valid = false;
+                }
+
+                // Validate name
+                if (name.value.trim() === '' || name.value.length < 5) {
+                    showError(name, 'Nama Lengkap Terlalu Pendek');
+                    valid = false;
+                }
+
+                // Validate email
+                if (!validateEmail(email.value)) {
+                    showError(email, 'Email Tidak Valid');
+                    valid = false;
+                }
+
+                // Validate password
+                if (password.value.length < 5) {
+                    showError(password, 'Kata Sandi Harus Lebih dari 5 Karakter');
+                    valid = false;
+                }
+
+                // Validate password confirmation
+                if (password.value !== passwordConfirmation.value) {
+                    showError(passwordConfirmation, 'Kata Sandi Tidak Sama');
+                    valid = false;
+                }
+
+                if (!valid) {
+                    event.preventDefault();
+                }
+            });
+
+            function showError(input, message) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'text-red-500';
+                errorDiv.textContent = message;
+                input.parentNode.appendChild(errorDiv);
+            }
+
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(String(email).toLowerCase());
+            }
+        });
+    </script>
 </x-layout>
