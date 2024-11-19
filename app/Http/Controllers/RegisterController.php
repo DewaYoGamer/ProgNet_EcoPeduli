@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class RegisterController extends Controller
 {
@@ -22,7 +23,7 @@ class RegisterController extends Controller
             $request->validate([
                 'cf-turnstile-response' => ['required', Rule::turnstile()],
             ]);
-        } catch (\Illuminate\Validation\ValidationException $e) {
+        } catch (ValidationException $e) {
             return back()->with('error', 'CAPTCHA tidak valid! Silahkan coba lagi.');
         }
 
