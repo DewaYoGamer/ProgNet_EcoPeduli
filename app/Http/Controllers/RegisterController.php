@@ -19,6 +19,7 @@ class RegisterController extends Controller
 {
     public function store(Request $request)
     {
+        // Kesalahan di sini
         try {
             $request->validate([
                 'cf-turnstile-response' => ['required', Rule::turnstile()],
