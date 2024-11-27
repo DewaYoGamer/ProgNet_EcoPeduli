@@ -93,7 +93,7 @@ class UserDashboardController extends Controller
     {
         $user = Auth::user();
 
-        if ($request->has('notelp')) {
+        if ($request->notelp !== null) {
             $notelp = $request->input('notelp');
             if (substr($notelp, 0, 3) !== '+62') {
                 if (substr($notelp, 0, 1) === '0') {
@@ -107,15 +107,32 @@ class UserDashboardController extends Controller
         }
 
         $validatedData = $request->validate([
-            'username' => ['required', 'min:5', 'max:255', 'unique:users,username,' . $user->id],
             'name' => ['required', 'min:5', 'max:255'],
-            'email' => ['nullable', 'email:dns', 'unique:users,email,' . $user->id],
+            'username' => ['required', 'min:5', 'max:255', 'unique:users,username,' . $user->id],
             'notelp' => ['nullable', 'min:10', 'max:15', 'unique:users,notelp,' . $user->id],
+            'email' => ['nullable', 'email:dns', 'unique:users,email,' . $user->id],
             'address' => ['nullable', 'string', 'max:255'],
             'city' => ['nullable', 'string', 'max:255'],
             'province' => ['nullable', 'string', 'max:255'],
             'date_birth' => ['nullable', 'date'],
+        ], [
+            'name.required' => 'Nama tidak boleh kosong.',
+            'name.min' => 'Nama minimal 5 karakter.',
+            'username.unique' => 'Username sudah digunakan.',
+            'username.required' => 'Username tidak boleh kosong.',
+            'username.min' => 'Username minimal 5 karakter.',
+            'email.unique' => 'Email sudah digunakan.',
+            'email.email' => 'Email tidak valid.',
+            'notelp.unique' => 'Nomor telepon sudah digunakan.',
+            'notelp.min' => 'Nomor telepon minimal 10 karakter.',
+            'notelp.max' => 'Nomor telepon maksimal 15 karakter.'
         ]);
+
+        // ADD LOGIC HERE
+        // return redirect()->route('user.profile')->withErrors([
+        //     'email' => 'Setidaknya mempunyai satu kontak yang terverifikasi.',
+        //     'notelp' => 'Setidaknya mempunyai satu kontak yang terverifikasi.'
+        // ]);
 
         // Check if the email has changed
         if ($user->email !== $validatedData['email']) {
