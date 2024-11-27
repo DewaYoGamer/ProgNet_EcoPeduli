@@ -11,6 +11,7 @@ use App\Mail\VerificationEmail;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Twilio\Rest\Client;
+use App\Models\VerificationToken;
 
 class UserDashboardController extends Controller
 {
@@ -135,8 +136,10 @@ class UserDashboardController extends Controller
     {
         $user = Auth::user();
 
-        // Revoke old tokens associated with the user
-        DB::table('verification_tokens')->where('user_id', $user->id)->delete();
+        // Check if there is already a verification token for the user
+        if (VerificationToken::where('user_id', $user->id)->exists()) {
+            VerificationToken::where('user_id', $user->id)->delete();
+        }
 
         // Generate a new verification token
         $token = mt_rand(10000, 99999);
@@ -144,7 +147,7 @@ class UserDashboardController extends Controller
         $id_token = Str::uuid()->toString();
 
         // Store the token in the verification_tokens table
-        DB::table('verification_tokens')->insert([
+        VerificationToken::create([
             'user_id' => $user->id,
             'email' => $user->email,
             'id_token' => $id_token,
@@ -167,7 +170,9 @@ class UserDashboardController extends Controller
         $user = Auth::user();
 
         // Revoke old tokens associated with the user
-        DB::table('verification_tokens')->where('user_id', $user->id)->delete();
+        if (VerificationToken::where('user_id', $user->id)->exists()) {
+            VerificationToken::where('user_id', $user->id)->delete();
+        }
 
         // Generate a new verification token
         $token = 1;
@@ -175,7 +180,7 @@ class UserDashboardController extends Controller
         $id_token = Str::uuid()->toString();
 
         // Store the token in the verification_tokens table
-        DB::table('verification_tokens')->insert([
+        VerificationToken::create([
             'user_id' => $user->id,
             'notelp' => $user->notelp,
             'id_token' => $id_token,
