@@ -7,19 +7,17 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-
-class CheckIfVerified
+class CheckIfVerifiedTelp
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->hasVerifiedEmail()) {
+        if (Auth::check() && Auth::user()->phone_verified_at) {
+            // If the user is logged in and has verified their phone
             return redirect()->route('dashboard.pengguna');
         }
 

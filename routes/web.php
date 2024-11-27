@@ -12,7 +12,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EducateController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Middleware\RedirectIfAuthenticated;
-use App\Http\Middleware\CheckIfVerified;
+use App\Http\Middleware\CheckIfVerifiedEmail;
+use App\Http\Middleware\CheckIfVerifiedTelp;
 
 // ============= Landing Page (Middeleware) =============
 Route::get('/', function () {
@@ -82,7 +83,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/pengguna/profil/update-image', [UserDashboardController::class, 'uploadCroppedImage'])->name('upload.cropped.image');
 
     // Route to handle email verification request
-    Route::get('/reverification', [UserDashboardController::class, 'sendVerificationEmail'])->name('user.sendVerificationEmail')->middleware(CheckIfVerified::class);
+    Route::get('/reverification', [UserDashboardController::class, 'sendVerificationEmail'])->name('user.sendVerificationEmail')->middleware(CheckIfVerifiedEmail::class);
+    Route::get('/reverificationt', [UserDashboardController::class, 'sendVerificationTelp'])->name('user.sendVerificationTelp')->middleware(CheckIfVerifiedTelp::class);
 });
 
 // ============= Admin =============

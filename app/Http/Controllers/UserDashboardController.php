@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Log;
 use App\Mail\VerificationEmail;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Twilio\Rest\Client;
 
 class UserDashboardController extends Controller
 {
@@ -91,11 +92,24 @@ class UserDashboardController extends Controller
     {
         $user = Auth::user();
 
+        if ($request->has('notelp')) {
+            $notelp = $request->input('notelp');
+            if (substr($notelp, 0, 3) !== '+62') {
+                if (substr($notelp, 0, 1) === '0') {
+                    $notelp = '+62' . substr($notelp, 1);
+                } else {
+                    $notelp = '+62' . $notelp;
+                }
+            }
+            // Save the formatted number in the request or database
+            $request->merge(['notelp' => $notelp]);
+        }
+
         $validatedData = $request->validate([
             'username' => ['required', 'min:5', 'max:255', 'unique:users,username,' . $user->id],
             'name' => ['required', 'min:5', 'max:255'],
-            'email' => ['required', 'email:dns', 'unique:users,email,' . $user->id],
-            'phone' => ['nullable', 'string', 'max:255'],
+            'email' => ['nullable', 'email:dns', 'unique:users,email,' . $user->id],
+            'notelp' => ['nullable', 'min:10', 'max:15', 'unique:users,notelp,' . $user->id],
             'address' => ['nullable', 'string', 'max:255'],
             'city' => ['nullable', 'string', 'max:255'],
             'province' => ['nullable', 'string', 'max:255'],
@@ -105,6 +119,11 @@ class UserDashboardController extends Controller
         // Check if the email has changed
         if ($user->email !== $validatedData['email']) {
             $validatedData['email_verified_at'] = null;
+        }
+
+        // Check if the phone number has changed
+        if ($user->notelp !== $validatedData['notelp']) {
+            $validatedData['phone_verified_at'] = null;
         }
 
         $user->update($validatedData);
@@ -133,18 +152,50 @@ class UserDashboardController extends Controller
             'created_at' => Carbon::now(),
         ]);
 
-        // Log the token for debugging
-        Log::info('Verification token generated: ' . $token);
-
         // Send the verification email with the token
         try {
             Mail::to($user->email)->send(new VerificationEmail($token));
-            Log::info('Verification email sent to: ' . $user->email);
         } catch (\Exception $e) {
             Log::error('Failed to send verification email: ' . $e->getMessage());
         }
 
         return redirect()->route('verification.show', ['id_token' => $id_token, 'email' => $user->email])->with('success', 'Kode Verifikasi telah dikirim ulang.');
+    }
+
+    public function sendVerificationTelp(Request $request)
+    {
+        $user = Auth::user();
+
+        // Revoke old tokens associated with the user
+        DB::table('verification_tokens')->where('user_id', $user->id)->delete();
+
+        // Generate a new verification token
+        $token = 1;
+
+        $id_token = Str::uuid()->toString();
+
+        // Store the token in the verification_tokens table
+        DB::table('verification_tokens')->insert([
+            'user_id' => $user->id,
+            'notelp' => $user->notelp,
+            'id_token' => $id_token,
+            'token' => $token,
+            'created_at' => Carbon::now(),
+        ]);
+
+        // Send the verification email with the token
+        try {
+            $sid = getenv("TWILIO_ACCOUNT_SID");
+            $authToken = getenv("TWILIO_AUTH_TOKEN");
+            $twilio = new Client($sid, $authToken);
+            $verification = $twilio->verify->v2->services(getenv("TWILIO_SERVICE_SID"))
+                                   ->verifications
+                                   ->create("$user->notelp" , "sms");
+        } catch (\Exception $e) {
+            Log::error('Failed to send verification email: ' . $e->getMessage());
+        }
+
+        return redirect()->route('verification.show', ['id_token' => $id_token, 'notelp' => $user->notelp])->with('success', 'Kode Verifikasi telah dikirim ulang.');
     }
 
     public function uploadCroppedImage(Request $request)

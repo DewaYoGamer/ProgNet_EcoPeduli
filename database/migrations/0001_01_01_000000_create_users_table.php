@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->integer('poin')->default(0);
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->string('password');
             $table->string('name')->nullable();
-            $table->string('phone')->unique()->nullable();
+            $table->string('notelp')->unique()->nullable();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('province')->nullable();
@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('avatar')->nullable();
             $table->string('role')->default('user');
             $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('phone_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -33,7 +34,8 @@ return new class extends Migration
         Schema::create('verification_tokens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->index();
-            $table->string('email')->index();
+            $table->string('email')->nullable();
+            $table->string('notelp')->nullable();
             $table->uuid('id_token')->nullable();
             $table->string('token');
             $table->timestamp('created_at')->nullable();

@@ -24,9 +24,15 @@
                     <div>
                         <p class="text-gray-600 text-sm font-semibold">Email</p>
                         <div class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-2 inline-block">
-                            <p class="text-gray-800 font-medium">{{ $user->email }}</p>
+                            <p class="text-gray-800 font-medium">
+                                @if($user->email)
+                                    {{ $user->email }}
+                                @else
+                                    Belum ditambahkan
+                                @endif
+                            </p>
                         </div>
-                        @if (is_null(auth()->user()->email_verified_at))
+                        @if (is_null(auth()->user()->email_verified_at) && $user->email)
                             <div class="mb-4">
                                 Email belum diverifikasi, Verifikasi Email <a href="{{ route('user.sendVerificationEmail') }}" class="text-primary underline">di sini.</a>
                             </div>
@@ -36,13 +42,18 @@
                         <p class="text-gray-600 text-sm font-semibold">Nomor Telepon</p>
                         <div class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-2 inline-block">
                             <p class="text-gray-800 font-medium">
-                                @if($user->phone)
-                                    {{ $user->phone }}
+                                @if($user->notelp)
+                                    {{ $user->notelp }}
                                 @else
                                     Belum ditambahkan
                                 @endif
                             </p>
                         </div>
+                        @if (is_null(auth()->user()->phone_verified_at) && $user->notelp)
+                            <div class="mb-4">
+                                Nomor Telepon belum diverifikasi, Verifikasi Nomor Telepon <a href="{{ route('user.sendVerificationTelp') }}" class="text-primary underline">di sini.</a>
+                            </div>
+                        @endif
                     </div>
                     <div>
                         <p class="text-gray-600 text-sm font-semibold">Alamat</p>
@@ -93,7 +104,7 @@
                     </div>
                     <div>
                         <p class="text-gray-600 text-sm font-semibold">Nomor Telepon</p>
-                        <input type="text" name="phone" value="{{ $user->phone }}" class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-2">
+                        <input type="tel" name="notelp" value="{{ $user->notelp }}" class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-2">
                     </div>
                     <div>
                         <p class="text-gray-600 text-sm font-semibold">Alamat</p>
