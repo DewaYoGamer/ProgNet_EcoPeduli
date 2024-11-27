@@ -11,7 +11,7 @@
                 <img src="{{ asset('images/logo.png') }}" class="h-24">
             </div>
             <h2 class="text-2xl font-bold text-center text-primary">MASUKKAN KODE VERIFIKASI</h2>
-            <p class="text-center text-gray-600">Silahkan masukkan kode verifikasi yang telah kami kirimkan ke {{ request('email') }}.</p>
+            <p class="text-center text-gray-600">Silahkan masukkan kode verifikasi yang telah kami kirimkan ke {{ request('email') }}{{ request('notelp') }}.</p>
             <form action="{{ route('verification.verify') }}" method="POST">
                 @csrf
                 <input type="hidden" name="id_token" value="{{ request('id_token') }}">
@@ -23,7 +23,7 @@
                     <input type="text" name="digit5" maxlength="1" class="w-12 h-12 text-center text-base border focus:border-primary" required pattern="[0-9]*" inputmode="numeric">
                 </div>
                 <div class="text-sm mb-4">
-                    Tidak menerima kode verifikasi? <a href="{{ route('user.sendVerificationEmail') }}" class="text-primary">Kirim ulang</a>
+                    Tidak menerima kode verifikasi? @if (request('email')) <a href="{{ route('user.sendVerificationEmail') }}" class="text-primary">Kirim ulang</a> @else <a href="{{ route('user.sendVerificationTelp') }}" class="text-primary">Kirim ulang</a>@endif
                 </div>
                 <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">KIRIM</button>
             </form>

@@ -4,7 +4,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use App\Http\Middleware\RedirectIfAuthenticated;
-use App\Http\Middleware\CheckIfVerified;
+use App\Http\Middleware\CheckIfVerifiedEmail;
+use App\Http\Middleware\CheckIfVerifiedTelp;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -14,7 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->append(RedirectIfAuthenticated::class);
-        $middleware->append(CheckIfVerified::class);
+        $middleware->append(CheckIfVerifiedEmail::class);
+        $middleware->append(CheckIfVerifiedTelp::class);
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {

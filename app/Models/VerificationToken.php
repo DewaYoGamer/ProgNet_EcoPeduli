@@ -11,6 +11,7 @@ class VerificationToken extends Model
     protected $fillable = [
         'user_id',
         'email',
+        'notelp',
         'id_token',
         'token',
         'created_at',

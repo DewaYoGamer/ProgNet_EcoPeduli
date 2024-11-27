@@ -26,13 +26,23 @@
                     @enderror
                 </div>
                 <div class="mb-[6px]">
-                    <input type="email" name="email" id="email" placeholder="Email" class="w-full px-5 py-3 text-base border focus:border-primary" required value="{{ old('email') }}">
+                    <input type="{{ old('notelp') || session('error') === 'number_already_registered' ? 'tel' : 'email' }}"
+                            name="{{ old('notelp') || session('error') === 'number_already_registered' ? 'notelp' : 'email' }}"
+                            id="email"
+                            placeholder="{{ old('notelp') || session('error') === 'number_already_registered' ? 'Nomor Telepon' : 'Email' }}"
+                            class="w-full px-5 py-3 text-base border focus:border-primary"
+                            required
+                            value="{{ old('notelp') ?? old('email') }}">
                     @error('email')
+                        <div class="text-red-500">{{ $message }}</div>
+                    @enderror
+                    @error('notelp')
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="flex items-center mb-4">
-                    <input id="telepon" name="notelp" id="notelp" type="checkbox" class="h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                    <input id="telepon" type="checkbox" class="h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                           {{ old('notelp') || session('error') === 'number_already_registered' ? 'checked' : '' }}>
                     <label for="telepon" class="ml-2 text-sm font-medium text-gray-900">Gunakan Nomor Telepon</label>
                 </div>
                 <div class="mb-[12px]">
@@ -89,9 +99,9 @@
                     valid = false;
                 }
 
-                // Validate email
-                if (!validateEmail(email.value)) {
-                    showError(email, 'Email Tidak Valid');
+                // Validate phone number
+                if (email.type === 'tel' && !validatePhone(email.value)) {
+                    showError(email, 'Nomor Telepon Tidak Valid');
                     valid = false;
                 }
 
@@ -123,6 +133,30 @@
                 const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 return re.test(String(email).toLowerCase());
             }
+
+            function validatePhone(phone) {
+                const re = /^\+?\d{10,13}$/;
+                return re.test(String(phone).toLowerCase());
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkbox = document.getElementById('telepon');
+            const emailInput = document.getElementById('email');
+            const regiontelp = document.getElementById('regiontelp');
+
+            checkbox.addEventListener('change', function () {
+                if (checkbox.checked) {
+                    emailInput.type = 'tel';
+                    emailInput.placeholder = 'Nomor Telepon';
+                    emailInput.name = 'notelp';
+                    regiontelp.classList.remove('hidden');
+                } else {
+                    emailInput.type = 'email';
+                    emailInput.placeholder = 'Email';
+                    emailInput.name = 'email';
+                    regiontelp.classList.add('hidden');
+                }
+            });
         });
     </script>
 </x-layout>
