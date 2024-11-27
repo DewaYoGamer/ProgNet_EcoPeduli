@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 
 
 use App\Models\User;
-use App\Models\VerificationToken;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -63,42 +62,10 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
-        $token = mt_rand(10000, 99999);
-
-        if ($user->notelp) {
-            try{
-                $sid = getenv("TWILIO_ACCOUNT_SID");
-                $authToken = getenv("TWILIO_AUTH_TOKEN");
-                $twilio = new Client($sid, $authToken);
-                $verification = $twilio->verify->v2->services(getenv("TWILIO_SERVICE_SID"))
-                                       ->verifications
-                                       ->create($filteredData['notelp'] , "sms");
-                $token = 1;
-            }
-            catch (\Exception $e) {
-                \Log::error($e->getMessage());
-            }
+        if($user->email) {
+            return redirect()->route('user.sendVerificationEmail', ['email' => $user->email]);
+        } else {
+            return redirect()->route('user.sendVerificationTelp', ['notelp' => $user->notelp]);
         }
-
-        // Generate a unique id_token
-        $id_token = Str::uuid()->toString();
-
-        // Store the token in the verification_tokens table
-        VerificationToken::create([
-            'user_id' => $user->id,
-            'email' => $user->email,
-            'notelp' => $user->notelp,
-            'id_token' => $id_token,
-            'token' => $token,
-            'created_at' => Carbon::now(),
-        ]);
-
-        // Send the verification email with the token
-        if ($user->email) {
-            Mail::to($user->email)->send(new VerificationEmail($token));
-        }
-
-        // Redirect to the verification page
-        return redirect()->route('verification.show', ['id_token' => $id_token, 'email' => $user->email, 'notelp' => $user->notelp]);
     }
 }
