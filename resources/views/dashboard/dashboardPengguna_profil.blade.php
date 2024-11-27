@@ -13,12 +13,18 @@
                             <div class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-2 inline-block">
                                 <p class="text-gray-800 font-medium">{{ $user->name }}</p>
                             </div>
+                            @error('name')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="w-full">
                             <p class="text-gray-600 text-sm font-semibold">Nama Pengguna</p>
                             <div class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-2 inline-block">
                                 <p class="text-gray-800 font-medium">{{ $user->username }}</p>
                             </div>
+                            @error('username')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                     <div>
@@ -32,6 +38,9 @@
                                 @endif
                             </p>
                         </div>
+                        @error('email')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                         @if (is_null(auth()->user()->email_verified_at) && $user->email)
                             <div class="mb-4">
                                 Email belum diverifikasi, Verifikasi Email <a href="{{ route('user.sendVerificationEmail') }}" class="text-primary underline">di sini.</a>
@@ -49,6 +58,9 @@
                                 @endif
                             </p>
                         </div>
+                        @error('notelp')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                         @if (is_null(auth()->user()->phone_verified_at) && $user->notelp)
                             <div class="mb-4">
                                 Nomor Telepon belum diverifikasi, Verifikasi Nomor Telepon <a href="{{ route('user.sendVerificationTelp') }}" class="text-primary underline">di sini.</a>
@@ -91,20 +103,20 @@
                     <div class="flex flex-row space-x-12">
                         <div class="w-full">
                             <p class="text-gray-600 text-sm font-semibold">Nama Lengkap</p>
-                            <input type="text" name="name" value="{{ $user->name }}" class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-2">
+                            <input type="text" name="name" id="name" value="{{ $user->name }}" class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-2">
                         </div>
                         <div class="w-full">
                             <p class="text-gray-600 text-sm font-semibold">Nama Pengguna</p>
-                            <input type="text" name="username" value="{{ $user->username }}" class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-2">
+                            <input type="text" name="username" id="username" value="{{ $user->username }}" class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-2">
                         </div>
                     </div>
                     <div>
                         <p class="text-gray-600 text-sm font-semibold">Email</p>
-                        <input type="email" name="email" value="{{ $user->email }}" class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-2">
+                        <input type="email" name="email" id="email" value="{{ $user->email }}" class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-2">
                     </div>
                     <div>
                         <p class="text-gray-600 text-sm font-semibold">Nomor Telepon</p>
-                        <input type="tel" name="notelp" value="{{ $user->notelp }}" class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-2">
+                        <input type="tel" name="notelp" id="notelp" value="{{ $user->notelp }}" class="bg-gray-100 border border-gray-300 w-full rounded-md px-4 py-2 mt-2">
                     </div>
                     <div>
                         <p class="text-gray-600 text-sm font-semibold">Alamat</p>

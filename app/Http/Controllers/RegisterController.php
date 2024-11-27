@@ -45,12 +45,13 @@ class RegisterController extends Controller
             'name' => ['required', 'min:5', 'max:255'],
             'email' => ['nullable', 'email:dns', 'unique:users', 'required_without:notelp'],
             'notelp' => ['nullable', 'min:10', 'max:15', 'unique:users', 'required_without:email'],
-            'password' => ['required', 'min:5', 'max:255', 'confirmed'],
+            'password' => ['required', 'min:5', 'max:255', 'confirmed']
         ], [
-            'email.unique' => 'The email address is already registered.',
-            'notelp.unique' => 'The phone number is already registered.',
+            'username.unique' => 'Username sudah digunakan.',
+            'email.unique' => 'Email sudah digunakan.',
+            'notelp.unique' => 'Nomor telepon sudah digunakan.',
             'email.required_without' => 'Either email or phone number is required.',
-            'notelp.required_without' => 'Either phone number or email is required.',
+            'notelp.required_without' => 'Either phone number or email is required.'
         ]);
 
         // Remove unset keys for clean insertion
