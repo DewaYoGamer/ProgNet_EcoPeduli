@@ -18,7 +18,8 @@ class CheckIfVerifiedEmail
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->hasVerifiedEmail()) {
+        if ((Auth::check() && Auth::user()->hasVerifiedEmail()) ||
+            (Auth::check() && Auth::user()->email === null)) {
             return redirect()->route('dashboard.pengguna');
         }
 

@@ -35,14 +35,5 @@ class DatabaseSeeder extends Seeder
             'role' => 'operator',
             'email_verified_at' => now()
         ]);
-
-        User::factory()->create([
-            'name' => 'yoga1',
-            'email' => 'yoga1@operator.com',
-            'username' => 'yoga1',
-            'password' => bcrypt('11111'),
-            'role' => 'user',
-            'email_verified_at' => now()
-        ]);
     }
 }

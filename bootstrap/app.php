@@ -3,6 +3,9 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use App\Http\Middleware\CheckUserRole;
+use App\Http\Middleware\CheckOperatorRole;
+use App\Http\Middleware\CheckAdminRole;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\CheckIfVerifiedEmail;
 use App\Http\Middleware\CheckIfVerifiedTelp;
@@ -14,9 +17,14 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->append(RedirectIfAuthenticated::class);
-        $middleware->append(CheckIfVerifiedEmail::class);
-        $middleware->append(CheckIfVerifiedTelp::class);
+        $middleware->alias([
+            'operator'=>CheckOperatorRole::class,
+            'admin'=>CheckAdminRole::class,
+            'user'=>CheckUserRole::class,
+            'guest'=>RedirectIfAuthenticated::class,
+            'email'=>CheckIfVerifiedEmail::class,
+            'telp'=>CheckIfVerifiedTelp::class
+        ]);
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {

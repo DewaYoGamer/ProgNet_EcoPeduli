@@ -18,9 +18,6 @@ class UserDashboardController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if ($user->role !== 'user') {
-            return $this->redirectToRole($user->role);
-        }
 
         // Ambil data kode unik untuk user yang sedang login
         $kodeUniks = DB::table('tb_penukaran_poin')
@@ -38,9 +35,6 @@ class UserDashboardController extends Controller
 
     public function index_operator(){
         $user = Auth::user();
-        if ($user->role !== 'operator') {
-            return $this->redirectToRole($user->role);
-        }
 
         // Untuk Seluruh Data
         $informasi_penukaran = DB::table('tb_penukaran_sampah')
@@ -57,9 +51,6 @@ class UserDashboardController extends Controller
 
     public function index_admin(){
         $user = Auth::user();
-        if ($user->role !== 'admin') {
-            return $this->redirectToRole($user->role);
-        }
 
         $data_tb_penukaran_sampah = DB::table('tb_penukaran_sampah')->get();
         $data_tb_penukaran_poin = DB::table('tb_penukaran_poin')->get();

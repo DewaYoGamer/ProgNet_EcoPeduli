@@ -11,9 +11,6 @@ use App\Http\Controllers\PenukaranPoinController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EducateController;
 use App\Http\Controllers\VerificationController;
-use App\Http\Middleware\RedirectIfAuthenticated;
-use App\Http\Middleware\CheckIfVerifiedEmail;
-use App\Http\Middleware\CheckIfVerifiedTelp;
 
 // ============= Landing Page (Middeleware) =============
 Route::get('/', function () {
@@ -44,7 +41,7 @@ Route::get('/test', function () {
 });
 
 // ============= Auth =============
-Route::middleware(RedirectIfAuthenticated::class)->group(function(){
+Route::middleware(['guest'])->group(function(){
     Route::get('/login', function () {
         return view('auth.login') ;
     })->name('login');
@@ -67,7 +64,7 @@ Route::get('/succes_change', function () {
 });
 
 // ============= Dashboard =============
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['user'])->group(function () {
     Route::get('/pengguna', [UserDashboardController::class, 'index'])->name('dashboard.pengguna');
 
     Route::get('/pengguna/penukaran_poin', function () {
@@ -83,13 +80,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/pengguna/profil/update-image', [UserDashboardController::class, 'uploadCroppedImage'])->name('upload.cropped.image');
 
     // Route to handle email verification request
-    Route::get('/reverification', [UserDashboardController::class, 'sendVerificationEmail'])->name('user.sendVerificationEmail')->middleware(CheckIfVerifiedEmail::class);
-    Route::get('/reverificationt', [UserDashboardController::class, 'sendVerificationTelp'])->name('user.sendVerificationTelp')->middleware(CheckIfVerifiedTelp::class);
+    Route::get('/reverification', [UserDashboardController::class, 'sendVerificationEmail'])->name('user.sendVerificationEmail')->middleware(['email']);
+    Route::get('/reverificationt', [UserDashboardController::class, 'sendVerificationTelp'])->name('user.sendVerificationTelp')->middleware(['telp']);
 });
 
 // ============= Admin =============
-Route::middleware(['auth'])->group(function () {
-    Route::get('/admin', [UserDashboardController::class, 'index_admin']);
+Route::middleware(['admin'])->group(function () {
+    Route::get('/admin', [UserDashboardController::class, 'index_admin'])->name('dashboard.admin');
 
     Route::get('/admin/penukaran_poin', function () {
         return view('dashboard_admin.dashboardAdmin_penukaranPoin');
@@ -101,8 +98,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // ============= Operator =============
-Route::middleware(['auth'])->group(function () {
-    Route::get('/operator', [UserDashboardController::class, 'index_operator']);
+Route::middleware(['operator'])->group(function () {
+    Route::get('/operator', [UserDashboardController::class, 'index_operator'])->name('dashboard.operator');
 
     Route::get('/operator/penukaran_sampah', function () {
         return view('dashboard_operator.dashboardOperator_penukaranSampah');

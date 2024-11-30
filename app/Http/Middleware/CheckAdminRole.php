@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class CheckIfVerifiedTelp
+class CheckAdminRole
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,9 @@ class CheckIfVerifiedTelp
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ((Auth::check() && Auth::user()->phone_verified_at) ||
-            (Auth::check() && Auth::user()->phone === null)) {
-            return redirect()->route('dashboard.pengguna');
+        if (Auth::check() && Auth::user()->role !== 'admin' || !Auth::check()) {
+            return redirect() -> route('login');
         }
-
         return $next($request);
     }
 }

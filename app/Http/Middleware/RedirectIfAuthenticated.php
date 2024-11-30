@@ -16,8 +16,14 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check()) {
-            return redirect('/pengguna');
+        if (Auth::check() && Auth::user()->role === 'user') {
+            return redirect() -> route('dashboard.pengguna');
+        }
+        if (Auth::check() && Auth::user()->role === 'operator') {
+            return redirect() -> route('dashboard.operator');
+        }
+        if (Auth::check() && Auth::user()->role === 'admin') {
+            return redirect() -> route('dashboard.admin');
         }
 
         return $next($request);
