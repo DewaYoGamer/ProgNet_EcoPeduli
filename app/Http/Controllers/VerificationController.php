@@ -64,10 +64,10 @@ class VerificationController extends Controller
             $authToken = getenv("TWILIO_AUTH_TOKEN");
             $twilio = new Client($sid, $authToken);
             try{
-                $verification_check = $twilio->verify->v2->services("VAae0234b4e9e31392fda957ea300ef089")
+                $verification_check = $twilio->verify->v2->services(getenv("TWILIO_SERVICE_SID"))
                                        ->verificationChecks
                                        ->create([
-                                                    "to" => "+6282145175076",
+                                                    "to" => "$verificationToken->notelp",
                                                     "code" => "$token"
                                                 ]
                                         );
@@ -78,9 +78,6 @@ class VerificationController extends Controller
 
                     // Delete the verification token
                     $verificationToken->delete();
-
-                    // Log the user in
-                    Auth::login($user);
 
                     // Redirect to the dashboard
                     return redirect()->route('dashboard.pengguna')->with('status', 'Phone number verified successfully.');
@@ -103,9 +100,6 @@ class VerificationController extends Controller
 
             // Delete the verification token
             $verificationToken->delete();
-
-            // Log the user in
-            Auth::login($user);
 
             // Redirect to the dashboard
             return redirect()->route('dashboard.pengguna')->with('status', 'Email verified successfully.');
