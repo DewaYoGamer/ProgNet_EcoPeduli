@@ -141,7 +141,7 @@
                 Foto Profil Pengguna
             </p>
             <div class="flex flex-col justify-center items-center space-y-8">
-                <img id="profile-picture" src="{{ asset($user->avatar ? 'images/users/' . $user->avatar : 'images/noavatar.png') }}" alt="Profile Picture" class="w-64 rounded-full">
+                <img id="profile-picture" src="{{ $user->avatar ? Storage::url($user->avatar) : asset('images/noavatar.png') }}" alt="Profile Picture" class="w-64 rounded-full">
                 <input type="file" id="upload-image" accept="image/*" class="hidden">
                 <button onclick="document.getElementById('upload-image').click()" class="w-[12rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">Ganti Foto Profil</button>
                 @if(session('success2'))
