@@ -39,7 +39,7 @@ class LoginController extends Controller
         }
 
         // Login successful
-        if (Auth::check()) {
+        if (Auth::attempt($credentials, $request->remember)) {
             $request->session()->regenerate();
 
             // Redirect based on user role

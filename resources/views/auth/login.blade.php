@@ -34,7 +34,7 @@
                 </div>
                 <div class="flex justify-between items-center mb-4">
                     <div class="flex items-center">
-                        <input id="remember" type="checkbox" class="h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                        <input id="remember" type="checkbox" name="remember" class="h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
                         <label for="remember" class="ml-2 text-sm font-medium text-gray-900">Ingat Saya</label>
                     </div>
                     <p class="text-right text-sm text-blue-500 hover:underline">
