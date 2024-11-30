@@ -228,22 +228,20 @@ class UserDashboardController extends Controller
 
         $user = Auth::user();
         $image = $request->file('cropped_image');
-        $imageName = $user->id . '_' . time() . '.png'; // Append timestamp for uniqueness
 
         // Delete the old image if it exists
         if (!empty($user->avatar)) {
-            $oldImagePath = public_path('images/users/' . $user->avatar);
-            if (file_exists($oldImagePath)) {
-                unlink($oldImagePath);
-            }
+            Storage::disk('public')->delete($user->avatar);
         }
 
         // Save the new image to the public directory
-        $image->move(public_path('images/users'), $imageName);
+        $image = Storage::disk('public')->putFileAs('/', $image, Str::uuid() . '.' . $image->extension());
 
         // Update the user's avatar path in the database
-        $user->avatar = $imageName;
+        $user->avatar = $image;
         $user->save();
+
+        \Log::info(Storage::url($user->avatar));
 
         // Return a response with the HTTPS URL
         session()->flash('success2', 'Foto Profil berhasil diperbarui!');
