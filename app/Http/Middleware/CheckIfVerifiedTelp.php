@@ -17,7 +17,7 @@ class CheckIfVerifiedTelp
     public function handle(Request $request, Closure $next): Response
     {
         if ((Auth::check() && Auth::user()->phone_verified_at) ||
-            (Auth::check() && Auth::user()->phone === null)) {
+            (Auth::check() && Auth::user()->notelp === null)) {
             return redirect()->route('dashboard.pengguna');
         }
 
