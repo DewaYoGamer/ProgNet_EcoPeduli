@@ -51,8 +51,12 @@ Route::middleware(['guest'])->group(function(){
     })->name('register');
 });
 
-Route::get('/forgot', function () {
-    return view('auth.forgot');
+Route::get('/forgot_username', function () {
+    return view('auth.forgot_username');
+});
+
+Route::get('/forgot_password', function () {
+    return view('auth.forgot_password');
 });
 
 Route::get('/new_password', function () {
