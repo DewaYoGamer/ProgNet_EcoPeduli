@@ -9,20 +9,41 @@
             <form>
                 <div class="my-6">
                     <div class="mb-[6px]">
-                        <input type="email" placeholder="Email"
+                        <input type="email" id="email" placeholder="Email"
                             class="w-full px-5 py-3 text-base border focus:border-primary" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong!')">
-                        </div>
-                        <div class="flex items-center">
-                            <input id="telepon" type="checkbox" class="h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                            <label for="telepon" class="ml-2 text-sm font-medium text-gray-900">Gunakan Nomor Telepon</label>
-                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="telepon" type="checkbox" class="h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="telepon" class="ml-2 text-sm font-medium text-gray-900">Gunakan Nomor Telepon</label>
+                    </div>
                 </div>
                 <div class="mb-4 font-bold">
                     <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">
-                      KIRIM
+                      KIRIM OTP
                     </button>
                 </div>
             </form>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkbox = document.getElementById('telepon');
+            const emailInput = document.getElementById('email');
+            const regiontelp = document.getElementById('regiontelp');
+
+            checkbox.addEventListener('change', function () {
+                if (checkbox.checked) {
+                    emailInput.type = 'tel';
+                    emailInput.placeholder = 'Nomor Telepon';
+                    emailInput.name = 'notelp';
+                    regiontelp.classList.remove('hidden');
+                } else {
+                    emailInput.type = 'email';
+                    emailInput.placeholder = 'Email';
+                    emailInput.name = 'email';
+                    regiontelp.classList.add('hidden');
+                }
+            });
+        });
+    </script>
 </x-layout>
