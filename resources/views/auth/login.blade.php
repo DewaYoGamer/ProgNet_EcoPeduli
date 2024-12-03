@@ -37,8 +37,7 @@
                         <input id="remember" type="checkbox" name="remember" class="h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
                         <label for="remember" class="ml-2 text-sm font-medium text-gray-900">Ingat Saya</label>
                     </div>
-                    <p class="text-right text-sm text-blue-500 hover:underline">
-                        <a href="/forgot">Lupa Kata Sandi?</a>
+                    <p class="text-right text-sm text-blue-500 hover:underline cursor-pointer" id="forgot-btn">Tidak Bisa Masuk?</a>
                     </p>
                 </div>
                 <x-turnstile
@@ -53,5 +52,58 @@
             <a href="/register" class="text-blue-500 hover:underline">Daftar di sini</a>
             </p>
         </div>
+        <div id="forgot-modal" class="fixed inset-0 hidden z-50 items-center justify-center bg-black bg-opacity-50">
+            <div class="bg-white rounded-lg w-[50rem] p-8">
+                <div class="flex flex-col items-center">
+                    <img src="{{ asset('images/logo.png') }}" class="h-24 mb-5">
+                    <h2 class="text-2xl font-bold mb-4 text-primary">APA KENDALA ANDA?</h2>
+                    <div class="flex items-center space-x-6 mt-4">
+                        <a href="/forgot_username" class="w-[338px] bg-third hover:bg-primary text-white text-center font-bold py-2 px-4 rounded">Lupa Nama Pengguna</a>
+                        <a href="/forgot_password" class="w-[338px] bg-third hover:bg-primary text-white text-center font-bold py-2 px-4 rounded">Lupa Kata Sandi</a>
+                    </div>
+                    <button id="close-modal1" class="w-[44rem] bg-lime-500 hover:bg-[#6da714] font-bold text-white px-4 py-2 rounded-lg mt-6">Batal</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        // JavaScript to handle modal open and close
+        const modals = {
+            forgot: { btn: document.getElementById('forgot-btn'), modal: document.getElementById('forgot-modal'), closeBtn: document.getElementById('close-modal1') }
+        };
+
+        // Function to open modal
+        function openModal(modal) {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');  // Make sure it displays as flex when opened
+        }
+
+        // Function to close modal
+        function closeModal(modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');  // Remove flex when closing
+        }
+
+        for (const key in modals) {
+            const { btn, modal, closeBtn } = modals[key];
+
+            // Open modal on button click
+            btn.addEventListener('click', () => {
+                openModal(modal);
+            });
+
+            // Close modal on close button click
+            closeBtn.addEventListener('click', () => {
+                closeModal(modal);
+            });
+
+            // Close modal if clicked outside of the modal content
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal);
+                }
+            });
+        }
+    </script>
 </x-layout>
