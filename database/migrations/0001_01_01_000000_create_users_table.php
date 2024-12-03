@@ -39,6 +39,7 @@ return new class extends Migration
             $table->uuid('id_token')->nullable();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
+            $table->tinyInteger('type')->default(0);
         });
 
         Schema::create('sessions', function (Blueprint $table) {

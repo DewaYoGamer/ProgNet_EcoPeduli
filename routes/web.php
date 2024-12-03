@@ -11,6 +11,7 @@ use App\Http\Controllers\PenukaranPoinController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EducateController;
 use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\ForgotController;
 
 // ============= Landing Page (Middeleware) =============
 Route::get('/', function () {
@@ -55,9 +56,13 @@ Route::get('/forgot_username', function () {
     return view('auth.forgot_username');
 });
 
+Route::post('/forgot_username', [ForgotController::class, 'forgot_username'])->name('forgot_username');
+
 Route::get('/forgot_password', function () {
     return view('auth.forgot_password');
 });
+
+Route::post('/forgot_password', [ForgotController::class, 'forgot_password'])->name('forgot_password');
 
 Route::get('/new_password', function () {
     return view('auth.new_password');
