@@ -40,6 +40,8 @@ class RegisterController extends Controller
             $request->merge(['notelp' => $notelp]);
         }
 
+        $request->merge(['username' => strtolower($request->username)]);
+
         $validatedData = $request->validate([
             'username' => ['required', 'min:5', 'max:255', 'unique:users'],
             'name' => ['required', 'min:5', 'max:255'],
@@ -47,7 +49,7 @@ class RegisterController extends Controller
             'notelp' => ['nullable', 'min:10', 'max:15', 'unique:users', 'required_without:email'],
             'password' => ['required', 'min:5', 'max:255', 'confirmed']
         ], [
-            'username.unique' => 'Username sudah digunakan.',
+            'username.unique' => 'Nama Pengguna sudah digunakan.',
             'email.unique' => 'Email sudah digunakan.',
             'notelp.unique' => 'Nomor telepon sudah digunakan.',
             'email.required_without' => 'Either email or phone number is required.',
