@@ -50,19 +50,19 @@ Route::middleware(['guest'])->group(function(){
     Route::get('/register', function () {
         return view('auth.register');
     })->name('register');
+
+    Route::get('/forgot_username', function () {
+        return view('auth.forgot_username');
+    });
+
+    Route::post('/forgot_username', [ForgotController::class, 'forgot_username'])->name('forgot_username');
+
+    Route::get('/forgot_password', function () {
+        return view('auth.forgot_password');
+    });
+
+    Route::post('/forgot_password', [ForgotController::class, 'forgot_password'])->name('forgot_password');
 });
-
-Route::get('/forgot_username', function () {
-    return view('auth.forgot_username');
-});
-
-Route::post('/forgot_username', [ForgotController::class, 'forgot_username'])->name('forgot_username');
-
-Route::get('/forgot_password', function () {
-    return view('auth.forgot_password');
-});
-
-Route::post('/forgot_password', [ForgotController::class, 'forgot_password'])->name('forgot_password');
 
 Route::get('/new_password', function () {
     return view('auth.new_password');
@@ -87,10 +87,6 @@ Route::middleware(['user'])->group(function () {
     Route::get('/pengguna/profil', [UserDashboardController::class, 'profile'])->name('user.profile');
     Route::post('/pengguna/profil/update', [UserDashboardController::class, 'update'])->name('user.update');
     Route::post('/pengguna/profil/update-image', [UserDashboardController::class, 'uploadCroppedImage'])->name('upload.cropped.image');
-
-    // Route to handle email verification request
-    Route::get('/reverification', [UserDashboardController::class, 'sendVerificationEmail'])->name('user.sendVerificationEmail')->middleware(['email']);
-    Route::get('/reverificationt', [UserDashboardController::class, 'sendVerificationTelp'])->name('user.sendVerificationTelp')->middleware(['telp']);
 });
 
 // ============= Admin =============
@@ -122,6 +118,9 @@ Route::middleware(['operator'])->group(function () {
 });
 
 // ============= Database CRUD =============
+// Route to handle email verification request
+Route::post('/reverification', [UserDashboardController::class, 'sendVerificationEmail'])->name('user.sendVerificationEmail');
+Route::post('/reverificationt', [UserDashboardController::class, 'sendVerificationTelp'])->name('user.sendVerificationTelp');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
 Route::post('/logout', [LoginController::class, 'logout']);

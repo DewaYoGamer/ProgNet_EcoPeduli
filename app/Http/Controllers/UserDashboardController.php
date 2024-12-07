@@ -12,11 +12,11 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Twilio\Rest\Client;
 use App\Models\VerificationToken;
+use App\Models\User;
 
 class UserDashboardController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         $user = Auth::user();
 
         // Ambil data kode unik untuk user yang sedang login
@@ -59,8 +59,7 @@ class UserDashboardController extends Controller
         return view('dashboard_admin.dashboardAdmin_index', compact('user', 'data_tb_penukaran_sampah', 'data_tb_penukaran_poin', 'data_tb_penukaran_poin_acc'));
     }
 
-    private function redirectToRole($role)
-    {
+    private function redirectToRole($role){
         // Arahkan ke halaman berdasarkan peran
         switch ($role) {
             case 'admin':
@@ -74,28 +73,13 @@ class UserDashboardController extends Controller
         }
     }
 
-    public function profile()
-    {
+    public function profile(){
         $user = Auth::user();
         return view('dashboard.dashboardPengguna_profil', compact('user'));
     }
 
-    public function update(Request $request)
-    {
+    public function update(Request $request){
         $user = Auth::user();
-
-        if ($request->notelp !== null) {
-            $notelp = $request->input('notelp');
-            if (substr($notelp, 0, 3) !== '+62') {
-                if (substr($notelp, 0, 1) === '0') {
-                    $notelp = '+62' . substr($notelp, 1);
-                } else {
-                    $notelp = '+62' . $notelp;
-                }
-            }
-            // Save the formatted number in the request or database
-            $request->merge(['notelp' => $notelp]);
-        }
 
         $errors = new \Illuminate\Support\MessageBag();
         $validatedData = [];
@@ -133,6 +117,17 @@ class UserDashboardController extends Controller
 
         // Validate 'notelp'
         try {
+            if ($request->notelp !== null) {
+                if (substr($request->notelp, 0, 3) !== '+62') {
+                    if (substr($request->notelp, 0, 1) === '0') {
+                        $request->notelp = '+62' . substr($request->notelp, 1);
+                    } else {
+                        $request->notelp = '+62' . $request->notelp;
+                    }
+                }
+                // Save the formatted number in the request or database
+                $request->merge(['notelp' => $request->notelp]);
+            }
             $request->validate([
                 'notelp' => ['nullable', 'min:10', 'max:15', 'unique:users,notelp,' . $user->id]
             ], [
@@ -191,16 +186,6 @@ class UserDashboardController extends Controller
         //     'notelp' => 'Setidaknya mempunyai satu kontak yang terverifikasi.'
         // ]);
 
-        // Check if the email was successfully validated and has changed
-        if (isset($validatedData['email']) && $user->email !== $validatedData['email']) {
-            $validatedData['email_verified_at'] = null;
-        }
-
-        // Check if the phone number has changed (and is valid)
-        if (isset($validatedData['notelp']) && $user->notelp !== $validatedData['notelp']) {
-            $validatedData['phone_verified_at'] = null;
-        }
-
         $changesMade = false;
 
         // Check if the fields have been modified
@@ -211,53 +196,162 @@ class UserDashboardController extends Controller
             }
         }
 
+        // Check if the email was successfully validated and has changed
+        if (isset($validatedData['email']) && $user->email !== $validatedData['email']) {
+            $email = $validatedData['email'];
+            unset($validatedData['email']);
+        }
+
+        // Check if the phone number has changed (and is valid)
+        if (isset($validatedData['notelp']) && $user->notelp !== $validatedData['notelp']) {
+            $notelp = $validatedData['notelp'];
+            unset($validatedData['notelp']);
+        }
+
         if ($changesMade) {
             $user->update($validatedData);
+            if (isset($email)) {
+                // Check if there is already a verification token for the user
+                if (VerificationToken::where('user_id', $user->id)->exists()) {
+                    VerificationToken::where('user_id', $user->id)->delete();
+                }
+
+                // Generate a new verification token
+                $token = mt_rand(10000, 99999);
+
+                $id_token = Str::uuid()->toString();
+
+                // Store the token in the verification_tokens table
+                VerificationToken::create([
+                    'user_id' => $user->id,
+                    'email' => $email,
+                    'id_token' => $id_token,
+                    'token' => $token,
+                    'created_at' => Carbon::now(),
+                    'type' => 3
+                ]);
+
+                // Send the verification email with the token
+                try {
+                    Mail::to($email)->send(new VerificationEmail($token));
+                } catch (\Exception $e) {
+                    Log::error('Failed to send verification email: ' . $e->getMessage());
+                }
+
+                return redirect()->route('verification.show', ['id_token' => $id_token, 'email' => $email, 'type' => 3]);
+
+            }
+            if (isset($notelp)) {
+                if (VerificationToken::where('user_id', $user->id)->exists()) {
+                    VerificationToken::where('user_id', $user->id)->delete();
+                }
+
+                // Generate a new verification token
+                $token = 1;
+
+                $id_token = Str::uuid()->toString();
+
+                // Store the token in the verification_tokens table
+                VerificationToken::create([
+                    'user_id' => $user->id,
+                    'notelp' => $notelp,
+                    'id_token' => $id_token,
+                    'token' => $token,
+                    'created_at' => Carbon::now(),
+                    'type' => 3
+                ]);
+
+                // Send the verification email with the token
+                try {
+                    $sid = getenv("TWILIO_ACCOUNT_SID");
+                    $authToken = getenv("TWILIO_AUTH_TOKEN");
+                    $twilio = new Client($sid, $authToken);
+                    $verification = $twilio->verify->v2->services(getenv("TWILIO_SERVICE_SID"))
+                                        ->verifications
+                                        ->create("$notelp" , "sms");
+                } catch (\Exception $e) {
+                    Log::error('Failed to send verification email: ' . $e->getMessage());
+                }
+
+                return redirect()->route('verification.show', ['id_token' => $id_token, 'notelp' => $notelp, 'type' => 3]);
+            }
             return redirect()->route('user.profile')->with('success', 'Profil berhasil diperbarui!')->withErrors($errors);
         }
         return back()->withErrors($errors);
     }
 
-    public function sendVerificationEmail(Request $request)
-    {
-        $user = Auth::user();
-
-        // Check if there is already a verification token for the user
-        if (VerificationToken::where('user_id', $user->id)->exists()) {
-            VerificationToken::where('user_id', $user->id)->delete();
+    public function sendVerificationEmail(Request $request){
+        if (!$request->has('id_token')) {
+            return redirect()->route('login');
         }
 
+        $verificationToken = VerificationToken::where('id_token', $request->id_token)->first();
+        if (!$verificationToken ||
+            $verificationToken->email !== $request->email ||
+            $verificationToken->notelp !== $request->notelp ||
+            $verificationToken->type !== (int)$request->type){
+            return redirect()->route('login')->with('error', 'Invalid token.');
+        }
+
+        // Check if there is already a verification token for the user
+        if (VerificationToken::where('id_token', $request->id_token)->exists()) {
+            VerificationToken::where('id_token', $request->id_token)->delete();
+        }
         // Generate a new verification token
         $token = mt_rand(10000, 99999);
 
         $id_token = Str::uuid()->toString();
 
-        // Store the token in the verification_tokens table
-        VerificationToken::create([
-            'user_id' => $user->id,
-            'email' => $user->email,
-            'id_token' => $id_token,
-            'token' => $token,
-            'created_at' => Carbon::now(),
-        ]);
+        if ((int)$verificationToken->type === 0) {
+            VerificationToken::create([
+                'username' => $verificationToken->username,
+                'name' => $verificationToken->name,
+                'email' => $verificationToken->email,
+                'password' => $verificationToken->password,
+                'id_token' => $id_token,
+                'token' => $token,
+                'created_at' => Carbon::now(),
+                'type' => $verificationToken->type
+            ]);
+        }else{
+            // Store the token in the verification_tokens table
+            $user = User::where('id', $verificationToken->user_id)->first();
+            VerificationToken::create([
+                'user_id' => $user->id,
+                'email' => $verificationToken->email,
+                'id_token' => $id_token,
+                'token' => $token,
+                'created_at' => Carbon::now(),
+                'type' => $verificationToken->type
+            ]);
+        }
 
         // Send the verification email with the token
         try {
-            Mail::to($user->email)->send(new VerificationEmail($token));
+            Mail::to($verificationToken->email)->send(new VerificationEmail($token));
         } catch (\Exception $e) {
             Log::error('Failed to send verification email: ' . $e->getMessage());
         }
 
-        return redirect()->route('verification.show', ['id_token' => $id_token, 'email' => $user->email])->with('success', 'Kode Verifikasi telah dikirim ulang.');
+        return redirect()->route('verification.show', ['id_token' => $id_token, 'email' => $request->email, 'type' => $request->type])->with('success', 'Kode Verifikasi telah dikirim ulang.');
     }
 
-    public function sendVerificationTelp(Request $request)
-    {
-        $user = Auth::user();
+    public function sendVerificationTelp(Request $request){
+        if (!$request->has('id_token')) {
+            return redirect()->route('login');
+        }
+
+        $verificationToken = VerificationToken::where('id_token', $request->id_token)->first();
+        if (!$verificationToken ||
+            $verificationToken->email !== $request->email ||
+            $verificationToken->notelp !== $request->notelp ||
+            $verificationToken->type !== (int)$request->type) {
+            return redirect()->route('login')->with('error', 'Invalid token.');
+        }
 
         // Revoke old tokens associated with the user
-        if (VerificationToken::where('user_id', $user->id)->exists()) {
-            VerificationToken::where('user_id', $user->id)->delete();
+        if (VerificationToken::where('id_token', $request->id_token)->exists()) {
+            VerificationToken::where('id_token', $request->id_token)->delete();
         }
 
         // Generate a new verification token
@@ -265,14 +359,29 @@ class UserDashboardController extends Controller
 
         $id_token = Str::uuid()->toString();
 
-        // Store the token in the verification_tokens table
-        VerificationToken::create([
-            'user_id' => $user->id,
-            'notelp' => $user->notelp,
-            'id_token' => $id_token,
-            'token' => $token,
-            'created_at' => Carbon::now(),
-        ]);
+        if ((int)$request->type === 0) {
+            VerificationToken::create([
+                'username' => $verificationToken->username,
+                'name' => $verificationToken->name,
+                'notelp' => $verificationToken->notelp,
+                'password' => $verificationToken->password,
+                'id_token' => $id_token,
+                'token' => $token,
+                'created_at' => Carbon::now(),
+                'type' => $verificationToken->type
+            ]);
+        }
+        else {
+            $user = User::where('id', $verificationToken->user_id)->first();
+            VerificationToken::create([
+                'user_id' => $user->id,
+                'notelp' => $verificationToken->notelp,
+                'id_token' => $id_token,
+                'token' => $token,
+                'created_at' => Carbon::now(),
+                'type' => $verificationToken->type
+            ]);
+        }
 
         // Send the verification email with the token
         try {
@@ -281,16 +390,15 @@ class UserDashboardController extends Controller
             $twilio = new Client($sid, $authToken);
             $verification = $twilio->verify->v2->services(getenv("TWILIO_SERVICE_SID"))
                                    ->verifications
-                                   ->create("$user->notelp" , "sms");
+                                   ->create("$request->notelp" , "sms");
         } catch (\Exception $e) {
             Log::error('Failed to send verification email: ' . $e->getMessage());
         }
 
-        return redirect()->route('verification.show', ['id_token' => $id_token, 'notelp' => $user->notelp])->with('success', 'Kode Verifikasi telah dikirim ulang.');
+        return redirect()->route('verification.show', ['id_token' => $id_token, 'notelp' => $request->notelp, 'type' => $request->type])->with('success', 'Kode Verifikasi telah dikirim ulang.');
     }
 
-    public function uploadCroppedImage(Request $request)
-    {
+    public function uploadCroppedImage(Request $request){
         $request->validate([
             'cropped_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);

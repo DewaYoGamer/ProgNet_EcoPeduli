@@ -3,21 +3,22 @@ namespace App\Http\Controllers;
 
 
 use App\Models\User;
+use App\Models\VerificationToken;
+use App\Mail\VerificationEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\VerificationEmail;
-use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 use Twilio\Rest\Client;
 
 class RegisterController extends Controller
 {
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         try {
             $request->validate([
                 'cf-turnstile-response' => ['required', Rule::turnstile()],
@@ -60,14 +61,72 @@ class RegisterController extends Controller
             return !is_null($value);
         });
 
-        $user = User::create($filteredData);
+        if(User::where('username', $filteredData['username'])->exists()){
+            VerificationToken::where('username', $filteredData['username'])->delete();
+        }
 
-        Auth::login($user);
+        if(isset($filteredData['email'])){
+            if(VerificationToken::where('email', $filteredData['email'])->exists()){
+                VerificationToken::where('email', $filteredData['email'])->delete();
+            }
 
-        if($user->email) {
-            return redirect()->route('user.sendVerificationEmail', ['email' => $user->email]);
-        } else {
-            return redirect()->route('user.sendVerificationTelp', ['notelp' => $user->notelp]);
+            $token = mt_rand(10000, 99999);
+
+            $id_token = Str::uuid()->toString();
+
+            // Store the token in the verification_tokens table
+            $user = VerificationToken::create([
+                'email' => $filteredData['email'],
+                'password' => Hash::make($filteredData['password']),
+                'name' => $filteredData['name'],
+                'username' => $filteredData['username'],
+                'id_token' => $id_token,
+                'token' => $token,
+                'created_at' => Carbon::now()
+            ]);
+
+            // Send the verification email with the token
+            try {
+                Mail::to($user->email)->send(new VerificationEmail($token));
+            } catch (\Exception $e) {
+                Log::error('Failed to send verification email: ' . $e->getMessage());
+            }
+
+            return redirect()->route('verification.show', ['id_token' => $id_token, 'email' => $user->email, 'type' => 0]);
+        }
+        if (isset($filteredData['notelp'])) {
+            if(VerificationToken::where('notelp', $filteredData['notelp'])->exists()){
+                VerificationToken::where('notelp', $filteredData['notelp'])->delete();
+            }
+
+            $token = 1;
+
+            $id_token = Str::uuid()->toString();
+
+            // Store the token in the verification_tokens table
+            $user = VerificationToken::create([
+                'notelp' => $filteredData['notelp'],
+                'password' => Hash::make($filteredData['password']),
+                'name' => $filteredData['name'],
+                'username' => $filteredData['username'],
+                'id_token' => $id_token,
+                'token' => $token,
+                'created_at' => Carbon::now()
+            ]);
+
+            // Send the verification SMS with the token
+            $sid = getenv("TWILIO_ACCOUNT_SID");
+            $authToken = getenv("TWILIO_AUTH_TOKEN");
+            $twilio = new Client($sid, $authToken);
+            try {
+                $verification = $twilio->verify->v2->services(getenv("TWILIO_SERVICE_SID"))
+                    ->verifications
+                    ->create($filteredData['notelp'], "sms");
+            } catch (\Exception $e) {
+                Log::error('Failed to send verification SMS: ' . $e->getMessage());
+            }
+
+            return redirect()->route('verification.show', ['id_token' => $id_token, 'notelp' => $filteredData['notelp'], 'type' => 0]);
         }
     }
 }

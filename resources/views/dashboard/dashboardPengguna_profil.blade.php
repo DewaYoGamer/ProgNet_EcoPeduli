@@ -84,7 +84,7 @@
                     </div>
                     <div>
                         <p class="text-gray-600 text-sm font-semibold">Tanggal Lahir</p>
-                        <div class="flex items-center bg-gray-100 border border-gray-300 rounded-md px-4 py-2 mt-2 h-12 w-[11rem]">
+                        <div class="flex items-center bg-gray-100 border border-gray-300 rounded-md px-4 py-2 mt-2 h-12 w-[13rem]">
                             <p class="text-gray-800 font-medium">
                                 @if($user->date_birth)
                                     {{ \Carbon\Carbon::parse($user->date_birth)->format('d/m/Y') }}
@@ -130,7 +130,7 @@
                     </div>
                     <div>
                         <p class="text-gray-600 text-sm font-semibold">Tanggal Lahir</p>
-                        <input type="date" name="date_birth" value="{{ $user->date_birth }}" class="bg-gray-100 border border-gray-300 rounded-md px-4 py-2 mt-2 h-12">
+                        <input type="date" name="date_birth" value="{{ $user->date_birth }}" class="bg-gray-100 border border-gray-300 rounded-md px-4 py-2 mt-2 h-12 w-[13rem]">
                     </div>
                     <button type="submit" class="w-[12rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">Simpan</button>
                     <button type="button" @click="editMode = false" class="w-[12rem] bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mt-4">Batal</button>

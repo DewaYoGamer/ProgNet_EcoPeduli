@@ -7,8 +7,6 @@ use App\Http\Middleware\CheckUserRole;
 use App\Http\Middleware\CheckOperatorRole;
 use App\Http\Middleware\CheckAdminRole;
 use App\Http\Middleware\RedirectIfAuthenticated;
-use App\Http\Middleware\CheckIfVerifiedEmail;
-use App\Http\Middleware\CheckIfVerifiedTelp;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -22,8 +20,6 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin'=>CheckAdminRole::class,
             'user'=>CheckUserRole::class,
             'guest'=>RedirectIfAuthenticated::class,
-            'email'=>CheckIfVerifiedEmail::class,
-            'telp'=>CheckIfVerifiedTelp::class
         ]);
         //
     })
