@@ -97,27 +97,93 @@ class UserDashboardController extends Controller
             $request->merge(['notelp' => $notelp]);
         }
 
-        $validatedData = $request->validate([
-            'name' => ['required', 'min:5', 'max:255'],
-            'username' => ['required', 'min:5', 'max:255', 'unique:users,username,' . $user->id],
-            'notelp' => ['nullable', 'min:10', 'max:15', 'unique:users,notelp,' . $user->id],
-            'email' => ['nullable', 'email:dns', 'unique:users,email,' . $user->id],
-            'address' => ['nullable', 'string', 'max:255'],
-            'city' => ['nullable', 'string', 'max:255'],
-            'province' => ['nullable', 'string', 'max:255'],
-            'date_birth' => ['nullable', 'date'],
-        ], [
-            'name.required' => 'Nama tidak boleh kosong.',
-            'name.min' => 'Nama minimal 5 karakter.',
-            'username.unique' => 'Username sudah digunakan.',
-            'username.required' => 'Username tidak boleh kosong.',
-            'username.min' => 'Username minimal 5 karakter.',
-            'email.unique' => 'Email sudah digunakan.',
-            'email.email' => 'Email tidak valid.',
-            'notelp.unique' => 'Nomor telepon sudah digunakan.',
-            'notelp.min' => 'Nomor telepon minimal 10 karakter.',
-            'notelp.max' => 'Nomor telepon maksimal 15 karakter.'
-        ]);
+        $errors = new \Illuminate\Support\MessageBag();
+        $validatedData = [];
+
+        // Validate 'name'
+        try {
+            $request->validate([
+                'name' => ['required', 'min:5', 'max:255']
+            ], [
+                'name.required' => 'Nama tidak boleh kosong.',
+                'name.min' => 'Nama minimal 5 karakter.',
+                'name.max' => 'Nama maksimal 255 karakter.'
+            ]);
+            $validatedData['name'] = $request->input('name');  // Add to validated data if no error
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $errors->add('name', $e->validator->errors()->first('name'));  // Store error
+            unset($request['name']);  // Unset invalid field
+        }
+
+        // Validate 'username'
+        try {
+            $request->validate([
+                'username' => ['required', 'min:5', 'max:255', 'unique:users,username,' . $user->id]
+            ], [
+                'username.required' => 'Username tidak boleh kosong.',
+                'username.min' => 'Username minimal 5 karakter.',
+                'username.max' => 'Username maksimal 255 karakter.',
+                'username.unique' => 'Username sudah digunakan.'
+            ]);
+            $validatedData['username'] = $request->input('username');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $errors->add('username', $e->validator->errors()->first('username'));
+            unset($request['username']);
+        }
+
+        // Validate 'notelp'
+        try {
+            $request->validate([
+                'notelp' => ['nullable', 'min:10', 'max:15', 'unique:users,notelp,' . $user->id]
+            ], [
+                'notelp.min' => 'Nomor telepon minimal 10 karakter.',
+                'notelp.max' => 'Nomor telepon maksimal 15 karakter.',
+                'notelp.unique' => 'Nomor telepon sudah digunakan.'
+            ]);
+            $validatedData['notelp'] = $request->input('notelp');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $errors->add('notelp', $e->validator->errors()->first('notelp'));
+            unset($request['notelp']);
+        }
+
+        // Validate 'email'
+        try {
+            $request->validate([
+                'email' => ['nullable', 'email:dns', 'unique:users,email,' . $user->id]
+            ], [
+                'email.unique' => 'Email sudah digunakan.',
+                'email.email' => 'Email tidak valid.'
+            ]);
+            $validatedData['email'] = $request->input('email');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $errors->add('email', $e->validator->errors()->first('email'));
+            unset($request['email']);
+        }
+
+        // Validate 'address'
+        try {
+            $request->validate([
+                'address' => ['nullable', 'string', 'min: 5', 'max:255']
+            ], [
+                'address.min' => 'Alamat minimal 5 karakter.',
+                'address.max' => 'Alamat maksimal 255 karakter.'
+            ]);
+            $validatedData['address'] = $request->input('address');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $errors->add('address', $e->validator->errors()->first('address'));
+            unset($request['address']);
+        }
+
+        // Validate 'date_birth'
+        try {
+            $request->validate([
+                'date_birth' => ['nullable', 'date']
+            ]);
+            $validatedData['date_birth'] = $request->input('date_birth');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $errors->add('date_birth', 'Tanggal lahir tidak valid.');
+            unset($request['date_birth']);
+        }
 
         // ADD LOGIC HERE
         // return redirect()->route('user.profile')->withErrors([
@@ -125,19 +191,31 @@ class UserDashboardController extends Controller
         //     'notelp' => 'Setidaknya mempunyai satu kontak yang terverifikasi.'
         // ]);
 
-        // Check if the email has changed
-        if ($user->email !== $validatedData['email']) {
+        // Check if the email was successfully validated and has changed
+        if (isset($validatedData['email']) && $user->email !== $validatedData['email']) {
             $validatedData['email_verified_at'] = null;
         }
 
-        // Check if the phone number has changed
-        if ($user->notelp !== $validatedData['notelp']) {
+        // Check if the phone number has changed (and is valid)
+        if (isset($validatedData['notelp']) && $user->notelp !== $validatedData['notelp']) {
             $validatedData['phone_verified_at'] = null;
         }
 
-        $user->update($validatedData);
+        $changesMade = false;
 
-        return redirect()->route('user.profile')->with('success', 'Profil berhasil diperbarui!');
+        // Check if the fields have been modified
+        foreach ($validatedData as $key => $value) {
+            if ($user->$key !== $value) {
+                $changesMade = true;
+                break;  // No need to check further if one change is found
+            }
+        }
+
+        if ($changesMade) {
+            $user->update($validatedData);
+            return redirect()->route('user.profile')->with('success', 'Profil berhasil diperbarui!')->withErrors($errors);
+        }
+        return back()->withErrors($errors);
     }
 
     public function sendVerificationEmail(Request $request)

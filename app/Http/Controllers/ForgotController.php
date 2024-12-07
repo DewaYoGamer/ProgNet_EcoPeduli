@@ -9,13 +9,9 @@ class ForgotController extends Controller
 {
     public function forgot_password(Request $request)
     {
-        $request->validate([
-            'email' => 'required|email|exists:users,email'
-        ]);
-
         // Check database if email exists
         $user = User::where('email', $request->email)->first();
-        \Log::info($user);
+        
         if ($user) {
 
             // // Check if there is already a verification token for the user

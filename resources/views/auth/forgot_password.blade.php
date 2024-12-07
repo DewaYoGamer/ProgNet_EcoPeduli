@@ -7,10 +7,11 @@
             </div>
             <h2 class="text-2xl font-bold text-center text-primary">LUPA KATA SANDI</h2>
             <form action="{{ route('forgot_password') }}" method="POST">
+                @csrf
                 <div class="my-6">
                     <div class="mb-[6px]">
-                        <input type="email" id="email" placeholder="Email"
-                            class="w-full px-5 py-3 text-base border focus:border-primary" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong!')">
+                        <input type="email" id="email" name="email" placeholder="Email" required
+                            class="w-full px-5 py-3 text-base border focus:border-primary">
                     </div>
                     <div class="flex items-center">
                         <input id="telepon" type="checkbox" class="h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">

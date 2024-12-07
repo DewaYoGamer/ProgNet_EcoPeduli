@@ -14,7 +14,7 @@
                                 <p class="text-gray-800 font-medium">{{ $user->name }}</p>
                             </div>
                             @error('name')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                <p id="error-alert" class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="w-full">
@@ -23,7 +23,7 @@
                                 <p class="text-gray-800 font-medium">{{ $user->username }}</p>
                             </div>
                             @error('username')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                <p id="error-alert" class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                             </p>
                         </div>
                         @error('email')
-                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            <p id="error-alert" class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror
                         @if (is_null(auth()->user()->email_verified_at) && $user->email)
                             <div class="mb-4">
@@ -59,7 +59,7 @@
                             </p>
                         </div>
                         @error('notelp')
-                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            <p id="error-alert" class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror
                         @if (is_null(auth()->user()->phone_verified_at) && $user->notelp)
                             <div class="mb-4">
@@ -78,6 +78,9 @@
                                 @endif
                             </p>
                         </div>
+                        @error('address')
+                            <p id="error-alert" class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         <p class="text-gray-600 text-sm font-semibold">Tanggal Lahir</p>
@@ -90,6 +93,9 @@
                                 @endif
                             </p>
                         </div>
+                        @error('date_birth')
+                            <p id="error-alert" class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         <button @click="editMode = true" class="w-[12rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">Edit Profil</button>
@@ -131,7 +137,7 @@
                 </form>
             </template>
             @if(session('success'))
-                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mt-4" role="alert">
+                <div id="success-alert" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mt-4" role="alert">
                     <span class="block sm:inline">{{ session('success') }}</span>
                 </div>
             @endif
@@ -145,7 +151,7 @@
                 <input type="file" id="upload-image" accept="image/*" class="hidden">
                 <button onclick="document.getElementById('upload-image').click()" class="w-[12rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">Ganti Foto Profil</button>
                 @if(session('success2'))
-                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mt-4" role="alert">
+                    <div id="success2-alert" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mt-4" role="alert">
                         <span class="block sm:inline">{{ session('success2') }}</span>
                     </div>
                 @endif
@@ -167,4 +173,32 @@
         </div>
     </div>
     <x-script.upimage />
+    <script>
+        // Check if the success alert or error alert exists and hide them after 3 seconds
+        document.addEventListener('DOMContentLoaded', function () {
+            // Success Alert Dismissal
+            const successAlert = document.getElementById('success-alert');
+            if (successAlert) {
+                setTimeout(function() {
+                    successAlert.style.display = 'none';
+                }, 3000); // 3 seconds
+            }
+
+            // Error Alert Dismissal
+            const errorAlert = document.getElementById('error-alert');
+            if (errorAlert) {
+                setTimeout(function() {
+                    errorAlert.style.display = 'none';
+                }, 3000); // 3 seconds
+            }
+
+            // Success2 Alert Dismissal
+            const success2Alert = document.getElementById('success2-alert');
+            if (success2Alert) {
+                setTimeout(function() {
+                    success2Alert.style.display = 'none';
+                }, 3000); // 3 seconds
+            }
+        });
+    </script>
 </x-layout_dashboard>
