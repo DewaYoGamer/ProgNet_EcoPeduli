@@ -2,6 +2,11 @@
     <x-slot name="title">Lupa Kata Sandi | Eco Peduli</x-slot>
     <div class="flex items-center justify-center min-h-screen bg-gray-100 overflow-hidden -mt-20">
         <div class="bg-white p-6 rounded shadow-md w-full max-w-sm mx-6 mb-16">
+            @if (session('error'))
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                    <span class="block sm:inline">{{ session('error') }}</span>
+                </div>
+            @endif
             <div class="flex justify-center mb-4">
                 <img src="{{ asset('images/logo.png') }}" class="h-24">
             </div>

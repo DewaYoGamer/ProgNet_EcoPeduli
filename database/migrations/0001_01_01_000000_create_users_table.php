@@ -34,12 +34,19 @@ return new class extends Migration
         Schema::create('verification_tokens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->index();
+            $table->string('username')->nullable();
+            $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('notelp')->nullable();
+            $table->string('password')->nullable();
             $table->uuid('id_token')->nullable();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
             $table->tinyInteger('type')->default(0);
+            // 0 = Register
+            // 1 = Forgot Password
+            // 2 = Forgot Username
+            // 3 = Update
         });
 
         Schema::create('sessions', function (Blueprint $table) {

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -27,7 +28,7 @@ class LoginController extends Controller
         ]);
 
         // Check if username exists
-        $user = \App\Models\User::where('username', $credentials['username'])->first();
+        $user = User::where('username', $credentials['username'])->first();
         if ($user) {
             // If username exists but password is incorrect
             if (!Auth::attempt($credentials)) {
