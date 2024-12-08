@@ -4,20 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\VerificationToken;
-use App\Mail\VerificationEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Auth;
+use App\Services\EmailVerificationService;
+use App\Services\TwilioVerificationService;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
-use Twilio\Rest\Client;
 
 class RegisterController extends Controller
 {
+    protected $emailVerificationService;
+    protected $twilioVerificationService;
+    public function __construct(EmailVerificationService $emailVerificationService, TwilioVerificationService $twilioVerificationService)
+    {
+        $this->emailVerificationService = $emailVerificationService;
+        $this->twilioVerificationService = $twilioVerificationService;
+    }
+
     public function store(Request $request){
         try {
             $request->validate([
@@ -86,11 +92,7 @@ class RegisterController extends Controller
             ]);
 
             // Send the verification email with the token
-            try {
-                Mail::to($user->email)->send(new VerificationEmail($token));
-            } catch (\Exception $e) {
-                Log::error('Failed to send verification email: ' . $e->getMessage());
-            }
+            $this->emailVerificationService->sendVerificationEmail($user->email, $token);
 
             return redirect()->route('verification.show', ['id_token' => $id_token, 'email' => $user->email, 'type' => 0]);
         }
@@ -115,16 +117,7 @@ class RegisterController extends Controller
             ]);
 
             // Send the verification SMS with the token
-            $sid = getenv("TWILIO_ACCOUNT_SID");
-            $authToken = getenv("TWILIO_AUTH_TOKEN");
-            $twilio = new Client($sid, $authToken);
-            try {
-                $verification = $twilio->verify->v2->services(getenv("TWILIO_SERVICE_SID"))
-                    ->verifications
-                    ->create($filteredData['notelp'], "sms");
-            } catch (\Exception $e) {
-                Log::error('Failed to send verification SMS: ' . $e->getMessage());
-            }
+            $this->twilioVerificationService->sendVerificationSMS($user->notelp);
 
             return redirect()->route('verification.show', ['id_token' => $id_token, 'notelp' => $filteredData['notelp'], 'type' => 0]);
         }
