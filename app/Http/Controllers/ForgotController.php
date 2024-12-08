@@ -6,12 +6,22 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\VerificationToken;
 use App\Mail\VerificationEmail;
+use App\Services\EmailVerificationService;
+use App\Services\TwilioVerificationService;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 
 class ForgotController extends Controller
 {
+    protected $emailVerificationService;
+    protected $twilioVerificationService;
+    public function __construct(EmailVerificationService $emailVerificationService, TwilioVerificationService $twilioVerificationService)
+    {
+        $this->emailVerificationService = $emailVerificationService;
+        $this->twilioVerificationService = $twilioVerificationService;
+    }
+
     public function forgot_password(Request $request)
     {
         // Check database if email exists
@@ -42,12 +52,7 @@ class ForgotController extends Controller
             ]);
 
             // Send the verification email with the token
-            try {
-                Mail::to($user->email)->send(new VerificationEmail($token));
-            } catch (\Exception $e) {
-                Log::error('Failed to send verification email: ' . $e->getMessage());
-            }
-
+            $this->emailVerificationService->sendVerificationEmail($user, $token);
             return redirect()->route('verification.show', ['id_token' => $id_token, 'email' => $user->email, 'type' => 1]);
             }
         }
@@ -78,17 +83,7 @@ class ForgotController extends Controller
             ]);
 
             // Send the verification email with the token
-            try {
-                $sid = getenv("TWILIO_ACCOUNT_SID");
-                $authToken = getenv("TWILIO_AUTH_TOKEN");
-                $twilio = new Client($sid, $authToken);
-                $verification = $twilio->verify->v2->services(getenv("TWILIO_SERVICE_SID"))
-                                       ->verifications
-                                       ->create("$user->notelp" , "sms");
-            } catch (\Exception $e) {
-                Log::error('Failed to send verification email: ' . $e->getMessage());
-            }
-
+            $this->twilioVerificationService->sendVerificationSMS($user->notelp);
             return redirect()->route('verification.show', ['id_token' => $id_token, 'notelp' => $user->notelp, 'type' => 1]);
         }
         if ($request->email) {

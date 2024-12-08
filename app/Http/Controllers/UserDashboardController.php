@@ -5,17 +5,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
-use App\Mail\VerificationEmail;
+use App\Services\EmailVerificationService;
+use App\Services\TwilioVerificationService;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
-use Twilio\Rest\Client;
 use App\Models\VerificationToken;
 use App\Models\User;
 
 class UserDashboardController extends Controller
 {
+    protected $emailVerificationService;
+    protected $twilioVerificationService;
+    public function __construct(EmailVerificationService $emailVerificationService, TwilioVerificationService $twilioVerificationService)
+    {
+        $this->emailVerificationService = $emailVerificationService;
+        $this->twilioVerificationService = $twilioVerificationService;
+    }
+
     public function index(){
         $user = Auth::user();
 
@@ -232,12 +239,7 @@ class UserDashboardController extends Controller
                 ]);
 
                 // Send the verification email with the token
-                try {
-                    Mail::to($email)->send(new VerificationEmail($token));
-                } catch (\Exception $e) {
-                    Log::error('Failed to send verification email: ' . $e->getMessage());
-                }
-
+                $this->emailVerificationService->sendVerificationEmail($email, $token);
                 return redirect()->route('verification.show', ['id_token' => $id_token, 'email' => $email, 'type' => 3]);
 
             }
@@ -262,17 +264,7 @@ class UserDashboardController extends Controller
                 ]);
 
                 // Send the verification email with the token
-                try {
-                    $sid = getenv("TWILIO_ACCOUNT_SID");
-                    $authToken = getenv("TWILIO_AUTH_TOKEN");
-                    $twilio = new Client($sid, $authToken);
-                    $verification = $twilio->verify->v2->services(getenv("TWILIO_SERVICE_SID"))
-                                        ->verifications
-                                        ->create("$notelp" , "sms");
-                } catch (\Exception $e) {
-                    Log::error('Failed to send verification email: ' . $e->getMessage());
-                }
-
+                $this->twilioVerificationService->sendVerificationSMS($notelp);
                 return redirect()->route('verification.show', ['id_token' => $id_token, 'notelp' => $notelp, 'type' => 3]);
             }
             return redirect()->route('user.profile')->with('success', 'Profil berhasil diperbarui!')->withErrors($errors);
@@ -327,12 +319,7 @@ class UserDashboardController extends Controller
         }
 
         // Send the verification email with the token
-        try {
-            Mail::to($verificationToken->email)->send(new VerificationEmail($token));
-        } catch (\Exception $e) {
-            Log::error('Failed to send verification email: ' . $e->getMessage());
-        }
-
+        $this->emailVerificationService->sendVerificationEmail($verificationToken->email, $token);
         return redirect()->route('verification.show', ['id_token' => $id_token, 'email' => $request->email, 'type' => $request->type])->with('success', 'Kode Verifikasi telah dikirim ulang.');
     }
 
@@ -384,17 +371,7 @@ class UserDashboardController extends Controller
         }
 
         // Send the verification email with the token
-        try {
-            $sid = getenv("TWILIO_ACCOUNT_SID");
-            $authToken = getenv("TWILIO_AUTH_TOKEN");
-            $twilio = new Client($sid, $authToken);
-            $verification = $twilio->verify->v2->services(getenv("TWILIO_SERVICE_SID"))
-                                   ->verifications
-                                   ->create("$request->notelp" , "sms");
-        } catch (\Exception $e) {
-            Log::error('Failed to send verification email: ' . $e->getMessage());
-        }
-
+        $this->twilioVerificationService->sendVerificationSMS($verificationToken->notelp);
         return redirect()->route('verification.show', ['id_token' => $id_token, 'notelp' => $request->notelp, 'type' => $request->type])->with('success', 'Kode Verifikasi telah dikirim ulang.');
     }
 
@@ -417,8 +394,6 @@ class UserDashboardController extends Controller
         // Update the user's avatar path in the database
         $user->avatar = $image;
         $user->save();
-
-        \Log::info(Storage::url($user->avatar));
 
         // Return a response with the HTTPS URL
         session()->flash('success2', 'Foto Profil berhasil diperbarui!');
