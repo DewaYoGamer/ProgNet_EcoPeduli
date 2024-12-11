@@ -79,6 +79,13 @@ return new class extends Migration
             $table->string('status')->default('pending');
             $table->timestamps();
         });
+
+        Schema::create('tb_jadwal_pengambilan', function (Blueprint $table) {
+            $table->id();
+            $table->string('tanggal');
+            $table->string('jenis_sampah');
+            $table->timestamps();
+        });
     }
 
     /**

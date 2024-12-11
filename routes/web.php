@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EducateController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\ForgotController;
+use App\Http\Controllers\OperatorController;
 
 // ============= Landing Page (Middeleware) =============
 Route::get('/', function () {
@@ -130,6 +131,7 @@ Route::post('/terima_penukaran_sampah', [AdminController::class, 'updateData']);
 Route::post('/cari_data_sampah', [AdminController::class, 'searchData']);
 Route::post('/cari_data_poin', [AdminController::class, 'searchData_Poin']);
 Route::post('/terima_penukaran_poin', [AdminController::class, 'updateData_Poin']);
+Route::post('/tambah_jadwal', [OperatorController::class, 'store']);
 
 Route::get('/verification', [VerificationController::class, 'show'])->name('verification.show');
 Route::post('/verification', [VerificationController::class, 'verify'])->name('verification.verify');
