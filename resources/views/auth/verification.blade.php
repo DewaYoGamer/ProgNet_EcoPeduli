@@ -16,11 +16,10 @@
                 <img src="{{ asset('images/logo.png') }}" class="h-24">
             </div>
             <h2 class="text-2xl font-bold text-center text-primary">MASUKKAN KODE VERIFIKASI</h2>
-            <p class="text-center text-gray-600">Silahkan masukkan kode verifikasi yang telah kami kirimkan ke {{ request('email') }}{{ request('notelp') }}.</p>
+            <p class="text-center text-gray-600">Silahkan masukkan kode verifikasi yang telah dikirimkan ke {{ request('email') }}{{ request('notelp') }}.</p>
             <form action="{{ route('verification.verify') }}" method="POST">
                 @csrf
                 <input type="hidden" name="id_token" value="{{ request('id_token') }}">
-                <input type="hidden" name="type" value="{{ request('type') }}">
                 <div class="my-6 flex justify-between">
                     <input type="text" name="digit1" maxlength="1" class="w-12 h-12 text-center text-base border focus:border-primary" required pattern="[0-9]*" inputmode="numeric">
                     <input type="text" name="digit2" maxlength="1" class="w-12 h-12 text-center text-base border focus:border-primary" required pattern="[0-9]*" inputmode="numeric">

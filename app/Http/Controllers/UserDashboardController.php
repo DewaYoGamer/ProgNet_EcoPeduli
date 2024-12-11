@@ -274,7 +274,7 @@ class UserDashboardController extends Controller
 
     public function sendVerificationEmail(Request $request){
         if (!$request->has('id_token')) {
-            return redirect()->route('login');
+            abort(400, 'Invalid token.');
         }
 
         $verificationToken = VerificationToken::where('id_token', $request->id_token)->first();
@@ -282,7 +282,7 @@ class UserDashboardController extends Controller
             $verificationToken->email !== $request->email ||
             $verificationToken->notelp !== $request->notelp ||
             $verificationToken->type !== (int)$request->type){
-            return redirect()->route('login')->with('error', 'Invalid token.');
+            abort(400, 'Invalid token.');
         }
 
         // Check if there is already a verification token for the user
@@ -325,7 +325,7 @@ class UserDashboardController extends Controller
 
     public function sendVerificationTelp(Request $request){
         if (!$request->has('id_token')) {
-            return redirect()->route('login');
+            abort(400, 'Invalid token.');
         }
 
         $verificationToken = VerificationToken::where('id_token', $request->id_token)->first();
@@ -333,7 +333,7 @@ class UserDashboardController extends Controller
             $verificationToken->email !== $request->email ||
             $verificationToken->notelp !== $request->notelp ||
             $verificationToken->type !== (int)$request->type) {
-            return redirect()->route('login')->with('error', 'Invalid token.');
+            abort(400, 'Invalid token.');
         }
 
         // Revoke old tokens associated with the user

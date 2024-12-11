@@ -59,7 +59,7 @@
                 </div>
                 <div class="mb-4">
                     <x-turnstile
-                        data-size="flexible"
+                        data-size="flexible" data-theme="light"
                     />
                 </div>
                 <div class="mb-4 font-bold">
