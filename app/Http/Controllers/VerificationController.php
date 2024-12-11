@@ -67,125 +67,80 @@ class VerificationController extends Controller
                                                     "code" => $token
                                                 ]);
                 if ($verification_check->valid) {
-                    if($verificationToken->type === 0) {
-                        User::create([
-                            'name' => $verificationToken->name,
-                            'password' => $verificationToken->password,
-                            'username' => $verificationToken->username,
-                            'notelp' => $verificationToken->notelp,
-                            'phone_verified_at' => now(),
-                        ]);
-                        $user = User::where('username', $verificationToken->username)->first();
-                        // Delete the verification token
-                        $verificationToken->delete();
-
-                        // Redirect to the dashboard
-                        Auth::login($user);
-                        return redirect()->route('dashboard.pengguna');
-                    }
-
-                    if($verificationToken->type === 1){
-                        $Passworduuid = Str::uuid()->toString();
-
-                        PasswordResetToken::create([
-                            'user_id' => $verificationToken->user_id,
-                            'id_token' => $Passworduuid,
-                            'created_at' => Carbon::now(),
-                        ]);
-
-                        // Delete the verification token
-                        $verificationToken->delete();
-
-                        return redirect()->route('forgotPassword', ['id_token' => $Passworduuid]);
-                    }
-
-                    if($verificationToken->type === 2){
-                        $user = User::where('id', $verificationToken->user_id)->first();
-
-                        // Delete the verification token
-                        $verificationToken->delete();
-
-                        return redirect()->route('login')->with('success', 'NAMA PENGGUNA ANDA ADALAH:')->with('username', $user->username);
-                    }
-
-                    if($verificationToken->type === 3) {
-                        $user = User::where('id', $verificationToken->user_id)->first();
-                        $user->notelp = $verificationToken->notelp;
-                        $user->phone_verified_at = now();
-                        $user->save();
-
-                        // Delete the verification token
-                        $verificationToken->delete();
-
-                        // Redirect to the dashboard
-                        return redirect()->route('user.profile')->with('success', 'Profil berhasil diperbarui!');
-                    }
-
-                    // Redirect to the dashboard
-                    return redirect()->route('dashboard.pengguna');
+                    $valid = 1;
                 }
-                return redirect()->back()->with('error', 'Token Salah.');
             } catch (\Exception $e) {
                 return redirect()->back()->with('error', 'Token verifikasi kedaluwarsa.');
             }
         }
         if ($verificationToken->token === $token) {
-            if($verificationToken->type === 0) {
+            $valid = 2;
+        }
+
+        if (isset($valid) === false) {
+            return redirect()->back()->with('error', 'Token Salah');
+        }
+
+        if($verificationToken->type === 0) {
+
+            if($valid === 1){
                 $user = User::create([
-                    'email' => $verificationToken->email,
+                    'name' => $verificationToken->name,
+                    'password' => $verificationToken->password,
+                    'username' => $verificationToken->username,
+                    'notelp' => $verificationToken->notelp,
+                    'phone_verified_at' => now(),
+                ]);
+            }
+            if($valid === 2){
+                $user = User::create([
                     'password' => $verificationToken->password,
                     'name' => $verificationToken->name,
                     'username' => $verificationToken->username,
                     'email' => $verificationToken->email,
                     'email_verified_at' => now(),
                 ]);
-                // Delete the verification token
-                $verificationToken->delete();
-
-                Auth::login($user);
-                return redirect()->route('dashboard.pengguna');
             }
-
-            if($verificationToken->type === 1){
-                $Passworduuid = Str::uuid()->toString();
-
-                PasswordResetToken::create([
-                    'user_id' => $verificationToken->user_id,
-                    'id_token' => $Passworduuid,
-                    'created_at' => Carbon::now(),
-                ]);
-
-                // Delete the verification token
-                $verificationToken->delete();
-
-                return redirect()->route('forgotPassword', ['id_token' => $Passworduuid]);
-            }
-
-            if($verificationToken->type === 2){
-                $user = User::where('id', $verificationToken->user_id)->first();
-
-                // Delete the verification token
-                $verificationToken->delete();
-
-                return redirect()->route('login')->with('success', 'NAMA PENGGUNA ANDA ADALAH:')->with('username', $user->username);
-            }
-
-            if($verificationToken->type === 3) {
-                $user = User::where('id', $verificationToken->user_id)->first();
-                $user->email = $verificationToken->email;
-                $user->email_verified_at = now();
-                $user->save();
-
-                // Delete the verification token
-                $verificationToken->delete();
-
-                // Redirect to the dashboard
-                return redirect()->route('user.profile')->with('success', 'Profil berhasil diperbarui!');
-            }
-            // Redirect to the dashboard
+            $verificationToken->delete();
+            Auth::login($user);
             return redirect()->route('dashboard.pengguna');
         }
 
-        return redirect()->back()->with('error', 'Token Salah');
+        if($verificationToken->type === 1){
+            $Passworduuid = Str::uuid()->toString();
+            PasswordResetToken::create([
+                'user_id' => $verificationToken->user_id,
+                'id_token' => $Passworduuid,
+                'created_at' => Carbon::now(),
+            ]);
+            $verificationToken->delete();
+            return redirect()->route('forgotPassword', ['id_token' => $Passworduuid]);
+        }
+
+        if($verificationToken->type === 2){
+            $user = User::where('id', $verificationToken->user_id)->first();
+
+            $verificationToken->delete();
+
+            return redirect()->route('login')->with('success', 'NAMA PENGGUNA ANDA ADALAH:')->with('username', $user->username);
+        }
+
+        if($verificationToken->type === 3) {
+            $user = User::where('id', $verificationToken->user_id)->first();
+
+            if($valid === 1){
+                $user->notelp = $verificationToken->notelp;
+                $user->phone_verified_at = now();
+            }
+
+            if($valid === 2){
+                $user->email = $verificationToken->email;
+                $user->email_verified_at = now();
+            }
+
+            $user->save();
+            $verificationToken->delete();
+            return redirect()->route('user.profile')->with('success', 'Profil berhasil diperbarui!');
+        }
     }
 }

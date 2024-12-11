@@ -94,10 +94,9 @@ class UserDashboardController extends Controller
         // Validate 'name'
         try {
             $request->validate([
-                'name' => ['required', 'min:5', 'max:255']
+                'name' => ['required', 'max:255']
             ], [
                 'name.required' => 'Nama tidak boleh kosong.',
-                'name.min' => 'Nama minimal 5 karakter.',
                 'name.max' => 'Nama maksimal 255 karakter.'
             ]);
             $validatedData['name'] = $request->input('name');  // Add to validated data if no error
