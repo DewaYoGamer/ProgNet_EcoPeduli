@@ -1,4 +1,9 @@
 <x-layout_operator>
+    @php
+        $data_awal = DB::table('tb_jadwal_pengambilan')
+            ->orderBy('id', 'desc')  // Mengurutkan berdasarkan id secara descending
+            ->first();  // Ambil baris pertama setelah diurutkan
+    @endphp
     <x-slot name="title">Dashboard Operator | Eco Peduli</x-slot>
     <div class="w-full h-full bg-white shadow-md overflow-hidden">
         <div class="w-full h-[22rem] text-center bg-gray-200 p-6 text-white flex items-center justify-center">
@@ -21,8 +26,8 @@
                 <div class="w-[45rem] h-[19rem] text-left bg-[#e7c41a] p-6 text-white">
                     <div class="text-left">
                         <p class="text-white text-4xl font-semibold">Pengingat Yang Berjalan:</p>
-                        <p class="text-white text-3xl font-medium mt-3">Senin, 24 Oktober 2024</p>
-                        <p class="text-white text-3xl font-medium">Daur Ulang</p>
+                        <p class="text-white text-3xl font-medium mt-3">{{ $data_awal->tanggal }}</p>
+                        <p class="text-white text-3xl font-medium">{{ $data_awal->jenis_sampah }}</p>
                         <p class="text-white text-3xl font-semibold mt-10 mb-4">Perbarui Pengingat?</p>
                         <a class="w-[12rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded" href="/operator/jadwal_pengambilan">Edit Pengingat</a>
                     </div>

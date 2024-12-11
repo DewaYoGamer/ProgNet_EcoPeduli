@@ -26,8 +26,8 @@
                 <div class="w-[45rem] h-[19rem] text-left bg-[#e7c41a] p-6 text-white">
                     <div class="text-left">
                         <p class="text-white text-3xl font-semibold">{{ $data_awal->tanggal }}</p>
-                        <p class="text-white text-3xl font-semibold mt-10">{{ $data_awal->jenis_sampah }}</p>
-                        <p class="text-white text-4xl font-medium mt-4">Daur Ulang</p>
+                        <p class="text-white text-3xl font-semibold mt-10">Jenis Sampah: </p>
+                        <p class="text-white text-4xl font-medium mt-4">{{ $data_awal->jenis_sampah }}</p>
                     </div>
                 </div>
             </div>

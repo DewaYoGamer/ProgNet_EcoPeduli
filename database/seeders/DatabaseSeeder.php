@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -34,6 +35,12 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('operator123'),
             'role' => 'operator',
             'email_verified_at' => now()
+        ]);
+
+        DB::table('tb_jadwal_pengambilan')->insert([
+            'id' => 1,
+            'tanggal' => 'Rabu, 11 Desember 2024',
+            'jenis_sampah' => 'Plastik'
         ]);
 
         // User::factory()->create([
