@@ -56,14 +56,6 @@
             <div class="text-navigasi-2 pt-4 text-slate-300 text-opacity-35 text-xl font-bold -mb-2 text-samping">
                 Pengaturan Akun
             </div>
-            <li class="{{ request()->is('operator/profil') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-2">
-                <a href="/operator/profil">
-                    <span class="material-symbols-outlined profil">
-                        person
-                    </span>
-                </a>
-                <a href="/operator/profil" class="text-profil -mt-1.5">Profil Operator</a>
-            </li>
             <li class="{{ request()->is('/') ? 'text-secondary': 'text-white hover:text-lime-300' }} flex items-center gap-x-4 p-2 font-bold text-xl mt-1">
                 <a href="/">
                     <span class="material-symbols-outlined beranda">

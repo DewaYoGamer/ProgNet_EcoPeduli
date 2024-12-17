@@ -20,7 +20,7 @@
             @csrf
             <!-- Body Content -->
             <div class="p-6">
-                <h2 class="text-3xl text-center font-bold mt-10 mb-20">TAMBAHKAN PENGINGAT JADWAL</h2>
+                <h2 class="text-3xl text-center font-bold mt-10 mb-20">PERBARUI PENGINGAT JADWAL</h2>
                 <!-- Bagian Hari dan Tanggal Yang Dimiliki -->
                 <div class="mb-14">
                     <p class="font-semibold text-2xl">Hari, Tanggal:</p>
@@ -42,12 +42,15 @@
                 <!-- Bagian Jenis Sampah -->
                 <div class="mb-14">
                     <p class="font-semibold text-2xl">Jenis Sampah:</p>
-                    <input
-                        type="text"
+                    <select
                         id="jenis_sampah"
                         name="jenis_sampah"
                         class="border rounded p-2 w-[20rem] text-gray-700"
-                    />
+                    >
+                        <option value="Organik">Organik</option>
+                        <option value="Daur Ulang">Daur Ulang</option>
+                        <option value="Residu">Residu</option>
+                    </select>
                 </div>
                 <button class="w-[13rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">Tetapkan Pengingat</button>
             </div>

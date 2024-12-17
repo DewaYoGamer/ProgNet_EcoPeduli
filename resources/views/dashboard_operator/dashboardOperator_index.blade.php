@@ -56,7 +56,7 @@
                             <tr>
                                 <td class="border px-4 py-2">{{ $index_operator + 1 }}</td>
                                 <td class="border px-4 py-2">{{ $code->nama_pengguna }}</td>
-                                <td class="border px-4 py-2">{{ $code->berat }}</td>
+                                <td class="border px-4 py-2">{{ $code->berat }} Kg</td>
                                 <td class="border px-4 py-2">{{ $code->total_poin }}</td>
                                 <td class="border px-4 py-2">{{ $code->status }}</td>
                             </tr>
