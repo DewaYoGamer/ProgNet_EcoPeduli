@@ -99,6 +99,7 @@
                     </div>
                     <div>
                         <button @click="editMode = true" class="w-[12rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">Edit Profil</button>
+                        <button class="ml-5 w-[12rem] bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" id="change-btn">Ganti Kata Sandi</button>
                     </div>
                 </div>
             </template>
@@ -171,6 +172,23 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal for Change Password -->
+        <div id="change-modal" class="fixed inset-0 hidden z-50 items-center justify-center bg-black bg-opacity-50">
+            <div class="bg-white rounded-lg w-[30rem] p-8">
+                <div class="flex flex-col items-center">
+                    <img src="{{ asset('images/logo.png') }}" class="h-24 mb-5">
+                    <h2 class="text-2xl font-bold mb-6 text-primary">GANTI KATA SANDI</h2>
+                    <input type="text" name="old_password" id="old_password" placeholder="Kata Sandi Lama" class="w-full px-5 py-3 text-base border focus:border-primary mb-5">
+                    <input type="text" name="new_password" id="new_password" placeholder="Kata Sandi Baru" class="w-full px-5 py-3 text-base border focus:border-primary mb-5">
+                    <input type="text" name="password_confirmation" id="password_confirmatione" placeholder="Konfirmasi Kata Sandi Baru" class="w-full px-5 py-3 text-base border focus:border-primary">
+                    <div class="flex flex-row space-x-6 mt-6">
+                        <button class="w-[195px] bg-third hover:bg-primary font-bold text-white px-4 py-2 rounded-lg">Simpan</button>
+                        <button id="close-modal1" class="w-[195px] bg-gray-500 hover:bg-gray-700 font-bold text-white px-4 py-2 rounded-lg">Batal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <x-script.upimage />
     <script>
@@ -198,6 +216,55 @@
                 setTimeout(function() {
                     success2Alert.style.display = 'none';
                 }, 3000); // 3 seconds
+            }
+
+            // Event Delegation untuk tombol "Ganti Kata Sandi"
+            document.addEventListener('click', function (e) {
+                if (e.target && e.target.id === 'change-btn') {
+                    openModal(document.getElementById('change-modal'));
+                }
+
+                if (e.target && e.target.id === 'close-modal1') {
+                    closeModal(document.getElementById('change-modal'));
+                }
+
+                // Tutup modal jika klik di luar konten modal
+                if (e.target === document.getElementById('change-modal')) {
+                    closeModal(document.getElementById('change-modal'));
+                }
+            });
+
+            // Function to open modal
+            function openModal(modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');  // Make sure it displays as flex when opened
+            }
+
+            // Function to close modal
+            function closeModal(modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');  // Remove flex when closing
+            }
+
+            for (const key in modals) {
+                const { btn, modal, closeBtn } = modals[key];
+
+                // Open modal on button click
+                btn.addEventListener('click', () => {
+                    openModal(modal);
+                });
+
+                // Close modal on close button click
+                closeBtn.addEventListener('click', () => {
+                    closeModal(modal);
+                });
+
+                // Close modal if clicked outside of the modal content
+                window.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal(modal);
+                    }
+                });
             }
         });
     </script>
