@@ -94,10 +94,9 @@ class UserDashboardController extends Controller
         // Validate 'name'
         try {
             $request->validate([
-                'name' => ['required', 'min:5', 'max:255']
+                'name' => ['required', 'max:255']
             ], [
                 'name.required' => 'Nama tidak boleh kosong.',
-                'name.min' => 'Nama minimal 5 karakter.',
                 'name.max' => 'Nama maksimal 255 karakter.'
             ]);
             $validatedData['name'] = $request->input('name');  // Add to validated data if no error
@@ -274,7 +273,7 @@ class UserDashboardController extends Controller
 
     public function sendVerificationEmail(Request $request){
         if (!$request->has('id_token')) {
-            return redirect()->route('login');
+            abort(400, 'Invalid token.');
         }
 
         $verificationToken = VerificationToken::where('id_token', $request->id_token)->first();
@@ -282,7 +281,7 @@ class UserDashboardController extends Controller
             $verificationToken->email !== $request->email ||
             $verificationToken->notelp !== $request->notelp ||
             $verificationToken->type !== (int)$request->type){
-            return redirect()->route('login')->with('error', 'Invalid token.');
+            abort(400, 'Invalid token.');
         }
 
         // Check if there is already a verification token for the user
@@ -325,7 +324,7 @@ class UserDashboardController extends Controller
 
     public function sendVerificationTelp(Request $request){
         if (!$request->has('id_token')) {
-            return redirect()->route('login');
+            abort(400, 'Invalid token.');
         }
 
         $verificationToken = VerificationToken::where('id_token', $request->id_token)->first();
@@ -333,7 +332,7 @@ class UserDashboardController extends Controller
             $verificationToken->email !== $request->email ||
             $verificationToken->notelp !== $request->notelp ||
             $verificationToken->type !== (int)$request->type) {
-            return redirect()->route('login')->with('error', 'Invalid token.');
+            abort(400, 'Invalid token.');
         }
 
         // Revoke old tokens associated with the user

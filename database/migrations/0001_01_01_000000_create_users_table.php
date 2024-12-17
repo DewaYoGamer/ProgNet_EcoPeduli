@@ -20,8 +20,6 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('notelp')->unique()->nullable();
             $table->string('address')->nullable();
-            $table->string('city')->nullable();
-            $table->string('province')->nullable();
             $table->date('date_birth')->nullable();
             $table->string('avatar')->nullable();
             $table->string('role')->default('user');
@@ -47,6 +45,13 @@ return new class extends Migration
             // 1 = Forgot Password
             // 2 = Forgot Username
             // 3 = Update
+        });
+
+        Schema::create('password_reset_tokens', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->uuid('id_token')->nullable();
+            $table->timestamp('created_at')->nullable();
         });
 
         Schema::create('sessions', function (Blueprint $table) {
@@ -87,6 +92,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('verification_tokens');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
         Schema::dropIfExists('tb_penukaran_poin');

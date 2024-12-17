@@ -51,22 +51,14 @@ Route::middleware(['guest'])->group(function(){
         return view('auth.register');
     })->name('register');
 
-    Route::get('/forgot_username', function () {
-        return view('auth.forgot_username');
-    });
+    Route::get('/forgot', [ForgotController::class, 'forgot'])->name('forgot');
+    Route::post('/forgot', [ForgotController::class, 'forgotRedirect'])->name('forgotRedirect');
+    Route::post('/forgotForm', [ForgotController::class, 'forgotForm'])->name('forgotForm');
 
-    Route::post('/forgot_username', [ForgotController::class, 'forgot_username'])->name('forgot_username');
-
-    Route::get('/forgot_password', function () {
-        return view('auth.forgot_password');
-    });
-
-    Route::post('/forgot_password', [ForgotController::class, 'forgot_password'])->name('forgot_password');
+    Route::get('/forgot/password', [ForgotController::class, 'forgotPassword'])->name('forgotPassword');
+    Route::post('/forgot/password', [ForgotController::class, 'forgotPasswordForm'])->name('forgotPasswordRedirect');
 });
 
-Route::get('/new_password', function () {
-    return view('auth.new_password');
-});
 
 Route::get('/succes_change', function () {
     return view('auth.succes_change');

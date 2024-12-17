@@ -14,7 +14,7 @@
             <form action="{{ route('register.store') }}" method="POST">
                 @csrf
                 <div class="mb-[12px]">
-                    <input type="text" name="username" id="username" placeholder="Nama Pengguna" class="w-full px-5 py-3 text-base border focus:border-primary" required value="{{ old('username') }}">
+                    <input type="text" name="username" id="username" placeholder="Nama Pengguna (Min 5 Karakter)" class="w-full px-5 py-3 text-base border focus:border-primary" required value="{{ old('username') }}">
                     @error('username')
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror
@@ -59,7 +59,7 @@
                 </div>
                 <div class="mb-4">
                     <x-turnstile
-                        data-size="flexible"
+                        data-size="flexible" data-theme="light"
                     />
                 </div>
                 <div class="mb-4 font-bold">
@@ -94,7 +94,7 @@
                 }
 
                 // Validate name
-                if (name.value.trim() === '' || name.value.length < 5) {
+                if (name.value.trim() === '' || name.value.length < 1) {
                     showError(name, 'Nama Lengkap Terlalu Pendek');
                     valid = false;
                 }
