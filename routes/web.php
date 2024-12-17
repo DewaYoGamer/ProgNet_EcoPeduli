@@ -78,6 +78,7 @@ Route::middleware(['user'])->group(function () {
 
     Route::get('/pengguna/profil', [UserDashboardController::class, 'profile'])->name('user.profile');
     Route::post('/pengguna/profil/update', [UserDashboardController::class, 'update'])->name('user.update');
+    Route::post('/pengguna/profil/updatepass', [UserDashboardController::class, 'updatepass'])->name('user.updatepass');
     Route::post('/pengguna/profil/update-image', [UserDashboardController::class, 'uploadCroppedImage'])->name('upload.cropped.image');
 });
 

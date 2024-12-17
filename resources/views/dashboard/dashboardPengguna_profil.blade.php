@@ -142,6 +142,11 @@
                     <span class="block sm:inline">{{ session('success') }}</span>
                 </div>
             @endif
+            @if(@session('error'))
+                <div id="error-alert" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4" role="alert">
+                    <span class="block sm:inline">{{ session('error') }}</span>
+                </div>
+            @endsession
         </div>
         <div class="flex flex-col w-5/12 space-y-10">
             <p class="font-bold text-3xl">
@@ -179,13 +184,16 @@
                 <div class="flex flex-col items-center">
                     <img src="{{ asset('images/logo.png') }}" class="h-24 mb-5">
                     <h2 class="text-2xl font-bold mb-6 text-primary">GANTI KATA SANDI</h2>
-                    <input type="text" name="old_password" id="old_password" placeholder="Kata Sandi Lama" class="w-full px-5 py-3 text-base border focus:border-primary mb-5">
-                    <input type="text" name="new_password" id="new_password" placeholder="Kata Sandi Baru" class="w-full px-5 py-3 text-base border focus:border-primary mb-5">
-                    <input type="text" name="password_confirmation" id="password_confirmatione" placeholder="Konfirmasi Kata Sandi Baru" class="w-full px-5 py-3 text-base border focus:border-primary">
-                    <div class="flex flex-row space-x-6 mt-6">
-                        <button class="w-[195px] bg-third hover:bg-primary font-bold text-white px-4 py-2 rounded-lg">Simpan</button>
-                        <button id="close-modal1" class="w-[195px] bg-gray-500 hover:bg-gray-700 font-bold text-white px-4 py-2 rounded-lg">Batal</button>
-                    </div>
+                    <form method="POST" action="{{ route('user.updatepass') }}">
+                        @csrf
+                        <input type="password" name="old_password" id="old_password" placeholder="Kata Sandi Lama" class="w-full px-5 py-3 text-base border focus:border-primary mb-5">
+                        <input type="password" name="new_password" id="new_password" placeholder="Kata Sandi Baru" class="w-full px-5 py-3 text-base border focus:border-primary mb-5">
+                        <input type="password" name="password_confirmation" id="password_confirmatione" placeholder="Konfirmasi Kata Sandi Baru" class="w-full px-5 py-3 text-base border focus:border-primary">
+                        <div class="flex flex-row space-x-6 mt-6">
+                            <button type="submit" class="w-[195px] bg-third hover:bg-primary font-bold text-white px-4 py-2 rounded-lg">Simpan</button>
+                            <button type="button" id="close-modal1" class="w-[195px] bg-gray-500 hover:bg-gray-700 font-bold text-white px-4 py-2 rounded-lg">Batal</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -271,6 +271,29 @@ class UserDashboardController extends Controller
         return back()->withErrors($errors);
     }
 
+    public function updatepass(Request $request){
+        $user = Auth::user();
+
+        $request->validate([
+            'old_password' => ['required', 'min:5'],
+            'new_password' => ['required', 'min:5'],
+            'password_confirmation' => ['required', 'min:5']
+        ]);
+
+        if (!password_verify($request->old_password, $user->password)) {
+            return redirect()->route('user.profile')->with('error', 'Password lama salah!');
+        }
+
+        if ($request->new_password !== $request->password_confirmation) {
+            return redirect()->route('user.profile')->with('error', 'Password baru tidak cocok!');
+        }
+
+        $user->password = bcrypt($request->new_password);
+        $user->save();
+
+        return redirect()->route('user.profile')->with('success', 'Password berhasil diperbarui!');
+    }
+
     public function sendVerificationEmail(Request $request){
         if (!$request->has('id_token')) {
             abort(400, 'Invalid token.');

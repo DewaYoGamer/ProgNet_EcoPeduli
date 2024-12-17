@@ -14,7 +14,7 @@
             <form action="{{ route('register.store') }}" method="POST">
                 @csrf
                 <div class="mb-[12px]">
-                    <input type="text" name="username" id="username" placeholder="Nama Pengguna (Min 5 Karakter)" class="w-full px-5 py-3 text-base border focus:border-primary" required value="{{ old('username') }}">
+                    <input type="text" name="username" id="username" placeholder="Nama Pengguna (min 5 karakter)" class="w-full px-5 py-3 text-base border focus:border-primary" required value="{{ old('username') }}">
                     @error('username')
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror
@@ -46,7 +46,7 @@
                     <label for="telepon" class="ml-2 text-sm font-medium text-gray-900">Gunakan Nomor Telepon</label>
                 </div>
                 <div class="mb-[12px]">
-                    <input type="password" name="password" id="password" placeholder="Kata Sandi" class="w-full px-5 py-3 text-base border focus:border-primary" required>
+                    <input type="password" name="password" id="password" placeholder="Kata Sandi (min 5 karakter)" class="w-full px-5 py-3 text-base border focus:border-primary" required>
                     @error('password')
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror
