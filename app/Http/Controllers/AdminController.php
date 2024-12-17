@@ -64,6 +64,16 @@ class AdminController extends Controller
         ]);
 
         $data = DB::table('tb_penukaran_poin')->where('kode_unik', $request->kode_unik)->first();
+        $temp_data = $data -> keterangan_penukaran;
+
+        // Mengubah titik (.) menjadi newline dan menambahkan tanda "- " di awal setiap item
+        $temp_data = substr($temp_data, 0, -1);
+        $temp_data = str_replace(". ", ".\n- ", $temp_data);
+
+        // Menambahkan "- " pada item pertama
+        $temp_data = "- " . $temp_data;
+
+        $data -> keterangan_penukaran = $temp_data;
 
         if ($data) {
             // Menyimpan data ke session

@@ -1,5 +1,8 @@
 <x-layout_admin>
     <x-slot name="title">Dashboard Admin | Eco Peduli</x-slot>
+    @php
+        $cnt_idx = 0;
+    @endphp
 
     <div class="w-4/5 p-4">
         <div class="text-3xl font-bold mb-4 text-primary text-center mt-10">INFORMASI PENUKARAN ECO-PEDULI</div>
@@ -55,20 +58,32 @@
                 </thead>
                 <tbody>
                     @forelse ($data_tb_penukaran_poin as $index_admin => $code)
-                        <tr>
-                            <td class="border px-4 py-2">{{ $index_admin + 1 }}</td>
-                            <td class="border px-4 py-2 font-bold">{{ $code->kode_unik }}</td>
-                            <td class="border px-4 py-2">{{ $code->username }}</td>
-                            <td class="border px-4 py-2">{{ $code->keterangan_penukaran }}</td>
-                            <td class="border px-4 py-2">{{ $code->poin }}</td>
-                            <td class="border px-4 py-2">{{ $code->created_at }}</td>
-                            <td class="border px-4 py-2 font-bold">{{ $code->status }}</td>
-                        </tr>
+                        @if ($code->status == 'pending')
+                            <tr>
+                                <td class="border px-4 py-2">{{ $index_admin + 1 }}</td>
+                                <td class="border px-4 py-2 font-bold">{{ $code->kode_unik }}</td>
+                                <td class="border px-4 py-2">{{ $code->username }}</td>
+                                <td class="border px-4 py-2">{{ $code->keterangan_penukaran }}</td>
+                                <td class="border px-4 py-2">{{ $code->poin }}</td>
+                                <td class="border px-4 py-2">{{ $code->created_at }}</td>
+                                <td class="border px-4 py-2 font-bold">{{ $code->status }}</td>
+                            </tr>
+                        @else
+                            @php
+                                $cnt_idx++;
+                            @endphp
+                        @endif
                     @empty
                         <tr>
                             <td colspan="4" class="border px-4 py-2 text-center">Belum ada data Penukaran Poin</td>
                         </tr>
                     @endforelse
+                    @if ($cnt_idx > 0)
+                        <tr>
+                            <td colspan="4" class="border px-4 py-2 text-center">Penukaran Poin Telah Disetujui Seluruhnya!</td>
+                        </tr>
+                    @endif
+
                 </tbody>
             </table>
         </div>

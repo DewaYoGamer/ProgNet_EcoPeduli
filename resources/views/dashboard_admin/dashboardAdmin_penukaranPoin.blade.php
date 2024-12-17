@@ -49,7 +49,11 @@
                 <!-- Keterangan Barang -->
                 <div class="col-span-2 text-center mt-6">
                     <label for="keterangan_penukaran" class="block text-lg font-bold">BARANG YANG DITUKARKAN</label>
-                    <input type="text" id="keterangan_penukaran" name="keterangan_penukaran" class="w-full p-2 border border-gray-300 rounded bg-gray-100 text-center" value="{{ $data->keterangan_penukaran ?? '' }}" readonly>
+                    <textarea 
+                    id="keterangan_penukaran" 
+                    name="keterangan_penukaran" 
+                    class="w-full h-24 p-2 border border-gray-300 rounded bg-gray-100 text-center" 
+                    readonly>{{ $data->keterangan_penukaran ?? '' }}</textarea>
                 </div>
             </form>
 

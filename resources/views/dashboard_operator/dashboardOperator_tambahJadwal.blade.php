@@ -11,39 +11,50 @@
     <x-slot name="title">Dashboard Operator | Eco Peduli</x-slot>
 
     <div class="w-full h-full bg-white shadow-md">
-        <!-- Body Content -->
-        <div class="p-6">
-            <h2 class="text-3xl text-center font-bold mt-10 mb-20">TAMBAHKAN PENGINGAT JADWAL</h2>
-            <!-- Bagian Hari dan Tanggal Yang Dimiliki -->
-            <div class="mb-14">
-                <p class="font-semibold text-2xl">Hari, Tanggal:</p>
-                <div class="w-[20rem] relative">
-                    <input
-                        type="text"
-                        id="tanggal"
-                        name="tanggal"
-                        class="border rounded p-2 w-full text-gray-700 pr-10"
-                        readonly
-                    />
-                    <!-- Ikon kalender -->
-                    <span class="absolute right-3 mt-2 text-gray-500">
-                        <i class="fas fa-calendar-alt"></i>
-                    </span>
+        @if(session()->has('success'))
+            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
+                <p>{{ session('success') }}</p>
+            </div>
+        @endif
+        <form action="/tambah_jadwal" method="POST">
+            @csrf
+            <!-- Body Content -->
+            <div class="p-6">
+                <h2 class="text-3xl text-center font-bold mt-10 mb-20">PERBARUI PENGINGAT JADWAL</h2>
+                <!-- Bagian Hari dan Tanggal Yang Dimiliki -->
+                <div class="mb-14">
+                    <p class="font-semibold text-2xl">Hari, Tanggal:</p>
+                    <div class="w-[20rem] relative">
+                        <input
+                            type="text"
+                            id="tanggal"
+                            name="tanggal"
+                            class="border rounded p-2 w-full text-gray-700 pr-10"
+                            readonly
+                        />
+                        <!-- Ikon kalender -->
+                        <span class="absolute right-3 mt-2 text-gray-500">
+                            <i class="fas fa-calendar-alt"></i>
+                        </span>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Bagian Jenis Sampah -->
-            <div class="mb-14">
-                <p class="font-semibold text-2xl">Jenis Sampah:</p>
-                <input
-                    type="text"
-                    id="jenis_sampah"
-                    name="jenis_sampah"
-                    class="border rounded p-2 w-[20rem] text-gray-700"
-                />
+                <!-- Bagian Jenis Sampah -->
+                <div class="mb-14">
+                    <p class="font-semibold text-2xl">Jenis Sampah:</p>
+                    <select
+                        id="jenis_sampah"
+                        name="jenis_sampah"
+                        class="border rounded p-2 w-[20rem] text-gray-700"
+                    >
+                        <option value="Organik">Organik</option>
+                        <option value="Daur Ulang">Daur Ulang</option>
+                        <option value="Residu">Residu</option>
+                    </select>
+                </div>
+                <button class="w-[13rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">Tetapkan Pengingat</button>
             </div>
-            <button class="w-[13rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">Tetapkan Pengingat</button>
-        </div>
+        </form>
     </div>
 
     <!-- Link Font Awesome untuk ikon kalender -->

@@ -1,4 +1,9 @@
 <x-layout_dashboard>
+    @php
+        $data_awal = DB::table('tb_jadwal_pengambilan')
+            ->orderBy('id', 'desc')  // Mengurutkan berdasarkan id secara descending
+            ->first();  // Ambil baris pertama setelah diurutkan
+    @endphp
     <x-slot name="title">Dashboard Pengguna | Eco Peduli</x-slot>
     <div class="w-full h-full bg-white shadow-md overflow-hidden">
         <div class="w-full h-[22rem] text-center bg-gray-200 p-6 text-white flex items-center justify-center">
@@ -20,10 +25,9 @@
                 </div>
                 <div class="w-[45rem] h-[19rem] text-left bg-[#e7c41a] p-6 text-white">
                     <div class="text-left">
-                        <p class="text-white text-3xl font-semibold">Senin,</p>
-                        <p class="text-white text-4xl font-semibold">24 Oktober 2024</p>
-                        <p class="text-white text-3xl font-semibold mt-10">Kumpulkan Sampah:</p>
-                        <p class="text-white text-4xl font-medium mt-4">Daur Ulang</p>
+                        <p class="text-white text-3xl font-semibold">{{ $data_awal->tanggal }}</p>
+                        <p class="text-white text-3xl font-semibold mt-10">Jenis Sampah: </p>
+                        <p class="text-white text-4xl font-medium mt-4">{{ $data_awal->jenis_sampah }}</p>
                     </div>
                 </div>
             </div>
