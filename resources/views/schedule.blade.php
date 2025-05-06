@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot name="title">Jadwal | Eco Peduli</x-slot>
     <div class="flex flex-col">
-        <div class="flex flex-col justify-center items-center my-12 pt-6">
+        <div class="flex flex-col justify-center items-center my-12 pt-6    ">
                 <div class="text-center self-stretch text-black text-4xl md:text-5xl font-bold">
                     Jadwal Pengumpulan
                 </div>

@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot name="title">Beranda | Eco Peduli</x-slot>
     <style>
-        @media (max-width: 1023px) {
+        @media (max-width: 1279px) {
             #custom-bg {
                 position: relative;
                 overflow: hidden;
@@ -24,11 +24,11 @@
     </style>
     <div class="flex flex-col h-full">
         <div class="grow">
-            <div class="relative px-20 xl:px-0 lg:pr-[560px] xl:pr-[650px] 2xl:pr-[800px] lg:mx-0 xl:mx-12 2xl:mx-24 flex py-20" id="custom-bg">
-                <img src="{{ asset('images/images1.svg') }}" class="invisible lg:visible absolute right-0 rounded-[20px] lg:h-[280px] lg:mt-44 lg:mr-12 xl:mr-6 xl:h-[375px] xl:mt-20 2xl:h-auto 2xl:mt-0 2xl:mr-12">
-                <div class="lg:w-[400px] xl:w-[500px] 2xl:w-[648px] 2xl:pt-0 lg:ml-0 xl:ml-6 2xl:ml-12">
-                    <div class="text-center lg:text-left self-stretch text-black text-3xl lg:text-5xl font-bold xl:leading-tight">
-                        Selamatkan dan Hijaukan<br>Lingkungan Melalui<br>Bank Sampah
+            <div class="space-between px-20 xl:px-0 xl:pr-[650px] 2xl:pr-[800px] lg:mx-0 xl:mx-8 2xl:mx-8 flex py-20" id="custom-bg">
+                <img src="{{ asset('images/images1.svg') }}" class="hidden xl:flex absolute right-0 rounded-[20px] xl:mr-10 xl:h-[375px] xl:mt-20 2xl:h-auto 2xl:mt-0 2xl:mr-12">
+                <div class="lg:w-full xl:w-[500px] 2xl:w-[648px] 2xl:pt-0 lg:ml-0 xl:ml-6 text-center lg:text-center xl:text-left">
+                    <div class="self-stretch text-black text-3xl lg:text-3xl xl:text-5xl font-bold xl:leading-tight">
+                        Selamatkan dan Hijaukan Lingkungan Melalui Bank Sampah
                     </div>
                     <div class="self-stretch mt-6 text-justify xl:text-lg 2xl:text-xl 2xl:leading-8">
                         Peran Setiap Individu <b class="text-primary">Sangat Penting</b> untuk Menjaga dan Menyelamatkan Lingkungan. Tidak Ada Kata Terlambat dalam Menjaga dan Menyelamatkan Lingkungan.
