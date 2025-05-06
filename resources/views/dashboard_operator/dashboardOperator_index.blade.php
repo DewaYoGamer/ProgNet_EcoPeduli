@@ -29,7 +29,7 @@
                         <p class="text-white text-3xl font-medium mt-3">{{ $data_awal->tanggal }}</p>
                         <p class="text-white text-3xl font-medium">{{ $data_awal->jenis_sampah }}</p>
                         <p class="text-white text-3xl font-semibold mt-10 mb-4">Perbarui Pengingat?</p>
-                        <a class="w-[12rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded" href="/operator/jadwal_pengambilan">Edit Pengingat</a>
+                        <a class="w-[12rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm" href="/operator/jadwal_pengambilan">Edit Pengingat</a>
                     </div>
                 </div>
             </div>

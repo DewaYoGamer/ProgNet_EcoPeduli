@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot name="title">Kata Sandi Baru | Eco Peduli</x-slot>
     <div class="flex items-center justify-center min-h-screen bg-gray-100 overflow-hidden -mt-20">
-        <div class="bg-white p-6 rounded shadow-md w-full max-w-md mx-6 mb-16">
+        <div class="bg-white p-6 rounded-sm shadow-md w-full max-w-md mx-6 mb-16">
             <div class="flex justify-center mb-4">
                 <img src="{{ asset('images/logo.png') }}" class="h-24">
             </div>
@@ -23,7 +23,7 @@
                     @enderror
                 </div>
                 <div class="mb-4 font-bold">
-                    <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">KIRIM</Button>
+                    <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm">KIRIM</Button>
                 </div>
             </form>
         </div>

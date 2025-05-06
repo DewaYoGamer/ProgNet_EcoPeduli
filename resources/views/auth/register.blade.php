@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot name="title">Daftar | Eco Peduli</x-slot>
     <div class="flex items-center justify-center min-h-screen bg-gray-100 overflow-hidden mt-20">
-        <div class="bg-white p-6 rounded shadow-md w-full max-w-sm mx-6">
+        <div class="bg-white p-6 rounded-sm shadow-md w-full max-w-sm mx-6">
             @if(session()->has('error'))
                 <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">
                     <p>{{ session('error') }}</p>
@@ -41,7 +41,7 @@
                     @enderror
                 </div>
                 <div class="flex items-center mb-4">
-                    <input id="telepon" type="checkbox" class="h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                    <input id="telepon" type="checkbox" class="h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500"
                            {{ old('notelp') || session('error') === 'number_already_registered' ? 'checked' : '' }}>
                     <label for="telepon" class="ml-2 text-sm font-medium text-gray-900">Gunakan Nomor Telepon</label>
                 </div>
@@ -63,7 +63,7 @@
                     />
                 </div>
                 <div class="mb-4 font-bold">
-                    <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">DAFTAR</Button>
+                    <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm">DAFTAR</Button>
                 </div>
             </form>
             <p class="mt-4 text-center text-sm text-gray-600">

@@ -1,14 +1,14 @@
 <x-layout>
     <x-slot name="title">Verifikasi | Eco Peduli</x-slot>
     <div class="flex items-center justify-center min-h-screen bg-gray-100 overflow-hidden -mt-20">
-        <div class="bg-white p-6 rounded shadow-md w-full max-w-md mx-6 mb-16">
+        <div class="bg-white p-6 rounded-sm shadow-md w-full max-w-md mx-6 mb-16">
             @if (session('error'))
-                <div id="error-alert" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6" role="alert">
+                <div id="error-alert" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-sm relative mb-6" role="alert">
                     <span class="block sm:inline">{{ session('error') }}</span>
                 </div>
             @endif
             @if (session('success'))
-                <div id="success-alert" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
+                <div id="success-alert" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-sm relative mb-6" role="alert">
                     <span class="block sm:inline">{{ session('success') }}</span>
                 </div>
             @endif
@@ -27,7 +27,7 @@
                     <input type="text" name="digit4" maxlength="1" class="w-12 h-12 text-center text-base border focus:border-primary" required pattern="[0-9]*" inputmode="numeric">
                     <input type="text" name="digit5" maxlength="1" class="w-12 h-12 text-center text-base border focus:border-primary" required pattern="[0-9]*" inputmode="numeric">
                 </div>
-                <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">KIRIM</button>
+                <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm">KIRIM</button>
             </form>
             <div class="text-sm mt-4 mb-4">
                 Tidak menerima kode verifikasi?

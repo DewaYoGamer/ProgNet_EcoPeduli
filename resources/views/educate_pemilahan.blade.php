@@ -3,7 +3,7 @@
     <div class="flex flex-col">
         <div class="flex flex-col justify-center items-center pt-6">
             <div class="relative text-center self-stretch text-black text-3xl lg:text-5xl font-bold xl:leading-tight mt-32">
-                <img src="{{ asset('images/background.jpg') }}" class="absolute inset-0 w-full h-[365px] rounded object-cover opacity-25 -mt-40">
+                <img src="{{ asset('images/background.jpg') }}" class="absolute inset-0 w-full h-[365px] rounded-sm object-cover opacity-25 -mt-40">
                 <span class="relative">Pemilahan Sampah</span>
             </div>
         </div>

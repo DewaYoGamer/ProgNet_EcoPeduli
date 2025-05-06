@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot name="title">Tentang | Eco Peduli</x-slot>
-        <div class="flex flex-col min-h-screen">
-            <div class="flex-grow py-16">
+        <div class="flex flex-col min-h-screen w-screen">
+            <div class="grow py-16">
                 <div class="relative flex justify-center items-center">
                     <div class="w-[1000px] px-8 ">
                         <div class="text-center self-stretch text-black text-5xl font-bold ">
@@ -35,7 +35,7 @@
                             <div class="self-stretch text-black text-base font-medium">Yoga merupakan Programmer dari Project ini</div>
                         </div>
                     </div>
-                    <div class="flex flex-row justify-evenly items-center w-full px-12 space-x-12">
+                    <div class="flex flex-row justify-around items-center w-full px-8">
                         <div class="flex xl:hidden w-[284.58px] h-[434.48px] px-[35.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px]">
                             <img src="{{asset('images/wira.jpg')}}" class="-mt-10 rounded-[10px]">
                             <div class="self-stretch text-primary text-2xl font-semibold">Wira</div>
@@ -93,7 +93,7 @@
                             </div>
                         </div>
                     </div>
-                    <img src="{{ asset('images/question.svg') }}" class="h-[500px] mt-20 mr-12 rotate-12">
+                    <img src="{{ asset('images/question.svg') }}" class="h-[250px] lg:h-[500px] mt-20 mr-12 rotate-12">
                 </div>
             </div>
             <x-footer></x-footer>

@@ -29,7 +29,7 @@
                             type="text"
                             id="tanggal"
                             name="tanggal"
-                            class="border rounded p-2 w-full text-gray-700 pr-10"
+                            class="border rounded-sm p-2 w-full text-gray-700 pr-10"
                             readonly
                         />
                         <!-- Ikon kalender -->
@@ -45,14 +45,14 @@
                     <select
                         id="jenis_sampah"
                         name="jenis_sampah"
-                        class="border rounded p-2 w-[20rem] text-gray-700"
+                        class="border rounded-sm p-2 w-[20rem] text-gray-700"
                     >
                         <option value="Organik">Organik</option>
                         <option value="Daur Ulang">Daur Ulang</option>
                         <option value="Residu">Residu</option>
                     </select>
                 </div>
-                <button class="w-[13rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">Tetapkan Pengingat</button>
+                <button class="w-[13rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm">Tetapkan Pengingat</button>
             </div>
         </form>
     </div>

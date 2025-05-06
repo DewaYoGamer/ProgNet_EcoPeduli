@@ -89,7 +89,7 @@
                 <!-- Total Poin -->
                 <div class="mt-6 text-3xl font-bold">
                     Total Poin:
-                    <input type="number" id="totalPoints" name="totalPoints" class="text-red-500 outline-none p-2" min="0" value="0" readonly>
+                    <input type="number" id="totalPoints" name="totalPoints" class="text-red-500 outline-hidden p-2" min="0" value="0" readonly>
                 </div>
 
                 <!-- Tombol Aksi -->

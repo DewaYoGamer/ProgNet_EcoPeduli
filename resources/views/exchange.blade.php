@@ -25,9 +25,9 @@
             @endauth
         </div>
         <div class="flex flex-col mb-48 py-18 space-y-24 mt-20">
-            <div class="flex flex-row justify-evenly items-center">
+            <div class="flex flex-col lg:flex-row justify-around items-center w-full h-[1800px] lg:h-[650px] left-0 top-[750px] bg-primary px-8 py-20 lg:py-0 lg:px-3">
                 <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
-                    <div class="flex flex-col -mt-4">
+                    <div class="flex flex-col -mt-4 mb-10">
                         <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
                             300 POIN / KG
                         </div>
@@ -53,7 +53,7 @@
                     @endauth
                 </div>
                 <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
-                    <div class="flex flex-col -mt-4">
+                    <div class="flex flex-col -mt-4 mb-10">
                         <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
                             250 POIN / KG
                         </div>

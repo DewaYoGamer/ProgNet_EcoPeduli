@@ -3,7 +3,7 @@
     <div class="flex flex-col">
         <div class="flex flex-col justify-center items-center pt-6">
             <div class="relative text-center self-stretch text-black text-3xl lg:text-5xl font-bold xl:leading-tight mt-32">
-                <img src="{{ asset('images/background.jpg') }}" class="absolute inset-0 w-full h-[365px] rounded object-cover opacity-25 -mt-40">
+                <img src="{{ asset('images/background.jpg') }}" class="absolute inset-0 w-full h-[365px] rounded-sm object-cover opacity-25 -mt-40">
                 <span class="relative">Dampak Buruk Sampah</span>
             </div>
         </div>
@@ -11,7 +11,7 @@
             <div class="flex flex-row justify-evenly items-center">
                 <div class="bg-[#FAFAFA] h-full w-full rounded-xl flex flex-col p-10 items-left justify-between border-slate-200 border-2">
                     <div class="flex flex-col">
-                        <img src="{{ asset('images/dampak1.jpg') }}" class="w-full h-[30rem] rounded object-cover object-top">
+                        <img src="{{ asset('images/dampak1.jpg') }}" class="w-full h-[30rem] rounded-sm object-cover object-top">
                         <div class="flex flex-row mt-8 items-center">
                             <img src="{{ asset('images/Asset 8.png') }}" class="w-[6rem] h-[3rem] mr-8">
                             <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik1-btn">Apa Dampak Buruk Sampah Terhadap Kesehatan dan Lingkungan?</p>

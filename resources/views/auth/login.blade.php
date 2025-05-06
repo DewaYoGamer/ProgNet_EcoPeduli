@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot name="title">Masuk | Eco Peduli</x-slot>
     <div class="flex items-center justify-center min-h-screen bg-gray-100 overflow-hidden mt-20">
-        <div class="bg-white p-6 rounded shadow-md w-full max-w-sm mx-6 mb-16">
+        <div class="bg-white p-6 rounded-sm shadow-md w-full max-w-sm mx-6 mb-16">
             @if(session()->has('success'))
                 <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
                     <p>{{ session('success') }}</p>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="flex justify-between items-center mb-4">
                     <div class="flex items-center">
-                        <input id="remember" type="checkbox" name="remember" class="h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                        <input id="remember" type="checkbox" name="remember" class="h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500">
                         <label for="remember" class="ml-2 text-sm font-medium text-gray-900">Ingat Saya</label>
                     </div>
                     <p class="text-right text-sm text-blue-500 hover:underline cursor-pointer" id="forgot-btn">Tidak Bisa Masuk?</a>
@@ -45,7 +45,7 @@
                     data-size="flexible" data-theme="light"
                 />
                 <div class="mt-6 mb-4 font-bold">
-                    <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded">MASUK</Button>
+                    <button type="submit" class="w-full bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm">MASUK</Button>
                 </div>
             </form>
             <p class="mt-4 text-center text-sm text-gray-600">
@@ -67,8 +67,8 @@
                         <input type="hidden" name="type" value="password">
                     </form>
                     <div class="flex items-center space-x-6 mt-4">
-                        <a href="#" onclick="document.getElementById('forgotUsernameForm').submit();" class="w-[14rem] bg-third hover:bg-primary text-white text-center font-bold py-2 px-4 rounded">Lupa Nama Pengguna</a>
-                        <a href="#" onclick="document.getElementById('forgotPasswordForm').submit();" class="w-[14rem] bg-third hover:bg-primary text-white text-center font-bold py-2 px-4 rounded">Lupa Kata Sandi</a>
+                        <a href="#" onclick="document.getElementById('forgotUsernameForm').submit();" class="w-[14rem] bg-third hover:bg-primary text-white text-center font-bold py-2 px-4 rounded-sm">Lupa Nama Pengguna</a>
+                        <a href="#" onclick="document.getElementById('forgotPasswordForm').submit();" class="w-[14rem] bg-third hover:bg-primary text-white text-center font-bold py-2 px-4 rounded-sm">Lupa Kata Sandi</a>
                     </div>
                     <button id="close-modal1" class="w-[29.5rem] bg-lime-500 hover:bg-[#6da714] font-bold text-white px-4 py-2 rounded-lg mt-6">Batal</button>
                 </div>

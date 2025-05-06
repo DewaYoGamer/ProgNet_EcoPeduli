@@ -5,7 +5,7 @@
             <div class="text-center self-stretch text-black text-3xl lg:text-6xl font-bold xl:leading-tight mt-12">
                 Edukasi Sampah
             </div>
-            <div class="mt-12 text-center text-2xl w-[55rem]">
+            <div class="px-12 md:px-36 2xl:px-96 mt-12 text-center mb-8 lg:text-2xl">
                 Di sini, Anda dapat mempelajari cara <span class="text-primary font-bold">mengelola sampah</span>
                 dengan benar, mulai dari <span class="text-primary font-bold">pemilahan yang tepat</span>,
                 <span class="text-primary font-bold">langkah-langkah pengelolaan sampah</span> di rumah, hingga
@@ -19,8 +19,8 @@
             <div class="flex flex-col justify-center items-center relative w-full h-[35rem] overflow-hidden">
                 <div class="flex items-center transition-transform duration-500 ease-in-out transform" id="carousel" style="transform: translateX(-100%);">
                     <!-- Clone Last Item (for infinite loop) -->
-                    <div class="w-full flex-shrink-0 flex justify-center">
-                        <div class="bg-gradient-to-r from-third to-fourth h-[30rem] w-[80rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <div class="w-full shrink-0 flex justify-center">
+                        <div class="bg-linear-to-r from-third to-fourth h-[30rem] w-[80rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
                             <div class="flex flex-col justify-between h-full">
                                 <div class="flex flex-col">
                                     <div class="self-stretch text-5xl font-semibold text-left text-white">Dampak Buruk Sampah</div>
@@ -39,8 +39,8 @@
                     </div>
 
                     <!-- Item 1 (Pemilahan Sampah) -->
-                    <div class="w-full flex-shrink-0 flex justify-center">
-                        <div class="bg-gradient-to-r from-third to-fourth h-[30rem] w-[80rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <div class="w-full shrink-0 flex justify-center">
+                        <div class="bg-linear-to-r from-third to-fourth h-[30rem] w-[80rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
                             <div class="flex flex-col justify-between h-full">
                                 <div class="flex flex-col">
                                     <div class="self-stretch text-5xl font-semibold text-left text-white">Pemilahan Sampah</div>
@@ -59,8 +59,8 @@
                     </div>
 
                     <!-- Item 2 (Pengelolaan Sampah) -->
-                    <div class="w-full flex-shrink-0 flex justify-center">
-                        <div class="bg-gradient-to-r from-third to-fourth h-[30rem] w-[80rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <div class="w-full shrink-0 flex justify-center">
+                        <div class="bg-linear-to-r from-third to-fourth h-[30rem] w-[80rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
                             <div class="flex flex-col justify-between h-full">
                                 <div class="flex flex-col">
                                     <div class="self-stretch text-5xl font-semibold text-left text-white">Pengelolaan Sampah</div>
@@ -79,8 +79,8 @@
                     </div>
 
                     <!-- Item 3 (Dampak Buruk Sampah) -->
-                    <div class="w-full flex-shrink-0 flex justify-center">
-                        <div class="bg-gradient-to-r from-third to-fourth h-[30rem] w-[80rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <div class="w-full shrink-0 flex justify-center">
+                        <div class="bg-linear-to-r from-third to-fourth h-[30rem] w-[80rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
                             <div class="flex flex-col justify-between h-full">
                                 <div class="flex flex-col">
                                     <div class="self-stretch text-5xl font-semibold text-left text-white">Dampak Buruk Sampah</div>
@@ -99,8 +99,8 @@
                     </div>
 
                     <!-- Clone First Item (for infinite loop) -->
-                    <div class="w-full flex-shrink-0 flex justify-center">
-                        <div class="bg-gradient-to-r from-third to-fourth h-[30rem] w-[80rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <div class="w-full shrink-0 flex justify-center">
+                        <div class="bg-linear-to-r from-third to-fourth h-[30rem] w-[80rem] rounded-xl flex flex-col py-10 px-9 shadow-lg transform hover:scale-105 transition-transform duration-300">
                             <div class="flex flex-col justify-between h-full">
                                 <div class="flex flex-col">
                                     <div class="self-stretch text-5xl font-semibold text-left text-white">Pemilahan Sampah</div>

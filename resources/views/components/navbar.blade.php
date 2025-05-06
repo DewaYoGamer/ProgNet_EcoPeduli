@@ -35,7 +35,7 @@
                     <x-navlink href="/about" :active="request() -> is ('about')" >Tentang</x-navlink>
                 </li>
                 <li>
-                    <a href="/login" class="sm:hidden block my-1 py-2 px-3 rounded lg:bg-transparent lg:p-0 font-bold text-white bg-third hover:bg-primary text-center">MASUK </a>
+                    <a href="/login" class="sm:hidden block my-1 py-2 px-3 rounded-sm lg:bg-transparent lg:p-0 font-bold text-white bg-third hover:bg-primary text-center">MASUK </a>
                 </li>
             </ul>
         </div>

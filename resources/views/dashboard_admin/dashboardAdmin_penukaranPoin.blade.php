@@ -23,27 +23,27 @@
                 <div class="col-span-2 text-center mb-6">
                     <h2 class="text-xl font-bold text-green-700">PENCARIAN KODE UNIK PENGGUNA</h2>
                     <label for="kode_unik" class="block text-lg font-bold mt-4">Masukkan Kode Unik</label>
-                    <input type="text" name="kode_unik" id="kode_unik" class="w-1/2 p-2 border border-gray-300 rounded mt-2">
+                    <input type="text" name="kode_unik" id="kode_unik" class="w-1/2 p-2 border border-gray-300 rounded-sm mt-2">
                     @error('kode_unik')
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror
-                    <button type="submit" class="bg-green-600 text-white px-4 py-2 mt-4 rounded">CARI KODE UNIK!</button>
+                    <button type="submit" class="bg-green-600 text-white px-4 py-2 mt-4 rounded-sm">CARI KODE UNIK!</button>
                 </div>
 
                 <!-- Username dan Status -->
                 <div class="flex flex-col items-center">
                     <label for="nama_pengguna" class="block text-lg font-bold">Username</label>
-                    <input type="text" id="nama_pengguna" name="nama_pengguna" class="w-full p-2 border border-gray-300 rounded bg-gray-100 text-center" value="{{ $data->username ?? '' }}" readonly>
+                    <input type="text" id="nama_pengguna" name="nama_pengguna" class="w-full p-2 border border-gray-300 rounded-sm bg-gray-100 text-center" value="{{ $data->username ?? '' }}" readonly>
                 </div>
                 <div class="flex flex-col items-center">
                     <label for="status" class="block text-lg font-bold">Status</label>
-                    <input type="text" id="status" name="status" class="w-full p-2 border border-gray-300 rounded bg-gray-100 text-center" value="{{ $data->status ?? '' }}" readonly>
+                    <input type="text" id="status" name="status" class="w-full p-2 border border-gray-300 rounded-sm bg-gray-100 text-center" value="{{ $data->status ?? '' }}" readonly>
                 </div>
 
                 <!-- Poin Pengguna -->
                 <div class="col-span-2 text-center mt-6">
                     <label for="catatan" class="block text-lg font-bold">Poin yang Dibutuhkan</label>
-                    <input type="text" id="catatan" name="catatan" class="w-full p-2 border  border-gray-300 rounded bg-gray-100 text-center" value="{{ $data->poin ?? '' }}" readonly>
+                    <input type="text" id="catatan" name="catatan" class="w-full p-2 border  border-gray-300 rounded-sm bg-gray-100 text-center" value="{{ $data->poin ?? '' }}" readonly>
                 </div>
 
                 <!-- Keterangan Barang -->
@@ -52,7 +52,7 @@
                     <textarea 
                     id="keterangan_penukaran" 
                     name="keterangan_penukaran" 
-                    class="w-full h-24 p-2 border border-gray-300 rounded bg-gray-100 text-center" 
+                    class="w-full h-24 p-2 border border-gray-300 rounded-sm bg-gray-100 text-center" 
                     readonly>{{ $data->keterangan_penukaran ?? '' }}</textarea>
                 </div>
             </form>
@@ -65,7 +65,7 @@
                         <input type="hidden" name="kode_unik" value="{{ $data->kode_unik }}">
                         <input type="hidden" name="username" value="{{ $data->username }}">
                         <input type="hidden" name="poin" value="{{ $data->poin }}">
-                        <button type="submit" class="bg-primary text-white text-2xl px-6 py-2 rounded">Terima Penukaran Barang</button>
+                        <button type="submit" class="bg-primary text-white text-2xl px-6 py-2 rounded-sm">Terima Penukaran Barang</button>
                     </form>
                 </div>
             @endif
