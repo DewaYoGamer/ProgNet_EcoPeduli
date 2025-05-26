@@ -6,9 +6,9 @@
     @endphp
     <x-slot name="title">Dashboard Operator | Eco Peduli</x-slot>
     <div class="w-full h-full bg-white shadow-md overflow-hidden">
-        <div class="w-full h-[22rem] text-center bg-gray-200 p-6 text-white flex items-center justify-center">
+        <div class="w-full h-88 text-center bg-gray-200 p-6 text-white flex items-center justify-center">
             <div class="flex flex-row">
-                <div class="w-[26rem] h-[19rem] mr-16 text-left bg-[#e7c41a] p-6 text-white">
+                <div class="w-104 h-76 mr-16 text-left bg-[#e7c41a] p-6 text-white">
                     <div class="flex justify-center">
                         <img src="{{ asset('images/arya.jpg') }}" alt="Profile Picture" class="w-24 h-24 rounded-full object-cover">
                     </div>
@@ -23,13 +23,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-[45rem] h-[19rem] text-left bg-[#e7c41a] p-6 text-white">
+                <div class="w-180 h-76 text-left bg-[#e7c41a] p-6 text-white">
                     <div class="text-left">
                         <p class="text-white text-4xl font-semibold">Pengingat Yang Berjalan:</p>
                         <p class="text-white text-3xl font-medium mt-3">{{ $data_awal->tanggal }}</p>
                         <p class="text-white text-3xl font-medium">{{ $data_awal->jenis_sampah }}</p>
                         <p class="text-white text-3xl font-semibold mt-10 mb-4">Perbarui Pengingat?</p>
-                        <a class="w-[12rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm" href="/operator/jadwal_pengambilan">Edit Pengingat</a>
+                        <a class="w-48 bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm" href="/operator/jadwal_pengambilan">Edit Pengingat</a>
                     </div>
                 </div>
             </div>

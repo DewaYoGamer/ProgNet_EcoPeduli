@@ -54,7 +54,7 @@
             </p>
         </div>
         <div id="forgot-modal" class="fixed inset-0 hidden z-50 items-center justify-center bg-black bg-opacity-50">
-            <div class="bg-white rounded-lg w-[35rem] p-8">
+            <div class="bg-white rounded-lg w-140 p-8">
                 <div class="flex flex-col items-center">
                     <img src="{{ asset('images/logo.png') }}" class="h-24 mb-5">
                     <h2 class="text-2xl font-bold mb-4 text-primary">APA KENDALA ANDA?</h2>
@@ -67,10 +67,10 @@
                         <input type="hidden" name="type" value="password">
                     </form>
                     <div class="flex items-center space-x-6 mt-4">
-                        <a href="#" onclick="document.getElementById('forgotUsernameForm').submit();" class="w-[14rem] bg-third hover:bg-primary text-white text-center font-bold py-2 px-4 rounded-sm">Lupa Nama Pengguna</a>
-                        <a href="#" onclick="document.getElementById('forgotPasswordForm').submit();" class="w-[14rem] bg-third hover:bg-primary text-white text-center font-bold py-2 px-4 rounded-sm">Lupa Kata Sandi</a>
+                        <a href="#" onclick="document.getElementById('forgotUsernameForm').submit();" class="w-56 bg-third hover:bg-primary text-white text-center font-bold py-2 px-4 rounded-sm">Lupa Nama Pengguna</a>
+                        <a href="#" onclick="document.getElementById('forgotPasswordForm').submit();" class="w-56 bg-third hover:bg-primary text-white text-center font-bold py-2 px-4 rounded-sm">Lupa Kata Sandi</a>
                     </div>
-                    <button id="close-modal1" class="w-[29.5rem] bg-lime-500 hover:bg-[#6da714] font-bold text-white px-4 py-2 rounded-lg mt-6">Batal</button>
+                    <button id="close-modal1" class="w-118 bg-lime-500 hover:bg-[#6da714] font-bold text-white px-4 py-2 rounded-lg mt-6">Batal</button>
                 </div>
             </div>
         </div>

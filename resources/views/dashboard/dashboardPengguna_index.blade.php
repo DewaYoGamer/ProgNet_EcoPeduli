@@ -6,9 +6,9 @@
     @endphp
     <x-slot name="title">Dashboard Pengguna | Eco Peduli</x-slot>
     <div class="w-full h-full bg-white shadow-md overflow-hidden">
-        <div class="w-full h-[22rem] text-center bg-gray-200 p-6 text-white flex items-center justify-center">
+        <div class="w-full h-88 text-center bg-gray-200 p-6 text-white flex items-center justify-center">
             <div class="flex flex-row">
-                <div class="w-[26rem] h-[19rem] mr-16 text-left bg-[#e7c41a] p-6 text-white">
+                <div class="w-104 h-76 mr-16 text-left bg-[#e7c41a] p-6 text-white">
                     <div class="flex justify-center">
                         <img src="{{ $user->avatar ? Storage::url($user->avatar) : asset('images/noavatar.png') }}" alt="Profile Picture" class="w-24 h-24 rounded-full object-cover">
                     </div>
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-[45rem] h-[19rem] text-left bg-[#e7c41a] p-6 text-white">
+                <div class="w-180 h-76 text-left bg-[#e7c41a] p-6 text-white">
                     <div class="text-left">
                         <p class="text-white text-3xl font-semibold">{{ $data_awal->tanggal }}</p>
                         <p class="text-white text-3xl font-semibold mt-10">Jenis Sampah: </p>

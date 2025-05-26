@@ -84,7 +84,7 @@
                     </div>
                     <div>
                         <p class="text-gray-600 text-sm font-semibold">Tanggal Lahir</p>
-                        <div class="flex items-center bg-gray-100 border border-gray-300 rounded-md px-4 py-2 mt-2 h-12 w-[13rem]">
+                        <div class="flex items-center bg-gray-100 border border-gray-300 rounded-md px-4 py-2 mt-2 h-12 w-52">
                             <p class="text-gray-800 font-medium">
                                 @if($user->date_birth)
                                     {{ \Carbon\Carbon::parse($user->date_birth)->format('d/m/Y') }}
@@ -98,8 +98,8 @@
                         @enderror
                     </div>
                     <div>
-                        <button @click="editMode = true" class="w-[12rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm">Edit Profil</button>
-                        <button class="ml-5 w-[12rem] bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-sm" id="change-btn">Ganti Kata Sandi</button>
+                        <button @click="editMode = true" class="w-48 bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm">Edit Profil</button>
+                        <button class="ml-5 w-48 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-sm" id="change-btn">Ganti Kata Sandi</button>
                     </div>
                 </div>
             </template>
@@ -131,10 +131,10 @@
                     </div>
                     <div>
                         <p class="text-gray-600 text-sm font-semibold">Tanggal Lahir</p>
-                        <input type="date" name="date_birth" value="{{ $user->date_birth }}" class="bg-gray-100 border border-gray-300 rounded-md px-4 py-2 mt-2 h-12 w-[13rem]">
+                        <input type="date" name="date_birth" value="{{ $user->date_birth }}" class="bg-gray-100 border border-gray-300 rounded-md px-4 py-2 mt-2 h-12 w-52">
                     </div>
-                    <button type="submit" class="w-[12rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm">Simpan</button>
-                    <button type="button" @click="editMode = false" class="w-[12rem] bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-sm mt-4">Batal</button>
+                    <button type="submit" class="w-48 bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm">Simpan</button>
+                    <button type="button" @click="editMode = false" class="w-48 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-sm mt-4">Batal</button>
                 </form>
             </template>
             @if(session('success'))
@@ -155,7 +155,7 @@
             <div class="flex flex-col justify-center items-center space-y-8">
                 <img id="profile-picture" src="{{ $user->avatar ? Storage::url($user->avatar) : asset('images/noavatar.png') }}" alt="Profile Picture" class="w-64 rounded-full">
                 <input type="file" id="upload-image" accept="image/*" class="hidden">
-                <button onclick="document.getElementById('upload-image').click()" class="w-[12rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm">Ganti Foto Profil</button>
+                <button onclick="document.getElementById('upload-image').click()" class="w-48 bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm">Ganti Foto Profil</button>
                 @if(session('success2'))
                     <div id="success2-alert" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-sm relative mt-4" role="alert">
                         <span class="block sm:inline">{{ session('success2') }}</span>
@@ -180,7 +180,7 @@
 
         <!-- Modal for Change Password -->
         <div id="change-modal" class="fixed inset-0 hidden z-50 items-center justify-center bg-black bg-opacity-50">
-            <div class="bg-white rounded-lg w-[30rem] p-8">
+            <div class="bg-white rounded-lg w-120 p-8">
                 <div class="flex flex-col items-center">
                     <img src="{{ asset('images/logo.png') }}" class="h-24 mb-5">
                     <h2 class="text-2xl font-bold mb-6 text-primary">GANTI KATA SANDI</h2>

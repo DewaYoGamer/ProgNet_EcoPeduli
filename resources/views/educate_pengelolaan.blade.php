@@ -11,21 +11,21 @@
             <div class="flex flex-row justify-evenly items-center">
                 <div class="bg-[#FAFAFA] h-full w-full rounded-xl flex flex-col p-10 items-left justify-between border-slate-200 border-2">
                     <div class="flex flex-col">
-                        <img src="{{ asset('images/pengelolaan1.jpg') }}" class="w-full h-[30rem] rounded-sm object-cover object-top">
+                        <img src="{{ asset('images/pengelolaan1.jpg') }}" class="w-full h-120 rounded-sm object-cover object-top">
                         <div class="flex flex-row mt-8 items-center">
-                            <img src="{{ asset('images/Asset 6.png') }}" class="w-[4rem] h-[6rem] mr-8">
+                            <img src="{{ asset('images/Asset 6.png') }}" class="w-16 h-24 mr-8">
                             <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik1-btn">Bagaimana Cara Pengelolaan Sampah yang Baik dan Benar di Rumah Tangga?</p>
                         </div>
                         <div class="flex flex-row mt-8 items-center">
-                            <img src="{{ asset('images/Asset 5.png') }}" class="w-[4rem] h-[2rem] mr-8">
+                            <img src="{{ asset('images/Asset 5.png') }}" class="w-16 h-8 mr-8">
                             <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik2-btn">Apa dampak dari pengelolaan sampah yang buruk terhadap lingkungan?</p>
                         </div>
                         <div class="flex flex-row mt-8 items-center">
-                            <img src="{{ asset('images/Asset 3.png') }}" class="w-[4rem] h-[4rem] mr-8">
+                            <img src="{{ asset('images/Asset 3.png') }}" class="w-16 h-16 mr-8">
                             <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik3-btn">Apa Tantangan dalam Pengelolaan Sampah dan Bagaimana Mengatasinya?</p>
                         </div>
                         <div class="flex flex-row mt-8 items-center">
-                            <img src="{{ asset('images/Asset 7.png') }}" class="w-[4rem] h-[4rem] mr-8">
+                            <img src="{{ asset('images/Asset 7.png') }}" class="w-16 h-16 mr-8">
                             <p class="text-justify underline mt-5 mb-4 inline-block cursor-pointer text-primary text-2xl font-semibold hover:text-third" id="topik4-btn">Apa Peran Bank Sampah dalam Pengelolaan Sampah dan Sistem Kerjanya?</p>
                         </div>
                     </div>
@@ -38,9 +38,9 @@
 
         <!-- Modal overlay for Topik 1 -->
         <div id="topik1-modal" class="fixed inset-0 hidden z-50 items-center justify-center bg-black bg-opacity-50">
-            <div class="bg-white rounded-lg w-[90rem] p-8">
+            <div class="bg-white rounded-lg w-360 p-8">
                 <div class="flex flex-row items-center">
-                    <img src="{{ asset('images/Asset 6.png') }}" class="w-[10rem] h-[11rem] mr-8">
+                    <img src="{{ asset('images/Asset 6.png') }}" class="w-40 h-44 mr-8">
                     <div class="flex flex-col">
                             <h2 class="text-4xl font-bold mb-4">Bagaimana Cara Pengelolaan Sampah yang Baik dan Benar di Rumah Tangga?</h2>
                             <p class="text-2xl">
@@ -54,9 +54,9 @@
 
         <!-- Modal overlay for Topik 2 -->
         <div id="topik2-modal" class="fixed inset-0 hidden z-50 items-center justify-center bg-black bg-opacity-50">
-            <div class="bg-white rounded-lg w-[90rem] p-8">
+            <div class="bg-white rounded-lg w-360 p-8">
                 <div class="flex flex-row items-center">
-                    <img src="{{ asset('images/Asset 5.png') }}" class="w-[10rem] h-[5rem] mr-8">
+                    <img src="{{ asset('images/Asset 5.png') }}" class="w-40 h-20 mr-8">
                     <div class="flex flex-col">
                             <h2 class="text-4xl font-bold mb-4">Apa dampak dari pengelolaan sampah yang buruk terhadap lingkungan?</h2>
                             <p class="text-2xl">
@@ -70,9 +70,9 @@
 
         <!-- Modal overlay for Topik 3 -->
         <div id="topik3-modal" class="fixed inset-0 hidden z-50 items-center justify-center bg-black bg-opacity-50">
-            <div class="bg-white rounded-lg w-[90rem] p-8">
+            <div class="bg-white rounded-lg w-360 p-8">
                 <div class="flex flex-row items-center">
-                    <img src="{{ asset('images/Asset 3.png') }}" class="w-[10rem] h-[10rem] mr-8">
+                    <img src="{{ asset('images/Asset 3.png') }}" class="w-40 h-40 mr-8">
                     <div class="flex flex-col">
                             <h2 class="text-4xl font-bold mb-4">Apa Tantangan Utama dalam Pengelolaan Sampah di Perkotaan dan Bagaimana Cara Mengatasinya?</h2>
                             <p class="text-2xl">
@@ -86,9 +86,9 @@
 
         <!-- Modal overlay for Topik 4 -->
         <div id="topik4-modal" class="fixed inset-0 hidden z-50 items-center justify-center bg-black bg-opacity-50">
-            <div class="bg-white rounded-lg w-[90rem] p-8">
+            <div class="bg-white rounded-lg w-360 p-8">
                 <div class="flex flex-row items-center">
-                    <img src="{{ asset('images/Asset 7.png') }}" class="w-[10rem] h-[10rem] mr-8">
+                    <img src="{{ asset('images/Asset 7.png') }}" class="w-40 h-40 mr-8">
                     <div class="flex flex-col">
                             <h2 class="text-4xl font-bold mb-4">Apa Peran Bank Sampah dalam Pengelolaan Sampah dan Bagaimana Sistem Kerjanya?</h2>
                             <p class="text-2xl">

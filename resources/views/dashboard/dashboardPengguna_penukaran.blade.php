@@ -35,7 +35,7 @@
                 @csrf
                 <div class="flex flex-row justify-evenly items-center">
                     <!-- Item Beras -->
-                    <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
+                    <div class="bg-[#FAFAFA] h-120 w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
                         <div class="flex flex-col -mt-4">
                             <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
                                 300 POIN / KG
@@ -45,14 +45,14 @@
                             </div>
                         </div>
                         <div class="flex flex-row space-x-3">
-                            <img src="{{ asset('images/gambar_beras.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
+                            <img src="{{ asset('images/gambar_beras.png') }}" class="w-60 h-60 rounded-full object-cover">
                         </div>
                         <label for="cntBeras" class="block text-lg font-semibold text-slate-400">Jumlah Penukaran</label>
                         <input type="number" id="cntBeras" name="cntBeras" class="w-[90%] border-2 border-secondary p-2 rounded-md -mb-3" min="0" value="0" oninput="calculateTotalPoints()">
                     </div>
 
                     <!-- Item Gula -->
-                    <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
+                    <div class="bg-[#FAFAFA] h-120 w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
                         <div class="flex flex-col -mt-4">
                             <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
                                 250 POIN / KG
@@ -62,14 +62,14 @@
                             </div>
                         </div>
                         <div class="flex flex-row space-x-3">
-                            <img src="{{ asset('images/gambar_gula.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
+                            <img src="{{ asset('images/gambar_gula.png') }}" class="w-60 h-60 rounded-full object-cover">
                         </div>
                         <label for="cntGula" class="block text-lg font-semibold text-slate-400">Jumlah Penukaran</label>
                         <input type="number" id="cntGula" name="cntGula" class="w-[90%] border-2 border-secondary p-2 rounded-md -mb-3" min="0" value="0" oninput="calculateTotalPoints()">
                     </div>
 
                     <!-- Item Mie -->
-                    <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
+                    <div class="bg-[#FAFAFA] h-120 w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2">
                         <div class="flex flex-col -mt-4">
                             <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
                                 60 POIN / PCS
@@ -79,7 +79,7 @@
                             </div>
                         </div>
                         <div class="flex flex-row space-x-3">
-                            <img src="{{ asset('images/gambarMie.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
+                            <img src="{{ asset('images/gambarMie.png') }}" class="w-60 h-60 rounded-full object-cover">
                         </div>
                         <label for="cntMie" class="block text-lg font-semibold text-slate-400">Jumlah Penukaran</label>
                         <input type="number" id="cntMie" name="cntMie" class="w-[90%] border-2 border-secondary p-2 rounded-md -mb-3" min="0" value="0" oninput="calculateTotalPoints()">

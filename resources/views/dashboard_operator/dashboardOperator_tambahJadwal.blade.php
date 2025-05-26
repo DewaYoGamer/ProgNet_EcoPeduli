@@ -52,7 +52,7 @@
                         <option value="Residu">Residu</option>
                     </select>
                 </div>
-                <button class="w-[13rem] bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm">Tetapkan Pengingat</button>
+                <button class="w-52 bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded-sm">Tetapkan Pengingat</button>
             </div>
         </form>
     </div>

@@ -62,7 +62,7 @@
                     <span class="text-primary font-bold">Sampah Daur Ulang</span> yang anda miliki dapat ditukarkan menjadi <span class="text-primary font-bold">Poin</span> <br>dengan jumlah yang beragam!
                 </div>
                 <div class="flex flex-col lg:flex-row justify-around items-center w-full left-0 top-[750px] bg-white px-8 mt-15 lg:py-0 lg:px-3">
-                    <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2 mb-10">
+                    <div class="bg-[#FAFAFA] h-120 w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2 mb-10">
                         <div class="flex flex-col -mt-4 w-[300px] h-[450px]">
                             <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
                                 50 Poin / KG
@@ -72,7 +72,7 @@
                             </div>
                         </div>
                         <div class="flex flex-row space-x-3">
-                            <img src="{{ asset('images/gambar_botolPlastik.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
+                            <img src="{{ asset('images/gambar_botolPlastik.png') }}" class="w-60 h-60 rounded-full object-cover">
                         </div>
                         <form action="/exchange">
                             <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
@@ -80,7 +80,7 @@
                             </button>
                         </form>
                     </div>
-                    <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2 mb-10">
+                    <div class="bg-[#FAFAFA] h-120 w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2 mb-10">
                         <div class="flex flex-col -mt-4 w-[300px] h-[450px]">
                             <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
                                 100 Poin / KG
@@ -90,7 +90,7 @@
                             </div>
                         </div>
                         <div class="flex flex-row space-x-3">
-                            <img src="{{ asset('images/gambar_kaleng.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
+                            <img src="{{ asset('images/gambar_kaleng.png') }}" class="w-60 h-60 rounded-full object-cover">
                         </div>
                         <form action="/exchange">
                             <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
@@ -98,7 +98,7 @@
                             </button>
                         </form>
                     </div>
-                    <div class="bg-[#FAFAFA] h-[30rem] w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2 mb-8">
+                    <div class="bg-[#FAFAFA] h-120 w-[20rem] rounded-xl flex flex-col py-10 items-center justify-between border-slate-200 border-2 mb-8">
                         <div class="flex flex-col -mt-4 w-[300px] h-[450px]">
                             <div class="self-stretch text-sm font-semibold text-center text-slate-400 mb-4">
                                 200 POIN / KG
@@ -108,7 +108,7 @@
                             </div>
                         </div>
                         <div class="flex flex-row space-x-3">
-                            <img src="{{ asset('images/gambar_botolKaca.png') }}" class="w-[15rem] h-[15rem] rounded-full object-cover">
+                            <img src="{{ asset('images/gambar_botolKaca.png') }}" class="w-60 h-60 rounded-full object-cover">
                         </div>
                         <form action="/exchange">
                             <button type="submit" class="bg-lime-500 text-center p-3 rounded-[8px] text-white font-bold text-xl">
