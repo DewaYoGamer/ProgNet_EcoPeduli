@@ -12,39 +12,37 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col justify-between items-center w-full xl:h-[700px] left-0 bg-primary px-8 py-24 space-y-12">
-                    <div class="flex flex-row justify-evenly items-center w-full px-12 space-x-12">
-                        <div class="w-[284.58px] h-[434.48px] px-[35.99px] pd-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex">
-                            <img src="{{asset('images/arya.jpg')}}" class="-mt-10 rounded-[10px]">
-                            <div class="self-stretch text-primary text-2xl font-semibold">Arya</div>
-                            <div class="self-stretch text-black text-base font-medium">Arya merupakan Pemimpin dari Project ini.</div>
-                        </div>
-                        <div class="w-[284.58px] h-[434.48px] px-[35.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex">
-                            <img src="{{asset('images/nyoman.jpg')}}" class="-mt-6 rounded-[10px]">
-                            <div class="self-stretch text-primary text-2xl font-semibold">Nyoman</div>
-                            <div class="self-stretch text-black text-base font-medium">Nyoman merupakan Wakil Pemimpin dari Project ini.</div>
-                        </div>
-                        <div class="hidden xl:flex w-[284.58px] h-[434.48px] px-[35.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px]">
-                            <img src="{{asset('images/wira.jpg')}}" class="-mt-10 rounded-[10px]">
-                            <div class="self-stretch text-primary text-2xl font-semibold">Wira</div>
-                            <div class="self-stretch text-black text-base font-medium">Wira merupakan Designer dari Project ini.</div>
-                        </div>
-                        <div class="hidden xl:flex w-[284.58px] h-[434.48px] px-[35.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px]">
-                            <img src="{{asset('images/yoga.jpg')}}" class="-mt-6 rounded-[10px]">
-                            <div class="self-stretch text-primary text-2xl font-semibold">Yoga</div>
-                            <div class="self-stretch text-black text-base font-medium">Yoga merupakan Programmer dari Project ini</div>
-                        </div>
-                    </div>
-                    <div class="flex flex-row justify-around items-center w-full px-8">
-                        <div class="flex xl:hidden w-[284.58px] h-[434.48px] px-[35.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px]">
-                            <img src="{{asset('images/wira.jpg')}}" class="-mt-10 rounded-[10px]">
-                            <div class="self-stretch text-primary text-2xl font-semibold">Wira</div>
-                            <div class="self-stretch text-black text-base font-medium">Wira merupakan Designer dari Project ini.</div>
-                        </div>
-                        <div class="flex xl:hidden w-[284.58px] h-[434.48px] px-[35.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px]">
-                            <img src="{{asset('images/yoga.jpg')}}" class="-mt-6 rounded-[10px]">
-                            <div class="self-stretch text-primary text-2xl font-semibold">Yoga</div>
-                            <div class="self-stretch text-black text-base font-medium">Yoga merupakan Programmer dari Project ini</div>
+                <div class="flex items-center w-full bg-primary py-24 ">
+                    <div class="flex w-full justify-center">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 sm:gap-16 xl:gap-8 2xl:gap-16">
+                            <div class="relative w-[284.58px] h-[434.48px] px-[35.99px] pd-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex">
+                                <div class="absolute left-[50%] transform -translate-x-[50%] w-[220px] space-y-4">
+                                    <img src="{{asset('images/arya.jpg')}}" class="-mt-10 rounded-[10px]">
+                                    <div class="self-stretch text-primary text-2xl font-semibold">Arya</div>
+                                    <div class="self-stretch text-black text-base font-medium">Arya merupakan Pemimpin dari Project ini.</div>
+                                </div>
+                            </div>
+                            <div class="relative w-[284.58px] h-[434.48px] px-[35.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex">
+                                <div class="absolute left-[50%] transform -translate-x-[50%] w-[220px] space-y-4">
+                                    <img src="{{asset('images/nyoman.jpg')}}" class="-mt-6 rounded-[10px]">
+                                    <div class="self-stretch text-primary text-2xl font-semibold">Nyoman</div>
+                                    <div class="self-stretch text-black text-base font-medium">Nyoman merupakan Wakil Pemimpin dari Project ini.</div>
+                                </div>
+                            </div>
+                            <div class="relative w-[284.58px] h-[434.48px] px-[35.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex">
+                                <div class="absolute left-[50%] transform -translate-x-[50%] w-[220px] space-y-4">
+                                    <img src="{{asset('images/wira.jpg')}}" class="-mt-6 rounded-[10px]">
+                                    <div class="self-stretch text-primary text-2xl font-semibold">Wira</div>
+                                    <div class="self-stretch text-black text-base font-medium">Wira merupakan Designer dari Project ini.</div>
+                                </div>
+                            </div>
+                            <div class="relative w-[284.58px] h-[434.48px] px-[35.99px] py-[29.28px] bg-white rounded-[20px] flex-col justify-center items-center gap-[16.40px] inline-flex">
+                                <div class="absolute left-[50%] transform -translate-x-[50%] w-[220px] space-y-4">
+                                    <img src="{{asset('images/yoga.jpg')}}" class="-mt-6 rounded-[10px]">
+                                    <div class="self-stretch text-primary text-2xl font-semibold">Yoga</div>
+                                    <div class="self-stretch text-black text-base font-medium">Yoga merupakan Programmer dari Project ini</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
